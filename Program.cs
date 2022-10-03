@@ -239,6 +239,8 @@ namespace Exercicios_Lista5
              * Leia duas matrizes A e B com 3x3 elementos. Construir uma matriz C, onde cada
              * elemento de C é a subtração do elemento correspondente de A com B.
              */
+
+            /*
             Random random = new Random();   //usando Random para não precisar digitar...
 
             int[,] matrizA = new int[2, 3], matrizB = new int[2, 3], matrizC = new int[2, 3];
@@ -285,13 +287,14 @@ namespace Exercicios_Lista5
                     Console.Write(matrizC[i, j] + " ");
                 }
             }
-
-
+            */
 
             /* Ex. 9:
              * Ler uma matriz com 4x4 de inteiros e mostrar os números na ordem direta e 
              * inversa a que foram lidos.
              */
+
+
 
             /* Ex. 10:
              * Leia uma matriz 3x3. Em seguida, solicite um número qualquer ao usuário e 
