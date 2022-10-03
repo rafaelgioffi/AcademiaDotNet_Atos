@@ -287,6 +287,7 @@ namespace Exercicios_Lista5
             }
 
 
+
             /* Ex. 9:
              * Ler uma matriz com 4x4 de inteiros e mostrar os números na ordem direta e 
              * inversa a que foram lidos.
