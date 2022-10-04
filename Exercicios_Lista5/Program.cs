@@ -1,13 +1,9 @@
-using System.Diagnostics;
-using System.Globalization;
-
 namespace Exercicios_Lista5
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-
             /* Ex. 1: 
              * Crie uma Matriz 5x3. Na primeira coluna, solicite que o usuário preencha. 
              * A 2ª coluna, some 10 aos elementos da 1ª coluna. Na 3º coluna, armazene o dobro
@@ -16,17 +12,14 @@ namespace Exercicios_Lista5
 
             /*
             int[,] matriz = new int[5, 3];
-
             for (int i = 0; i < 5; i++)
             {
                 Console.Write("Informe o valor da linha {0}, coluna 1 [{0},1]: ",i + 1);
                 matriz[i, 0] = int.Parse(Console.ReadLine());
-
                 matriz[i, 1] = matriz[i, 0] + 10;
                 
                 matriz[i, 2] = matriz[i, 0] * 2;
             }
-
             for (int i = 0; i < 5; i++)
             {
                 for (int j = 0; j < 3; j++)
@@ -54,7 +47,6 @@ namespace Exercicios_Lista5
             int[] linhas = new int[3];
             int[] colunas = new int[3];
             int linha=0, coluna=0;
-
             for (int i = 0; i < matriz.GetLength(0); i++)
             {
                 for (int j = 0; j < matriz.GetLength(1); j++)
@@ -66,7 +58,6 @@ namespace Exercicios_Lista5
                 linhas[i] = linha;
                 linha = 0;
             }
-
             for (int i = 0; i < matriz.GetLength(0); i++)
             {
                 for (int j = 0; j < matriz.GetLength(1); j++)
@@ -76,7 +67,6 @@ namespace Exercicios_Lista5
                 colunas[i] = coluna;
                 coluna = 0;
             }
-
             for (int i = 0; i < matriz.GetLength(0); i++)
             {
                 Console.WriteLine("Soma de todos elementos da linha {0}: {1}",i, linhas[i]);
@@ -94,7 +84,6 @@ namespace Exercicios_Lista5
 
             /*
             int[,] matriz = new int[4, 4];
-
             for (int i = 0; i < matriz.GetLength(0); i++)
             {
                 for (int j = 0; j < matriz.GetLength(1); j++)
@@ -104,7 +93,6 @@ namespace Exercicios_Lista5
                 }
             }
             Console.WriteLine();
-
             for (int i = 0; i < matriz.GetLength(0); i++)
             {
                 for (int j = 0; j < matriz.GetLength(1); j++)
@@ -129,21 +117,18 @@ namespace Exercicios_Lista5
             /*
             int[,] matriz = new int[5, 5];
             int pares = 0, impares = 0, positivos = 0, negativos = 0, zeros = 0;
-
             for (int i = 0; i < matriz.GetLength(0); i++)
             {
                 for (int j = 0; j < matriz.GetLength(1); j++)
                 {
                     Console.Write("Informe o valor [{0},{1}]: ", i, j);
                     matriz[i, j] = int.Parse(Console.ReadLine());
-
                     if (matriz[i, j] % 2 == 0) { pares++; }
                     if (matriz[i, j] % 2 != 0) { impares++; }
                     if (matriz[i, j] >= 0) { positivos++; }
                     if (matriz[i, j] < 0) { negativos++; }
                 }
             }
-
             Console.WriteLine("\nQuantidade de pares: " + pares);
             Console.WriteLine("Quantidade de ímpares: " + impares);
             Console.WriteLine("Quantidade de positivos: " + positivos);
@@ -156,7 +141,6 @@ namespace Exercicios_Lista5
 
             /*
             double[,] matrizA = new double[2, 3], matrizB = new double[2,3], matrizC = new double[2,3];
-
             for (int i = 0; i < matrizA.GetLength(0); i++)
             {
                 for (int j = 0; j < matrizA.GetLength(1); j++)
@@ -165,9 +149,7 @@ namespace Exercicios_Lista5
                     matrizA[i, j] = double.Parse(Console.ReadLine());
                 }
             }
-
             Console.WriteLine();
-
             for (int i = 0; i < matrizB.GetLength(0); i++)
             {
                 for (int j = 0; j < matrizB.GetLength(1); j++)
@@ -176,7 +158,6 @@ namespace Exercicios_Lista5
                     matrizB[i, j] = double.Parse(Console.ReadLine());
                 }
             }
-
             for (int i = 0; i < matrizA.GetLength(0); i++)
             {
                 for (int j = 0; j < matrizA.GetLength(1); j++)
@@ -184,9 +165,7 @@ namespace Exercicios_Lista5
                     matrizC[i, j] = matrizA[i, j] + matrizB[i, j];
                 }
             }
-
             Console.WriteLine("Soma dos valores: ");
-
             for (int i = 0; i < matrizC.GetLength(0); i++)
             {
                 for (int j = 0; j < matrizC.GetLength(1); j++)
@@ -206,10 +185,8 @@ namespace Exercicios_Lista5
 
             /*
             int[,] M = new int[4, 4];
-
             Random random = new Random();
             int maior=0;
-
             for (int i = 0; i < M.GetLength(0); i++)
             {
                 for (int j = 0; j < M.GetLength(1); j++)
@@ -217,7 +194,6 @@ namespace Exercicios_Lista5
                     M[i, j] = random.Next(0, 100);
                 }
             }
-
             for (int i = 0; i < M.GetLength(0); i++)
             {
                 for (int j = 0; j < M.GetLength(1); j++)
@@ -230,7 +206,6 @@ namespace Exercicios_Lista5
                 }
                 Console.WriteLine();
             }
-
             Console.WriteLine("O maior valor da matriz M é " + maior);
             */
 
@@ -242,7 +217,6 @@ namespace Exercicios_Lista5
 
             /*
             Random random = new Random();   //usando Random para não precisar digitar...
-
             int[,] matrizA = new int[2, 3], matrizB = new int[2, 3], matrizC = new int[2, 3];
                         
             for (int i = 0; i < matrizA.GetLength(0); i++)
@@ -257,7 +231,6 @@ namespace Exercicios_Lista5
                 Console.WriteLine();
             }
             
-
             for (int i = 0; i < matrizB.GetLength(0); i++)
             {
                 for (int j = 0; j < matrizB.GetLength(1); j++)
@@ -269,7 +242,6 @@ namespace Exercicios_Lista5
                 }
                 Console.WriteLine();
             }
-
             for (int i = 0; i < matrizA.GetLength(0); i++)
             {
                 for (int j = 0; j < matrizA.GetLength(1); j++)
@@ -277,9 +249,7 @@ namespace Exercicios_Lista5
                     matrizC[i, j] = matrizA[i, j] - matrizB[i, j];                    
                 }
             }
-
             Console.WriteLine("Subtração dos valores: ");
-
             for (int i = 0; i < matrizC.GetLength(0); i++)
             {
                 for (int j = 0; j < matrizC.GetLength(1); j++)
@@ -314,7 +284,6 @@ namespace Exercicios_Lista5
              * da divisão dos elementos da matriz A pela soma dos seus indices.
              */
 
-
         }
-            }
+    }
 }
