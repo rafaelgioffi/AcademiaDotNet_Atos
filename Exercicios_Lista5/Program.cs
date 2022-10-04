@@ -1,3 +1,5 @@
+﻿using System;
+
 namespace Exercicios_Lista5
 {
     internal class Program
@@ -264,8 +266,32 @@ namespace Exercicios_Lista5
              * inversa a que foram lidos.
              */
 
+            Random random = new Random();   //usando Random para não precisar digitar...
             int[,] matriz = new int[4, 4];
 
+            Console.WriteLine("==== Lista na ordem digitada ====");
+
+            for (int i = 0; i < matriz.GetLength(0); i++)
+            {
+                for (int j = 0; j < matriz.GetLength(1); j++)
+                {
+                    //Console.Write("Informe o valor [{0},{1}] da Matriz A: ", i, j);
+                    //matrizA[i, j] = int.Parse(Console.ReadLine());
+                    matriz[i, j] = random.Next(0, 20);
+                    Console.WriteLine("[{0},{1}]: {2}", i+1, j+1, matriz[i, j]);
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine("==== Lista na ordem invertida ====");
+            
+            for (int i = matriz.GetLength(0) - 1; i >= 0; i--)
+            {
+                for (int j = matriz.GetLength(1) - 1; j >= 0 ; j--)
+                {                    
+                    Console.WriteLine("[{0},{1}]: {2}", i+1, j+1, matriz[i, j]);
+                }
+                Console.WriteLine();
+            }
 
 
             /* Ex. 10:
