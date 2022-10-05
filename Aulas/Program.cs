@@ -358,7 +358,7 @@ namespace Aulas
             */
 
             //dobrar todos os valores da vertical principal da matriz
-            
+
             int[,] matriz = new int[3, 3];
 
             for (int i = 0; i < 3; i++)
@@ -376,7 +376,7 @@ namespace Aulas
                 {
                     if (i == j)
                     {
-                        matriz[i, j] = matriz[i,j] * 2;
+                        matriz[i, j] = matriz[i, j] * 2;
                     }
                 }
             }
