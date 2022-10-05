@@ -358,7 +358,7 @@ namespace Aulas
             */
 
             //dobrar todos os valores da vertical principal da matriz
-
+            /*
             int[,] matriz = new int[3, 3];
 
             for (int i = 0; i < 3; i++)
@@ -389,6 +389,7 @@ namespace Aulas
                 }
                 Console.WriteLine();
             }
+            */
 
             // Aula dia 05/10/22
 
