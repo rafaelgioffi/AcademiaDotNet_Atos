@@ -389,6 +389,10 @@ namespace Aulas
                 }
                 Console.WriteLine();
             }
+<<<<<<< HEAD
+=======
+            
+>>>>>>> 03ccab1 (Pushing 'Aulas')
 
         }
     }
