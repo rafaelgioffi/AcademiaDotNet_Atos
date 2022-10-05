@@ -1,3 +1,5 @@
+using Microsoft.VisualBasic;
+
 namespace Aulas
 {
     internal class Program
@@ -391,10 +393,179 @@ namespace Aulas
             }
             */
 
-            // Aula dia 05/10/22
+            /* Aula dia 05/10/22
+             * -- Orientação a Objetos
+             * 
+             * Usar classes nativas do C#: List, string, Random...
+             * 
+             * Paradigma Orientação a Objetos
+             * "operacionaliza" a ideia de "terceirização" de serviços
+             * 
+             * - reutilização
+             *   - instanciação de objetos (definir que um objeto é de um tipo ou associação a uma classe)
+             *     - automaticamente o objeto encapsula atributos e métodos da classe associada 
+             *     
+             *   - herança
+             * - encapsulamento/segurança
+             *   - um objeto ou uma classe possuem atributos e métodos exclusivos a ela
+             *   - visibilidade (private, protected, public)
+             *   
+             * - polimorfismo
+             *   - de sobrecarga - um mesmo método funcionando de mais de uma forma
+             *   - de sobreescrita - um método herdado é reescrito
+             *
+             * string nomePessoa;
+             * 
+            /* objeto/instância/elemento/ocorrência possui:
+            * 1) propriedades/caracteristicas/atributos
+            * 2) comportamentos/funcionalidades/operações/métodos
+            * 
+            * 
+            * Console.WriteLine("Exibindo uma saudação");
+            * 
+            * Console é uma classe nativa
+            * WriteLine() é um método de classe da classe Console, sem retorno
+            * Beep() é um método de classe da classe Console, sem retorno
+            * ReadLine() é um método de classe da classe Console, com retorno - (string)
+            * 
+            * métodos de classe
+            * Classe.metodoDeClasse();
+            */
+            /*
+            Console.WriteLine("Digite uma frase: ");
+            string frase = Console.ReadLine();
+            */
+            /* 
+            * frase é um objeto da classe string, que encapsula/recebe atributos e 
+            * métodos da classe string
+            */
 
+            /*
+            int tamanhoFrase = frase.Length;
+            frase = frase.ToUpper();
+            */
+            /* Length é um atributo de instância da classe string, que informa a quantidade de caracteres em uma sctring
+             * ToUpper() é um método de instância com retorno
+             */
 
+            /*
+            Random gerador = new Random();  //o método construtor da classe Random é
+                                            //chamado o construtor aloca mémoria para o objeto gerado
 
+            int numeroQualquer = gerador.Next();
+            // Next é um método de instância da classe Random com retorno
+            // Next possui 3 opções de comportamento/funcionalidade - polimorfismo de sobrecarga
+            Console.WriteLine(numeroQualquer);
+
+            numeroQualquer = gerador.Next(10, 50);
+            Console.WriteLine("Número sorteado entre 10 e 50: " + numeroQualquer);
+
+            Console.WriteLine(gerador.NextDouble());
+            //NextDouble() da instância gerador, com retorno
+            */
+
+            /*
+            List<string> nomesPessoas = new List<string>();  //construtor que instancia o objeto nomePessoas em memória
+
+            nomesPessoas.Add("Rafael Gioffi");
+            nomesPessoas.Add("Isabela da Silva");
+            nomesPessoas.Add("Kaue de Oliveira Victorio");
+            //Add é um método da instância nomesPessoas que insere uma string no final da lista
+
+            Console.WriteLine("Nomes na lista:");
+
+            for (int i = 0; i < nomesPessoas.Count; i++)
+            {
+                Console.WriteLine(nomesPessoas[i]);
+            }
+
+            //Count é um método de instância que sabe o tamanho da lista até aquele momento
+            
+            Console.WriteLine();
+
+            string nome;
+            do
+            {
+                Console.Write("Digite um nome (ou sair para encerrar): ");
+                nome = Console.ReadLine().ToUpper();
+
+                if (nome == "SAIR")
+                {
+                    break;
+                }
+
+                if (nomesPessoas.Contains(nome))
+                {
+                    Console.WriteLine("Nome já cadastrado!");
+                }
+                else
+                {
+                    nomesPessoas.Add(nome);
+                }
+            }
+            while (true);
+
+            Console.WriteLine("\nNomes na lista:");
+
+            for (int i = 0; i < nomesPessoas.Count; i++)
+            {
+                Console.WriteLine(nomesPessoas[i]);
+            }
+
+            Console.WriteLine("Tamanho da lista: " + nomesPessoas.Count);
+
+            nomesPessoas.Remove("ALEXANDRE");
+
+            Console.WriteLine("Tamanho da lista após remoção: " + nomesPessoas.Count);
+
+            Console.WriteLine("Lista ordenada");
+            nomesPessoas.Sort();
+
+            for (int i = 0; i < nomesPessoas.Count; i++)
+            {
+                Console.WriteLine(nomesPessoas[i]);
+            }
+            */
+
+            /* métodos e atributos da classe List
+             Add()
+             Clear()
+             Contains()
+             Count
+             Remove()
+             Sort()
+
+            métodos da classe string
+            Length
+            Contains()
+            Replace()
+            string.IsNullOrWhiteSpace()
+            */
+
+            string email = "alexz@ufn.edu.br";
+
+            string[] dadosEmail = email.Split("@");
+            Console.WriteLine("usuário: " + dadosEmail[0]);
+            Console.WriteLine("domínio: " + dadosEmail[1]);
+
+            string frase = "A Margareth é do Rio de Janeiro e estuda C# em Santa Maria";
+            string[] palavrasFrase = frase.Split(" ");
+
+            foreach (var item in palavrasFrase)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine("Índices");
+
+            foreach (var item in palavrasFrase)
+            {
+                Console.WriteLine(Array.IndexOf(palavrasFrase,item));
+            }
+            //for (int i = 0; i < palavrasFrase.Length; i++)
+            //{
+            //    Console.WriteLine(palavrasFrase[i]);
+            //}
         }
     }
 }
