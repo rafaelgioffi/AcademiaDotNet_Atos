@@ -395,6 +395,11 @@
     }
 =======
 ﻿using System;
+using System.Runtime.ConstrainedExecution;
+using System.Runtime.Intrinsics.Arm;
+using System.Security.Cryptography;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace Exercicios_Lista5
 {
@@ -657,11 +662,12 @@ namespace Exercicios_Lista5
             }
             */
 
-            /* Ex. 9:
+            /* Ex. 8:
              * Ler uma matriz com 4x4 de inteiros e mostrar os números na ordem direta e 
              * inversa a que foram lidos.
              */
 
+            /*
             Random random = new Random();   //usando Random para não precisar digitar...
             int[,] matriz = new int[4, 4];
 
@@ -688,23 +694,451 @@ namespace Exercicios_Lista5
                 }
                 Console.WriteLine();
             }
+            */
 
-
-            /* Ex. 10:
+            /* Ex. 9:
              * Leia uma matriz 3x3. Em seguida, solicite um número qualquer ao usuário e 
              * pesquise na matriz se o número existe. Caso, seja verdade imprima a mensagem: 
              * “O número existe no vetor” , caso contrário “Número inexistente”.
              */
 
-            /* Ex. 11:
+            /*
+            Random random = new Random();   //usando Random para não precisar digitar...
+            int[,] matriz = new int[3, 3];
+            int numeroSelecionado = random.Next(0, 20);
+            bool numeroExiste = false;
+
+            Console.WriteLine("Número selecionado: {0}\n", numeroSelecionado);
+
+            for (int i = 0; i < matriz.GetLength(0); i++)
+            {
+                for (int j = 0; j < matriz.GetLength(1); j++)
+                {
+                    //Console.Write("Informe o valor [{0},{1}] da Matriz A: ", i, j);
+                    //matrizA[i, j] = int.Parse(Console.ReadLine());
+                    matriz[i, j] = random.Next(0, 20);
+                    Console.WriteLine("[{0},{1}]: {2}", i + 1, j + 1, matriz[i, j]);
+                }
+                Console.WriteLine();
+            }
+            
+            for (int i = 0; i < matriz.GetLength(0); i++)
+            {
+                for (int j = 0; j < matriz.GetLength(1); j++)
+                {
+                    if (matriz[i, j] == numeroSelecionado) { 
+                        numeroExiste = true;
+                        break;
+                    } else
+                    {
+                        numeroExiste = false;
+                    }
+                }
+            }
+
+            if (numeroExiste)
+            {
+                Console.WriteLine("O número existe no vetor");
+            }
+            else
+            {
+                Console.WriteLine("Número inexistente");
+            }
+            */
+
+            /* Ex. 10:
              * Leia duas matrizes A e B de 4x4 elementos, calcule a média dos mesmos, em seguida,
              * diga quantos dos elementos lidos estão abaixo, acima e na média.
              */
 
-            /* Ex. 12:
-             * Leia uma matriz A de tipo double de dimenção 3x3, crie uma nova matriz resultante
+            /*
+            Random random = new Random();   //usando Random para não precisar digitar...
+            int[,] matrizA = new int[4,4], matrizB = new int[4,4];
+            int mediaA=0, mediaB=0, abaixoA=0, abaixoB=0, acimaA=0, acimaB=0, naMediaA=0, naMediaB=0;
+
+            Console.WriteLine("Elementos da Matriz A:");
+            for (int i = 0; i < matrizA.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrizA.GetLength(1); j++)
+                {
+                    //Console.Write("Informe o valor [{0},{1}] da Matriz A: ", i, j);
+                    //matrizA[i, j] = int.Parse(Console.ReadLine());
+                    matrizA[i, j] = random.Next(0, 20);
+                    Console.WriteLine("[{0},{1}]: {2}", i + 1, j + 1, matrizA[i, j]);
+                    mediaA += matrizA[i, j];
+                }
+                Console.WriteLine();
+            }
+
+            Console.WriteLine("Elementos da Matriz B:");
+            for (int i = 0; i < matrizB.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrizB.GetLength(1); j++)
+                {
+                    //Console.Write("Informe o valor [{0},{1}] da Matriz A: ", i, j);
+                    //matrizB[i, j] = int.Parse(Console.ReadLine());
+                    matrizB[i, j] = random.Next(0, 20);
+                    Console.WriteLine("[{0},{1}]: {2}", i + 1, j + 1, matrizB[i, j]);
+                    mediaB += matrizB[i, j];
+                }
+                Console.WriteLine();
+            }
+
+            mediaA /= 16;
+            mediaB /= 16;
+
+            for (int i = 0; i < matrizA.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrizA.GetLength(1); j++)
+                {
+                    //verifica os elementos da MatrizA
+                    if (matrizA[i, j] == mediaA) 
+                    {
+                        naMediaA++;
+                    }
+                    else if (matrizA[i, j] > mediaA)
+                    {
+                        acimaA++;
+                    }
+                    else if (matrizA[i,j] < mediaA)
+                    {
+                        abaixoA++;
+                    }
+                    //verifica os elementos da MatrizB
+                    if (matrizB[i, j] == mediaB)
+                    {
+                        naMediaB++;
+                    }
+                    else if (matrizB[i, j] > mediaB)
+                    {
+                        acimaB++;
+                    }
+                    else if (matrizB[i, j] < mediaB)
+                    {
+                        abaixoB++;
+                    }
+                }
+            }
+
+            Console.WriteLine("====================");
+            Console.WriteLine("Média da Matriz A: " + mediaA);
+            Console.WriteLine("Média da Matriz B: " + mediaB);
+            Console.WriteLine("\nElementos na média na Matriz A: " + naMediaA);
+            Console.WriteLine("Elementos na média na Matriz B: " + naMediaB);
+            Console.WriteLine("\nElementos na acima da média na Matriz A: " + acimaA);
+            Console.WriteLine("Elementos na acima da média na Matriz B: " + acimaB);
+            Console.WriteLine("\nElementos na abaixo da média na Matriz A: " + acimaA);
+            Console.WriteLine("Elementos na abaixo da média na Matriz B: " + acimaB);
+            Console.WriteLine("====================");
+            */
+
+            /* Ex. 11:
+             * Leia uma matriz A de tipo double de dimensão 3x3, crie uma nova matriz resultante
              * da divisão dos elementos da matriz A pela soma dos seus indices.
              */
+
+            /*
+            Random random = new Random();   //usando Random para não precisar digitar...
+            double[,] matrizA = new double[3, 3], matrizResult = new double[3, 3];
+            string excesoes="";
+
+            Console.WriteLine("Matriz A:\n");
+
+            for (int i = 0; i < matrizA.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrizA.GetLength(1); j++)
+                {
+                    //Console.Write("Informe o valor [{0},{1}] da Matriz A: ", i, j);
+                    //matrizA[i, j] = double.Parse(Console.ReadLine());
+                    matrizA[i, j] = random.Next(0, 20);
+                    Console.Write("[{0},{1}]: {2} ", i + 1, j + 1, matrizA[i, j]);
+                    
+                    if (matrizA[i, j] == 0 || (i + j) == 0)
+                    {
+                        excesoes += "O elemento [" + i + "," + j + "] não pode ser dividido por ser zero\n";
+                        matrizA[i, j] = 0;
+                    }
+                    else
+                    {
+                        matrizResult[i,j] = matrizA[i, j] / (i + j);
+                    }
+                    Console.WriteLine();
+                }
+            }
+
+            Console.WriteLine("\nMatriz resultante:\n");
+
+            for (int i = 0; i < matrizA.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrizA.GetLength(1); j++)
+                {
+                    Console.Write("[{0},{1}] = {2:F} ", i, j, matrizResult[i, j]);
+                }
+                Console.WriteLine();
+            }
+
+            Console.WriteLine("\n" + excesoes);
+            */
+
+            /* Ex. 12:
+            * Escreva um programa que leia os valores de uma matriz 4x3, e em seguida mostre na 
+            * tela apenas os valores cuja soma dos índices (i+j) seja um número par.
+            */
+
+            /*
+            Random random = new Random();   //usando Random para não precisar digitar...
+            int[,] matriz = new int[4, 3];
+
+            Console.WriteLine("Valores digitados da Matriz:\n");
+            for (int i = 0; i < matriz.GetLength(0); i++)
+            {
+                for (int j = 0; j < matriz.GetLength(1); j++)
+                {
+                    //Console.Write("Informe o valor [{0},{1}] da Matriz: ", i, j);
+                    //matriz[i, j] = int.Parse(Console.ReadLine());
+                    matriz[i, j] = random.Next(0, 20);
+                    Console.Write("[{0},{1}]: {2} ", i + 1, j + 1, matriz[i, j]);
+                }
+                Console.WriteLine();
+            }
+
+            Console.WriteLine("\nValores da Matriz cujo índices são pares:\n");
+            for (int i = 0; i < matriz.GetLength(0); i++)
+            {
+                for (int j = 0; j < matriz.GetLength(1); j++)
+                {
+                    if ((i + j) % 2 == 0)
+                    {
+                        Console.Write("[{0},{1}]: {2} ", i + 1, j + 1, matriz[i, j]);
+                    }
+                }                
+            }
+            */
+
+
+            /* Ex. 13:
+            * Escreva um programa que leia uma matriz de ordem 5(ou seja, 5x5) e verifique se a
+            * soma dos elementos da diagonal principal é igual a soma dos elementos da diagonal
+            * secundária.
+            */
+
+            /*
+            Random random = new Random();   //usando Random para não precisar digitar...
+            int[,] matriz = new int[5, 5];
+            int diagonalPrincipal = 0, diagonalSecundaria = 0;
+                       
+            Console.WriteLine("Valores digitados da Matriz:\n");
+            for (int i = 0; i < matriz.GetLength(0); i++)
+            {
+                for (int j = 0; j < matriz.GetLength(1); j++)
+                {
+                    //Console.Write("Informe o valor [{0},{1}] da Matriz: ", i, j);
+                    //matriz[i, j] = int.Parse(Console.ReadLine());
+                    matriz[i, j] = random.Next(0, 20);
+                    Console.Write("[{0},{1}]: {2} ", i + 1, j + 1, matriz[i, j]);
+
+                    if (i == j) { diagonalPrincipal += matriz[i, j]; }
+                    if ((i + j) == matriz.GetLength(0) - 1) { diagonalSecundaria += matriz[i, j]; }
+                }
+                Console.WriteLine();
+            }
+
+            Console.WriteLine();
+            if (diagonalPrincipal == diagonalSecundaria)
+            {
+                Console.WriteLine("A soma dos elementos da diagonal principal é igual a diagonal secundária.");
+                Console.WriteLine("Diagonal principal: " + diagonalPrincipal);
+                Console.WriteLine("Diagonal secundária: " + diagonalSecundaria);
+            }
+            else
+            {
+                Console.WriteLine("A soma dos elementos da diagonal principal não é igual a diagonal secundária.");
+                Console.WriteLine("Diagonal principal: " + diagonalPrincipal);
+                Console.WriteLine("Diagonal secundária: " + diagonalSecundaria);
+            }
+            */
+
+            /* Ex. 14:
+            * Escreva um programa que leia uma matriz de ordem 5 e verifique se os elementos 
+            * da diagonal principal (da esquerda para a direita) são os mesmos da diagonal
+            * secundária (direita pra esquerda).
+            */
+
+            /*
+            Random random = new Random();   //usando Random para não precisar digitar...
+            int[,] matriz = new int[5, 5];
+            bool EhIgual = false;
+            
+            Console.WriteLine("Valores digitados da Matriz:\n");
+            for (int i = 0; i < matriz.GetLength(0); i++)
+            {
+                for (int j = 0; j < matriz.GetLength(1); j++)
+                {
+                    //Console.Write("Informe o valor [{0},{1}] da Matriz: ", i, j);
+                    //matriz[i, j] = int.Parse(Console.ReadLine());
+                    matriz[i, j] = random.Next(0, 20);
+                    Console.Write("[{0},{1}]: {2} ", i, j, matriz[i, j]);                    
+                }
+                Console.WriteLine();
+            }
+
+            for (int i = 0; i < matriz.GetLength(0); i++)
+            {
+                for (int j = 0; j < matriz.GetLength(1); j++)
+                {
+                    if (i == j)
+                    {
+                        if (matriz[i, j] == matriz[i, (matriz.GetLength(0) - 1) - i])
+                        {
+                            EhIgual = true;
+                        }
+                        else
+                        {
+                            EhIgual = false;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (EhIgual)
+            {
+                Console.WriteLine("\nOs elementos da diagonal principal são iguais da diagonal secundária!");
+            }
+            else
+            {
+                Console.WriteLine("\nOs elementos da diagonal principal Não são iguais da diagonal secundária...");
+            }
+            */
+
+            /* Ex. 15:
+            * Escreva um programa em C# para ler os valores e somar duas matrizes 4 x 4. 
+            * Mostrar a matriz resultante.
+            */
+
+            /*
+            Random random = new Random();   //usando Random para não precisar digitar...
+            int[,] matrizA = new int[4, 4], matrizB = new int[4, 4];
+
+            Console.WriteLine("Valores digitados da Matriz A:\n");
+            for (int i = 0; i < matrizA.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrizA.GetLength(1); j++)
+                {
+                    //Console.Write("Informe o valor [{0},{1}] da Matriz: ", i, j);
+                    //matrizA[i, j] = int.Parse(Console.ReadLine());
+                    matrizA[i, j] = random.Next(0, 20);
+                    Console.Write("[{0},{1}]: {2} ", i, j, matrizA[i, j]);
+                }
+                Console.WriteLine();
+            }
+
+            Console.WriteLine("\nValores digitados da Matriz B:\n");
+            for (int i = 0; i < matrizB.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrizB.GetLength(1); j++)
+                {
+                    //Console.Write("Informe o valor [{0},{1}] da Matriz: ", i, j);
+                    //matrizB[i, j] = int.Parse(Console.ReadLine());
+                    matrizB[i, j] = random.Next(0, 20);
+                    Console.Write("[{0},{1}]: {2} ", i, j, matrizB[i, j]);
+                }
+                Console.WriteLine();
+            }
+            
+            Console.WriteLine("\nSoma das Matrizes:\n");
+            for (int i = 0; i < matrizA.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrizA.GetLength(1); j++)
+                {
+                    Console.WriteLine("MatrizA[{0},{1}] + MatrizB[{0},{1}] = {2} ", i, j, (matrizA[i, j] + matrizB[i,j]) );
+                }                
+            }
+            */
+
+            /* Ex. 16:
+            * Escreva um algoritmo para transpor uma matriz 3x4 para outra 4x3.Transpor uma
+            * matriz significa transformar suas linhas em colunas e vice - versa.
+            */
+
+            /*
+            Random random = new Random();   //usando Random para não precisar digitar...
+            int[,] matrizA = new int[3, 4], matrizP = new int[4, 3];
+
+            Console.WriteLine("Valores digitados da Matriz:\n");
+            for (int i = 0; i < matrizA.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrizA.GetLength(1); j++)
+                {
+                    //Console.Write("Informe o valor [{0},{1}] da Matriz: ", i, j);
+                    //matrizA[i, j] = int.Parse(Console.ReadLine());
+                    matrizA[i, j] = random.Next(0, 20);
+                    Console.Write("[{0},{1}]: {2} ", i, j, matrizA[i, j]);
+                }
+                Console.WriteLine();
+            }
+            
+            Console.WriteLine("\nValores Transportados:\n");
+            for (int i = 0; i < matrizP.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrizP.GetLength(1); j++)
+                {                    
+                    matrizP[i, j] = matrizA[j,i];
+                    Console.Write("[{0},{1}]: {2} ", i, j, matrizP[i, j]);
+                }
+                Console.WriteLine();
+            }
+            */
+
+            /* Ex. 17:
+            * Desafio: Fazer um algoritmo que leia uma matriz de 10 linhas por 10 colunas e
+            * escreva o elemento minimax, ou seja,o menor elemento da linha onde se encontra o
+            * maior elemento da matriz. Escreva também a linha e a coluna onde foi encontrado.
+            */
+
+            Random random = new Random();   //usando Random para não precisar digitar...
+            int[,] matriz = new int[10, 10];
+            int maior = 0, menor=1000000000, linhaMaior=0, colunaMaior=0, colunaMenor=0;
+
+            Console.WriteLine("Valores digitados da Matriz:");
+            Console.WriteLine("=============================================================\n");
+            for (int i = 0; i < matriz.GetLength(0); i++)
+            {
+                for (int j = 0; j < matriz.GetLength(1); j++)
+                {
+                    //Console.Write("Informe o valor [{0},{1}] da Matriz: ", i, j);
+                    //matriz[i, j] = int.Parse(Console.ReadLine());
+                    matriz[i, j] = random.Next(0, 100);
+                    Console.Write("[{0},{1}]: {2} ", i, j, matriz[i, j]);
+                }
+                Console.WriteLine();
+            }
+
+            // Buscando o  maior...
+            for (int i = 0; i < matriz.GetLength(0); i++)
+            {
+                for (int j = 0; j < matriz.GetLength(1); j++)
+                {
+                    if (matriz[i, j] > maior) {
+                        maior = matriz[i, j];
+                        linhaMaior = i;
+                        colunaMaior = j;
+                    }
+                }
+            }
+            
+            //Buscando o menor...
+            for (int i = 0; i < matriz.GetLength(1); i++)
+            {
+                if (matriz[linhaMaior, i] < menor) { 
+                    menor = matriz[linhaMaior, i];                    
+                    colunaMenor = i;
+                }
+            }
+
+            Console.WriteLine("=============================================================\n");
+            Console.WriteLine("O maior elemento é o {0} e está na posição [{1},{2}] do vetor", maior, linhaMaior, colunaMaior);
+            Console.WriteLine("O menor elemento da linha {0} é o {1} e está na coluna {2}", linhaMaior, menor, colunaMenor);
 
         }
     }
