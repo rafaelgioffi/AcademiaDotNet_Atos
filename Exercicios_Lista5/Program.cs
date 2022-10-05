@@ -739,7 +739,6 @@ namespace Exercicios_Lista5
             Console.WriteLine("O maior elemento é o {0} e está na posição [{1},{2}] do vetor", maior, linhaMaior, colunaMaior);
             Console.WriteLine("O menor elemento da linha {0} é o {1} e está na coluna {2}", linhaMaior, menor, colunaMenor);
 
-
         }
     }
 }
