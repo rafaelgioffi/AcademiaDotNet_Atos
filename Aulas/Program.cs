@@ -389,13 +389,10 @@ namespace Aulas
                 }
                 Console.WriteLine();
             }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-            
->>>>>>> 03ccab1 (Pushing 'Aulas')
-=======
->>>>>>> 73c7814 (Updating exercises in fifth list)
+
+            // Aula dia 05/10/22
+
+
 
         }
     }
