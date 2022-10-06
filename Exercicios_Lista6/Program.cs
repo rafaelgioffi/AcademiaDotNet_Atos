@@ -207,33 +207,155 @@ namespace Exercicios_Aula6
              */
 
             List<string> cripto = new List<string>();
-            int opcao=0;
-            string criptoDigit;
+            int opcao=0, indice=0;
+            string criptoDigit, updateCripto;
+            char opcaoAtualiza;
 
             do
             {
-                Console.WriteLine("==== Menu ====");
+                Console.WriteLine("==== Menu ====\n");
                 Console.WriteLine("1 - Cadastrar criptomoeda");
                 Console.WriteLine("2 - Listar criptomoedas");
                 Console.WriteLine("3 - Remover criptomoeda");
                 Console.WriteLine("4 - Sair");
-                Console.WriteLine("\nEscolha uma opção: ");
+                Console.Write("\nEscolha uma opção: ");
                 opcao = int.Parse(Console.ReadLine());
 
                 if (opcao == 1)
                 {
-                    Console.Write("\nCadastre a criptomoeda desejada: ");
+                    Console.Clear();
+                    Console.Write("\nCadastre a criptomoeda desejada (ou 'cancelar' para desistir): ");
                     criptoDigit = Console.ReadLine().ToUpper();
 
-                    if (cripto.Contains(criptoDigit))
+                    if (criptoDigit == "cancelar" || criptoDigit == "CANCELAR")
                     {
-                        Console.WriteLine("\nCriptomoeda já cadastrada! Favor utilizar outra.\n");
+                        Console.WriteLine("\nOperação cancelada\n");
+                    }
+                    else
+                    {
+                        //valida se o nome da criptomoeda não está muito curto...
+                        //validates if the cryptocurrency name is not too short...
+                        if (criptoDigit.Length < 4)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("É necessário informar apenas o nome da criptomoeda.\nVocê inseriu um valor com apenas {0} caracteres.\nÉ necessário ao menos 4 caracteres.\n", criptoDigit.Length);
+                        }
+                        else
+                        {
+                            //verifica se já existe na lista...
+                            //verify if already exists in list...
+                            if (cripto.Contains(criptoDigit))
+                            {
+                                Console.Write("\nCriptomoeda já cadastrada! Deseja atualizar? (s)im ou (n)ão? ");
+                                opcaoAtualiza = char.Parse(Console.ReadLine());
+                                Console.WriteLine();
+
+                                if (opcaoAtualiza == 's' || opcaoAtualiza == 'S')
+                                {
+                                    indice = cripto.IndexOf(criptoDigit);
+                                    Console.Clear();
+
+                                    do
+                                    {
+                                        Console.Write("Qual o novo nome para '{0}' (ou 'cancelar' para não atualizar)? ", criptoDigit);
+                                        updateCripto = Console.ReadLine().ToUpper();
+                                        Console.WriteLine();
+
+                                        if (updateCripto == "cancelar" || updateCripto == "CANCELAR")
+                                        {
+                                            break;
+                                        }
+
+                                        if (updateCripto.Length < 4)
+                                        {
+                                            Console.WriteLine("\nO novo nome da criptomoeda '{0}' não pode ser menor que 4 caracteres!\n", criptoDigit);
+                                        }
+
+                                        if (updateCripto == criptoDigit)
+                                        {
+                                            Console.WriteLine("O nome da nova moeda não pode ser igual a anterior\n");
+                                        }
+
+                                        if ((updateCripto.Length > 3 || updateCripto != criptoDigit) && (updateCripto != "cancelar" || updateCripto != "CANCELAR"))
+                                        {
+                                            cripto[indice] = updateCripto;
+                                        }
+                                    }
+                                    while (updateCripto.Length < 4 || updateCripto == criptoDigit);
+                                }
+                            }
+                            else
+                            {
+                                Console.Clear();
+                                cripto.Add(criptoDigit);
+                                Console.WriteLine("'{0}' cadastrada!\n", criptoDigit);
+                            }
+                        }
+                    }
+                }
+
+                if (opcao == 2)
+                {
+                    Console.Clear();
+                    if (cripto.Count < 1)
+                    {
+                        Console.WriteLine("Nenhuma criptomoeda foi cadastrada...\n");
+                    }
+                    else
+                    {
+                        cripto.Sort();                        
+
+                        Console.WriteLine("== Criptomoedas cadastradas ==\n");
+
+                        foreach (string cript in cripto)
+                        {
+                            Console.WriteLine(cript);
+                        }
+                        Console.WriteLine();
+                    }
+                }
+
+                if (opcao == 3)
+                {
+                    Console.Clear();
+                    if (cripto.Count < 1)
+                    {
+                        Console.WriteLine("Nenhuma criptomoeda foi cadastrada ainda...\n");
+                    }
+                    else
+                    {
+                        do
+                        {
+                            Console.Write("Qual criptomoeda deseja remover? ('cancelar' para não remover) ");
+                            updateCripto = Console.ReadLine().ToUpper();
+                            Console.WriteLine();
+
+                            if (updateCripto == "cancelar" || updateCripto == "CANCELAR")
+                            {
+                                break;
+                            }
+
+                            if (updateCripto.Length < 4)
+                            {
+                                Console.WriteLine("\nO nome da criptomoeda '{0}' não pode ser menor que 4 caracteres!\n", updateCripto);
+                            }
+
+                            if (cripto.Contains(updateCripto))
+                            {
+                                cripto.Remove(updateCripto);
+                                Console.WriteLine("\nCriptomoeda '{0}' removida com sucesso!\n", updateCripto);
+                            }
+                            else
+                            {
+                                Console.WriteLine("\nA moeda '{0}' não está na lista. Tente novamente.\n", updateCripto);
+                            }
+                        }
+                        while (updateCripto.Length < 4);
                     }
                 }
             }
             while (opcao != 4);
-
-            
+                        
 
             /*
              * Ex. 5:
