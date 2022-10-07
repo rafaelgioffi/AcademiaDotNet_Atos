@@ -542,6 +542,7 @@ namespace Aulas
             string.IsNullOrWhiteSpace()
             */
 
+            /*
             string email = "alexz@ufn.edu.br";
 
             string[] dadosEmail = email.Split("@");
@@ -566,6 +567,11 @@ namespace Aulas
             //{
             //    Console.WriteLine(palavrasFrase[i]);
             //}
+            */
+
+            // Aula dia 06/10/2022
+
+
         }
     }
 }
