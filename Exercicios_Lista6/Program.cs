@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Exercicios_Aula6
 {
@@ -206,6 +207,7 @@ namespace Exercicios_Aula6
              * Opção: 
              */
 
+            /*
             List<string> cripto = new List<string>();
             int opcao=0, indice=0;
             string criptoDigit, updateCripto;
@@ -355,7 +357,7 @@ namespace Exercicios_Aula6
                 }
             }
             while (opcao != 4);
-                        
+            */
 
             /*
              * Ex. 5:
@@ -366,11 +368,134 @@ namespace Exercicios_Aula6
              */
 
             /*
+            Random random = new Random();
+            List<int> lista1 = new List<int>(), lista2 = new List<int>();
+            int quant;
+
+            Console.Write("Quantos números deseja gerar? ");
+            quant = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < quant; i++)
+            {
+                lista1.Add(random.Next(100, 200));
+                lista2.Add(random.Next(100, 200));
+            }
+
+            Console.WriteLine("Lista 1\n");
+
+            foreach (int i in lista1) { Console.WriteLine(i); }
+            
+            Console.WriteLine("\nLista 2\n");
+
+            foreach (int i in lista2) { Console.WriteLine(i); }
+
+            Console.Write("\nNúmeros que pertencem as duas listas: ");
+            // aproveitando o quant...
+            quant = 0;
+
+            for (int i = 0; i < quant; i++)
+            {
+                for (int j = 0; j < lista1.Count; j++)
+                {
+                    if (lista1[i] == lista2[j])
+                    {
+                        Console.Write(lista1[i] + ", ");
+                        quant++;
+                    }
+                }
+            }
+
+            if (quant == 0)
+            {
+                Console.Write("Nenhum.");
+            }
+
+            Console.WriteLine();
+            */
+
+            /*
              * Ex. 6:
              * Continuação do exercício 1. Entretanto, quando listar os nomes, mostrar somente os
              * sobrenomes. Além disso, o programa deve mostrar as pessoas que são da mesma família.
              */
 
+            List<string> nomes = new List<string>(), sobrenomes = new List<string>(), mesmaFamilia = new List<string>();
+            string nome, sobrenome="";
+            string[] valida;
+
+            do
+            {
+                Console.WriteLine("*** Sistema de cadastro de nomes ***");
+                Console.Write("\nCadastre um nome ou 'sair' para encerrar: ");
+                nome = Console.ReadLine().ToUpper();
+
+                if (nome == "SAIR")
+                {
+                    break;
+                }
+
+                valida = nome.Split(" ");
+
+                for (int i = 1; i < valida.Length; i++)
+                {
+                    if (valida[i] != "DA" && valida[i] != "DAS" && valida[i] != "DE" && valida[i] != "DO" && valida[i] != "DOS" && valida[i] != "DU")
+                    {
+                        sobrenome += " " + valida[i];
+                    }
+                }                
+                
+                if (valida.Length > 1)
+                {
+                    //verifica se o nome já está na lista
+                    if (nomes.Contains(nome))
+                    {
+                        Console.Clear();
+                        Console.WriteLine("\nO nome '{0}' já está cadastrado na lista. Favor insira outro.", nome);
+                    }
+                    else
+                    {
+                        //nome validado, cadastrando...
+                        nomes.Add(valida[0]);
+                        sobrenomes.Add(sobrenome);
+
+                        Console.Clear();
+                        Console.WriteLine("Nome cadastrado!\n");
+                    }
+                    sobrenome = "";
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("\nFavor insira seu nome completo. Você informou um nome com apenas {0} palavra\n", valida.Length);
+                }
+            }
+            while (true);
+
+            Console.Clear();
+
+            Console.WriteLine("Cadastramos {0} nomes!\nExibindo os nomes:\n", nomes.Count);
+
+            foreach (string n in nomes)
+            {
+                Console.WriteLine(n);
+            }
+
+            Console.WriteLine("\nSobrenomes: ");
+
+            foreach(string s in sobrenomes)
+            {
+                Console.WriteLine(s);
+            }
+
+            Console.WriteLine("\nPessoas da mesma família:");
+
+           if (Enumerable.Any(sobrenomes))
+            {
+                mesmaFamilia = sobrenomes.GroupBy(x => x)
+                    .Where(g => g.Count() > 1)
+                    .Select(x => x.Key).ToList();
+                Console.WriteLine(String.Join(", ", mesmaFamilia));
+            }
         }
     }
 }
