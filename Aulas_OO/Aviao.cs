@@ -26,12 +26,12 @@ namespace Aulas_OO
         public void descer()
         {
             altitude -= 100;
-            Console.WriteLine("Descendo a altitude para " + altitude);
+            Console.WriteLine("Descendo para " + altitude + " metros...");
         }
         public void subir()
         {
             altitude += 100;
-            Console.WriteLine("Subindo a altitude para " + altitude);
+            Console.WriteLine("Subindo para " + altitude + " metros...");
         }
     }
 }

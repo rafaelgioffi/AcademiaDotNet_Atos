@@ -10,16 +10,16 @@ namespace Aulas_OO
     internal class TransacaoBancaria
     {
         private string agencia;
-        private int tipoConta;
+        private int tipo;
         private double valor;
         private string conta;
         
-        public TransacaoBancaria(string ag, string co, int t, double val)
+        public TransacaoBancaria(string agencia, string conta, int tipo, double valor)
         {
-            this.agencia = ag;
-            this.conta = co;
-            this.tipoConta = t;
-            this.valor = val;
+            this.agencia = agencia;
+            this.conta = conta;
+            this.tipo = tipo;
+            this.valor = valor;
         }
         public void Depositar(double deposito)
         {
@@ -29,26 +29,19 @@ namespace Aulas_OO
 
         public void Sacar(double saque)
         {
-            valor += saque;
-            Console.WriteLine("Sacando {0:C}",valor);
-            
-        }
-           
-                saldo -= valor;
-            }
-            return saldo;
+            valor -= saque;
+            Console.WriteLine("Sacando {0:C}. O novo saldo é: {1:C}",saque,valor);            
         }
 
-
-        public void Saldo()
+        public void ConsultarSaldo()
         {
-            Console.WriteLine("Seu saldo é de {0:C}", saldo);
+            Console.WriteLine("Seu saldo é de {0:C}", valor);
         }
 
         public void ExibirDados()
         {
             Console.WriteLine("\nDados do cliente: ");
-            Console.WriteLine("\nAgência: {0}\nConta: {1}-{2}\nTipo: {3}", agencia, conta, digito, tipoConta);
+            Console.WriteLine("Agência: {0}\nConta: {1}\nTipo: {2}\nSaldo: {3}", agencia, conta, tipo,valor);
         }
     }
 }

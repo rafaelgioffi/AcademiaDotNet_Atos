@@ -419,10 +419,11 @@ namespace Exercicios_Aula6
              * sobrenomes. Além disso, o programa deve mostrar as pessoas que são da mesma família.
              */
 
-            List<string> nomes = new List<string>(), sobrenomes = new List<string>(), mesmaFamilia = new List<string>();
+            List<string> nomes = new List<string>(), sobrenomes = new List<string>();
+            List<int> mesmaFamilia = new List<int>();
             string nome, sobrenome="";
             string[] valida;
-
+            
             do
             {
                 Console.WriteLine("*** Sistema de cadastro de nomes ***");
@@ -442,7 +443,7 @@ namespace Exercicios_Aula6
                     {
                         sobrenome += " " + valida[i];
                     }
-                }                
+                }
                 
                 if (valida.Length > 1)
                 {
@@ -473,29 +474,38 @@ namespace Exercicios_Aula6
 
             Console.Clear();
 
-            Console.WriteLine("Cadastramos {0} nomes!\nExibindo os nomes:\n", nomes.Count);
-
-            foreach (string n in nomes)
-            {
-                Console.WriteLine(n);
-            }
-
-            Console.WriteLine("\nSobrenomes: ");
-
+            Console.WriteLine("Cadastramos {0} nomes!\nExibindo os sobrenomes:\n", nomes.Count);
+                        
             foreach(string s in sobrenomes)
             {
                 Console.WriteLine(s);
             }
 
             Console.WriteLine("\nPessoas da mesma família:");
-
-           if (Enumerable.Any(sobrenomes))
+            
+            for (int i = 0; i < nomes.Count; i++)
             {
-                mesmaFamilia = sobrenomes.GroupBy(x => x)
-                    .Where(g => g.Count() > 1)
-                    .Select(x => x.Key).ToList();
-                Console.WriteLine(String.Join(", ", mesmaFamilia));
+                for (int j = 0; j < sobrenomes.Count; j++)
+                {
+                    if (sobrenomes[i] == sobrenomes[j] && i != j)
+                    {
+                        if (!mesmaFamilia.Contains(i))
+                        {
+                            mesmaFamilia.Add(i);
+                        }
+                        if (!mesmaFamilia.Contains(j))
+                        {
+                            mesmaFamilia.Add(j);
+                        }                        
+                    }
+                }
             }
+
+            foreach (int m in mesmaFamilia)
+            {
+                Console.WriteLine(nomes[m] + sobrenomes[m]);
+            }            
+            
         }
     }
 }
