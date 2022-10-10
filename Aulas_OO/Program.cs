@@ -166,7 +166,8 @@ namespace Aulas_OO
             carro.setCor("Prata");
 
             Estacionamento.Aluguel aluguel = new Estacionamento.Aluguel();
-            
+            aluguel.alugar(DateTime.Parse("9/10/2022 11:00:00 AM"), DateTime.Parse("13/10/2022 12:00:00"), 50);
+            Console.WriteLine("Aluguel realizado com sucesso! O valor total de {0:C}.",aluguel.valorAluguel());
         }
     }
 }
