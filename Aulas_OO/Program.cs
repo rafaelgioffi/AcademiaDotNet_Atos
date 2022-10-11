@@ -64,16 +64,6 @@ namespace Aulas_OO
             conta.Depositar(d);
             */
 
-            //Exercícios
-            /*
-             * 1 - Crie uma classe Livro que represente os dados básicos de um livro.
-             */
-
-            /*
-            * 2 - Escreva uma classe Pessoa contendo todos os atributos de uma pessoa.
-            * Faça métodos para apresentar os dados.
-            */
-
             //Aula 07/10/22
 
             //Carro carro = new Carro();
@@ -148,26 +138,8 @@ namespace Aulas_OO
                         Console.Clear();
                         return;
                 }
-            }
-            */
+            }            
 
-            //Faça um programa para controlar o aluguel de carros.
-            //Deve ter as classes Carro, aluguel e cliente.
-
-            Estacionamento.Cliente cliente = new Estacionamento.Cliente();
-            cliente.setNome("José da Silva");
-            cliente.setCpf("123.456.789-10");
-            cliente.setTelefone("(22)99988-7766");
-            cliente.setEmail("jose@gmail.com");
-
-            Estacionamento.Carro carro = new Estacionamento.Carro();
-            carro.setPlaca("ABC-1234");
-            carro.setModelo("Chevrolet Prisma");
-            carro.setCor("Prata");
-
-            Estacionamento.Aluguel aluguel = new Estacionamento.Aluguel();
-            aluguel.alugar(DateTime.Parse("9/10/2022 11:00:00 AM"), DateTime.Parse("13/10/2022 12:00:00"), 50);
-            Console.WriteLine("Aluguel realizado com sucesso! O valor total de {0:C}.",aluguel.valorAluguel());
         }
     }
 }

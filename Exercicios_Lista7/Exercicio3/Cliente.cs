@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Aulas_OO.Estacionamento
+namespace Exercicios_Lista7.Exercicio3
 {
     public class Cliente
     {

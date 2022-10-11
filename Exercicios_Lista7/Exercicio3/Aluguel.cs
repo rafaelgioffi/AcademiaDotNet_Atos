@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 
-namespace Aulas_OO.Estacionamento
+namespace Exercicios_Lista7.Exercicio3
 {
     public class Aluguel
     {
@@ -15,12 +15,14 @@ namespace Aulas_OO.Estacionamento
         private double valorDiaria;
         private int diasAlugados;
         private double valorFinal;
+        public Carro carro;
+        public Cliente cliente;
 
         public void alugar(DateTime inicio, DateTime fim, double valor)
-        {            
+        {
             this.inicioAluguel = inicio;
             this.fimAluguel = fim;
-            this.valorDiaria = valor;
+            this.valorDiaria = valor;            
         }
 
         public DateTime getInicioAluguel()

@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Aulas_OO
+namespace Exercicios_Lista7.Exercicio4
 {
-    public class Cliente
-    {
+    public class Pessoa
+    {       
         public string nome;
         public int idade;
-                
-    }
+        public Pessoa pai;
+        public Pessoa mae;
+    }       
 }
