@@ -1,4 +1,6 @@
-﻿using Exercicios_Lista7.Exercicio6;
+﻿using Exercicios_Lista7.Exercicio2;
+using Exercicios_Lista7.Exercicio7;
+using Exercicios_Lista7.Exercicio8;
 
 namespace Exercicios_Lista7
 {
@@ -226,15 +228,17 @@ namespace Exercicios_Lista7
              * void imprimeAgenda(); // imprime os dados de todas as pessoas da agenda
              */
 
-            Agenda ag1 = new Agenda();
+            /*
+            Exercicio6.Agenda ag1 = new Exercicio6.Agenda();
             string nome;
             int opc=5, nomes=0, idade, id;
             float altura;
+            Exercicio6.Pessoa consulta = null;
 
             do
             {
                 Console.WriteLine("=== Sistema de Agenda ===");
-                Console.WriteLine("1 - Cadastrar Pessoa ({0})", nomes);
+                Console.WriteLine("1 - Cadastrar Pessoa");
                 Console.WriteLine("2 - Remover Pessoa");
                 Console.WriteLine("3 - Localizar Pessoa");
                 Console.WriteLine("4 - Listar agenda");
@@ -265,11 +269,14 @@ namespace Exercicios_Lista7
                         Console.Clear();
                         Console.Write("Informe o nome que deseja localizar: ");
                         nome = Console.ReadLine();
-                        id = ag1.buscaPessoa(nome);
+                        consulta = ag1.buscaPessoa(nome);
+                        if (consulta != null)
+                        {
                             Console.Clear();
-                            Console.WriteLine("Nome: {0}", ag1.pessoa[id].nome);
-                            Console.WriteLine("{0} anos", ag1.pessoa[id].idade);
-                            Console.WriteLine("{0}m de altura\n", ag1.pessoa[id].altura);
+                            Console.WriteLine("Nome: {0}", consulta.nome);
+                            Console.WriteLine("{0} anos", consulta.idade);
+                            Console.WriteLine("{0}m de altura\n", consulta.altura);
+                        }
                         break;
                     case 4:
                         ag1.imprimeAgenda();
@@ -277,10 +284,108 @@ namespace Exercicios_Lista7
                 }
 
                 if (nomes > 9) { break; }
-            
+
             } while (opc != 0);
+            */
 
+            /*
+             * 7 - Crie uma classe denominada Elevador para armazenar as informações de um elevador
+             * dentro de um prédio. A classe deve armazenar o andar atual (térreo = 0), total de
+             * andares no prédio (desconsiderando o térreo), capacidade do elevador e quantas pessoas
+             * estão presentes nele. A classe deve também disponibilizar os seguintes métodos:
+             * Inicializa : que deve receber como parâmetros a capacidade do elevador e o total 
+             * de andares no prédio (os elevadores sempre começam no térreo e vazio);
+             * Entra : para acrescentar uma pessoa no elevador (só deve acrescentar se ainda houver 
+             * espaço);
+             * Sai : para remover uma pessoa do elevador (só deve remover se houver alguém dentro
+             * dele);
+             * Sobe : para subir um andar (não deve subir se já estiver no último andar);
+             * Desce : para descer um andar (não deve descer se já estiver no térreo);
+             * Encapsular todos os atributos da classe (criar os métodos set e get).
+             */
 
+            /*
+            Elevador elevador = new Elevador();
+            elevador.inicializa(25, 10);
+            elevador.descer();
+            elevador.sai();
+            elevador.entra();
+            elevador.entra();
+            elevador.subir();
+            elevador.subir();
+            elevador.subir();
+            elevador.subir();
+            elevador.subir();
+            elevador.entra();
+            elevador.entra();
+            elevador.entra();
+            elevador.entra();
+            elevador.entra();
+            elevador.entra();
+            elevador.entra();
+            elevador.entra();
+            elevador.entra();
+            elevador.entra();
+            elevador.entra();
+            elevador.entra();
+            elevador.entra();
+            elevador.entra();
+            elevador.entra();
+            elevador.entra();
+            elevador.entra();
+            elevador.entra();
+            elevador.entra();
+            elevador.entra();
+            elevador.entra();
+            elevador.entra();
+            elevador.entra();
+            elevador.subir();
+            elevador.subir();
+            elevador.subir();
+            elevador.subir();
+            elevador.subir();
+            elevador.subir();
+            elevador.sai();
+            elevador.sai();
+            elevador.sai();
+            elevador.sai();
+            elevador.sai();
+            elevador.sai();
+            elevador.sai();
+            */
+
+            /*
+             * 8 - Crie uma classe Televisao e uma classe ControleRemoto que pode controlar o 
+             * volume e trocar os canais da televisão. O controle de volume permite:
+             * - aumentar ou diminuir a potência do volume de som em uma unidade de cada vez;
+             * - aumentar e diminuir o número do canal em uma unidade
+             * - trocar para um canal indicado;
+             * - consultar o valor do volume de som e o canal selecionado.
+             */
+                        
+            ControleRemoto c1 = new ControleRemoto();
+
+            c1.tv.aumentaVolume();
+            c1.tv.aumentaVolume();
+            c1.tv.aumentaVolume();
+            c1.tv.aumentaVolume();
+            c1.tv.aumentaVolume();
+            c1.tv.aumentaVolume();
+            c1.tv.diminuiVolume();
+            c1.tv.diminuiVolume();
+            c1.tv.diminuiVolume();
+            c1.tv.diminuiVolume();
+            c1.tv.diminuiVolume();
+            c1.tv.diminuiVolume();
+            c1.tv.diminuiVolume();
+            c1.tv.diminuiVolume();
+            c1.tv.diminuiVolume();
+            c1.tv.diminuiVolume();
+            c1.tv.diminuiVolume();
+            c1.tv.avancaCanal();
+            c1.tv.trocaCanal();
+            c1.tv.avancaCanal();
+            c1.tv.volCanInfo();
 
         }
     }

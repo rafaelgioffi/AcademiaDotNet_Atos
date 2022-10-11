@@ -2,46 +2,40 @@
 {
     public class Agenda
     {
-        public List<Pessoa> pessoa = new List<Pessoa>();        
+        public List<Pessoa> pessoa = new List<Pessoa>();
 
         public void armazenaPessoa(string nome, int idade, float altura)
         {
             pessoa.Add(new(nome, idade, altura));
             Console.Clear();
             Console.WriteLine("'{0}' cadastrado!\n", nome);
+            
         }
-        
+
         public void removePessoa(String nome)
         {
-            int id = buscaPessoa(nome);
+            Pessoa p = buscaPessoa(nome);
             Console.Clear();
-            if (id > 0)
-            {
-                pessoa.RemoveAt(id);
-                Console.WriteLine("'{0}' removido(a).\n",nome);
-            }
-            else
-            {
-                Console.WriteLine("'{0}' não localizado.\n",nome);
-            }
-        }        
-
-        public int buscaPessoa(String nome)
-        {
-        int id=0;
-        foreach (var p in pessoa)
-        {
-            if (p.nome == nome)
-                {
-                    id = pessoa.IndexOf(p);
-                }            
+            pessoa.Remove(p);
+            Console.WriteLine("'{0}' removido(a).\n", p.nome);
         }
-            return id;
+
+        public Pessoa buscaPessoa(String nome)
+        {
+            Pessoa p = null;
+            foreach (Pessoa pes in pessoa)
+            {
+                if (pes.nome.Equals(nome))
+                {
+                    p = pes;
+                }
+            }
+            return p;
         }
         public void imprimeAgenda()
         {
             Console.Clear();
-            foreach(var p in pessoa)
+            foreach (var p in pessoa)
             {
                 Console.WriteLine("Nome: {0}", p.nome);
                 Console.WriteLine("Idade: {0} anos", p.idade);
