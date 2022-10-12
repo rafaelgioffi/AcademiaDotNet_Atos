@@ -1,6 +1,4 @@
-﻿using System.Runtime.Intrinsics.X86;
-
-namespace Aulas_OO
+﻿namespace Aulas_OO
 {
     internal class Program
     {
@@ -138,8 +136,26 @@ namespace Aulas_OO
                         Console.Clear();
                         return;
                 }
-            }            
+            }
+            */
 
+            // Aula dia 11/10
+            Console.WriteLine("Bem vindo ao exemplo do polimorfismo");
+            Animal a; // aqui não sei qual animal ele vai decidir ser
+            Console.WriteLine("Humm Leão?");
+
+            a = new Leao("Rei leão", "masculino", "leãozão");
+            a.mostraDados();
+            a.emitirSom();
+            a.caminhar();
+            a.dormir();
+
+            Console.WriteLine("Cusco?");
+            a = new Cachorro("Caramelo", "masculino", "SRD");
+            a.mostraDados();
+            a.emitirSom();
+            a.caminhar();
+            a.dormir();
         }
     }
 }

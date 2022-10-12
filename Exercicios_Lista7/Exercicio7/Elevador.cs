@@ -22,14 +22,14 @@ namespace Exercicios_Lista7.Exercicio7
 
         public void entra()
         {
-            if (pessoas + 1 < capacidade)
+            if (pessoas <= capacidade)
             {
                 pessoas++;
-                Console.WriteLine("{0}/{1} ocupado.", pessoas,capacidade);
+                Console.WriteLine("{0}/{1} ocupado.\n", pessoas,capacidade);
             }
             else
             {
-                Console.WriteLine("Elevador lotado.");
+                Console.WriteLine("Elevador lotado.\n");
             }
         }
 
@@ -38,11 +38,11 @@ namespace Exercicios_Lista7.Exercicio7
             if (pessoas > 0)
             {
                 pessoas--;
-                Console.WriteLine("{0}/{1} ocupado.", pessoas,capacidade);
-            } 
+                Console.WriteLine("{0}/{1} ocupado.\n", pessoas,capacidade);
+            }
             else
             {
-                Console.WriteLine("O elevador está vazio.");
+                Console.WriteLine("O elevador está vazio.\n");
             }
         }
 
@@ -51,11 +51,11 @@ namespace Exercicios_Lista7.Exercicio7
             if (andar + 1 <= andares)
             {
                 andar++;
-                Console.WriteLine("Subindo para o {0}º andar...",andar);
+                Console.WriteLine("Subindo para o {0}º andar...\n",andar);
             }
             else
             {
-                Console.WriteLine("Não foi possível subir. Já estamos no último andar...");
+                Console.WriteLine("Não foi possível subir. Já estamos no último andar...\n");
 
             }
         }
@@ -63,12 +63,16 @@ namespace Exercicios_Lista7.Exercicio7
         {
             if (andar - 1 >= 0)
             {
+                if (andar == 0)
+                {
+
+                }
                 andar--;
-                Console.WriteLine("Descendo para o {0}º andar...",andar);
+                Console.WriteLine("Descendo para o {0}º andar...\n",andar);
             }
             else
             {
-                Console.WriteLine("Não foi possível descer. Já estamos no térreo...");
+                Console.WriteLine("Não foi possível descer. Já estamos no térreo...\n");
             }
         }
 

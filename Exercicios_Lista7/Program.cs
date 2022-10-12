@@ -1,6 +1,4 @@
-﻿using Exercicios_Lista7.Exercicio2;
-using Exercicios_Lista7.Exercicio7;
-using Exercicios_Lista7.Exercicio8;
+﻿using Exercicios_Lista7.Exercicio8;
 
 namespace Exercicios_Lista7
 {
@@ -306,52 +304,41 @@ namespace Exercicios_Lista7
 
             /*
             Elevador elevador = new Elevador();
-            elevador.inicializa(25, 10);
-            elevador.descer();
-            elevador.sai();
-            elevador.entra();
-            elevador.entra();
-            elevador.subir();
-            elevador.subir();
-            elevador.subir();
-            elevador.subir();
-            elevador.subir();
-            elevador.entra();
-            elevador.entra();
-            elevador.entra();
-            elevador.entra();
-            elevador.entra();
-            elevador.entra();
-            elevador.entra();
-            elevador.entra();
-            elevador.entra();
-            elevador.entra();
-            elevador.entra();
-            elevador.entra();
-            elevador.entra();
-            elevador.entra();
-            elevador.entra();
-            elevador.entra();
-            elevador.entra();
-            elevador.entra();
-            elevador.entra();
-            elevador.entra();
-            elevador.entra();
-            elevador.entra();
-            elevador.entra();
-            elevador.subir();
-            elevador.subir();
-            elevador.subir();
-            elevador.subir();
-            elevador.subir();
-            elevador.subir();
-            elevador.sai();
-            elevador.sai();
-            elevador.sai();
-            elevador.sai();
-            elevador.sai();
-            elevador.sai();
-            elevador.sai();
+            int opc = 5;
+
+            elevador.inicializa(10, 10);
+
+            do
+            {
+                Console.WriteLine("1 - Subir");
+                Console.WriteLine("2 - Descer");
+                Console.WriteLine("3 - Chamar Pessoa");
+                Console.WriteLine("4 - Retirar Pessoa");
+                Console.WriteLine("0 - Sair");
+                Console.Write("\nEscolha sua opção: ");
+                opc = int.Parse(Console.ReadLine());
+
+                switch (opc)
+                {
+                    case 1:
+                        Console.Clear();
+                        elevador.subir();
+                        break;
+                    case 2:
+                        Console.Clear();
+                        elevador.descer();
+                        break;
+                    case 3:
+                        Console.Clear();
+                        elevador.entra();
+                        break;
+                    case 4:
+                        Console.Clear();
+                        elevador.sai();
+                        break;
+                }
+            }
+            while (opc != 0);
             */
 
             /*
@@ -362,30 +349,44 @@ namespace Exercicios_Lista7
              * - trocar para um canal indicado;
              * - consultar o valor do volume de som e o canal selecionado.
              */
-                        
-            ControleRemoto c1 = new ControleRemoto();
 
-            c1.tv.aumentaVolume();
-            c1.tv.aumentaVolume();
-            c1.tv.aumentaVolume();
-            c1.tv.aumentaVolume();
-            c1.tv.aumentaVolume();
-            c1.tv.aumentaVolume();
-            c1.tv.diminuiVolume();
-            c1.tv.diminuiVolume();
-            c1.tv.diminuiVolume();
-            c1.tv.diminuiVolume();
-            c1.tv.diminuiVolume();
-            c1.tv.diminuiVolume();
-            c1.tv.diminuiVolume();
-            c1.tv.diminuiVolume();
-            c1.tv.diminuiVolume();
-            c1.tv.diminuiVolume();
-            c1.tv.diminuiVolume();
-            c1.tv.avancaCanal();
-            c1.tv.trocaCanal();
-            c1.tv.avancaCanal();
-            c1.tv.volCanInfo();
+
+            ControleRemoto c1 = new ControleRemoto();
+            int opc = 8;
+            do
+            {
+                Console.WriteLine("1 - Aumentar o Volume");
+                Console.WriteLine("2 - Diminuir o Volume");
+                Console.WriteLine("3 - Avançar Canal");
+                Console.WriteLine("4 - Retroceder Canal");
+                Console.WriteLine("5 - Escolher Canal");
+                Console.WriteLine("6 - Informações");
+                Console.WriteLine("7 - Sair");
+                Console.Write("\nEscolha sua opção: ");
+                opc = int.Parse(Console.ReadLine());
+
+                switch (opc)
+                {
+                    case 1:
+                        c1.tv.aumentaVolume();
+                        break;
+                    case 2:
+                        c1.tv.diminuiVolume();
+                        break;
+                    case 3:
+                        c1.tv.avancaCanal();
+                        break;
+                    case 4:
+                        c1.tv.voltaCanal();
+                        break;
+                    case 5:
+                        c1.tv.trocaCanal();
+                        break;
+                    case 6:
+                        c1.tv.volCanInfo();
+                        break;
+                }
+            } while (opc != 7);
 
         }
     }
