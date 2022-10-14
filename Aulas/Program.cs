@@ -1,5 +1,3 @@
-using Microsoft.VisualBasic;
-
 namespace Aulas
 {
     internal class Program
@@ -569,8 +567,61 @@ namespace Aulas
             //}
             */
 
-            // Aula dia 06/10/2022
+            // Aula dia 13/10/2022
+            /*
+            int op;
+            Televisao t = new Televisao();
 
+            while (true)
+            {
+                Console.WriteLine("Olá, boa tarde\nDeseja ligar o equipamento?");
+                Console.WriteLine("\nDigite 1 para ligar\n2 para desligar\n3 para verificar\n4 para sair");
+                op = int.Parse(Console.ReadLine());
+
+                if (op == 1)
+                {                   
+                    if(t.Ligado)
+                    {
+                        Console.WriteLine("\nJá está ligado!");
+                    }
+                    else
+                    {
+                        t.Ligar();
+                    }
+                }
+                else if (op == 2)
+                {
+                    if (t.Ligado)
+                    {
+                        Console.WriteLine("\nJá está desligado!");
+                    }
+                    else
+                    {
+                        t.Desligar();
+                    }
+                }
+                else if (op == 3)
+                {
+                    if (t.Ligado)
+                    {
+                        Console.WriteLine("\nEstá ligado!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Está desligado!");
+                    }
+                }
+                else if (op == 4)
+                {
+                    break;
+                }
+            }
+            */
+
+            // Aula do dia 14/10/2022
+            // dictionary
+
+            IDictionary<int, string> dict = new Dictionary<int, string>();
 
         }
     }

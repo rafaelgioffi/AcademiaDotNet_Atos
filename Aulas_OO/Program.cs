@@ -140,6 +140,7 @@
             */
 
             // Aula dia 11/10
+            /*
             Console.WriteLine("Bem vindo ao exemplo do polimorfismo");
             Animal a; // aqui não sei qual animal ele vai decidir ser
             Console.WriteLine("Humm Leão?");
@@ -156,6 +157,8 @@
             a.emitirSom();
             a.caminhar();
             a.dormir();
+            */
+
         }
     }
 }
