@@ -27,8 +27,7 @@ namespace Exercicios_Lista8.Exercicios3
         private int _tamanho { get; set; }
         private int _velocidade { get; set; }
         private int _energia { get; set; }
-
-        List<Asteroides> asteroide = new List<Asteroides>();
+                
         public Asteroides() { }
 
         public Asteroides(float posX, float posY, int tamanho, int velocidade, int energia)
@@ -47,17 +46,15 @@ namespace Exercicios_Lista8.Exercicios3
             _posX = posX;
             _posY = posY;
         }
-
-        public void CadastraAsteroide(float posX, float posY, int tamanho)
+                
+        public static void getAsteroides(List<Asteroides> a)
         {
-            //Asteroides(posX, posY, tamanho);
-        }
-        public void getAsteroides()
-        {
-            foreach (Asteroides a in asteroide)
+            Console.WriteLine("Asteróides:");
+            foreach (Asteroides ast in a)
             {
-                Console.WriteLine("X: {0}   Y: {1}   Tamanho: {2}   Velocidade: {3} Mph   Energia: {4}", a._posX, a._posY, a._tamanho, a._velocidade);
-            }
+                Console.WriteLine("X: {0}   Y: {1}   Tamanho: {2}   Velocidade: {3} Mph   Energia: {4}", ast._posX, ast._posY, ast._tamanho, ast._velocidade, ast._energia);
+            }            
         }
+
     }
 }
