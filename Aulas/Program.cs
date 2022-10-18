@@ -478,7 +478,7 @@ namespace Aulas
             }
 
             //Count é um método de instância que sabe o tamanho da lista até aquele momento
-            
+
             Console.WriteLine();
 
             string nome;
@@ -621,7 +621,220 @@ namespace Aulas
             // Aula do dia 14/10/2022
             // dictionary
 
-            IDictionary<int, string> dict = new Dictionary<int, string>();
+
+            // Aula dia 17/10/22
+            // Try/Catch e Files
+
+            /*
+            try
+            {
+                int x;
+                Console.WriteLine("Informe um valor para X:");
+                x = int.Parse(Console.ReadLine());
+                Console.WriteLine("O valor de X é " + x);
+                Console.WriteLine("O valor 50 dividido por " + x + " resulta em: " + (50/x));
+            }
+            catch (DivideByZeroException dv)
+            {
+                Console.WriteLine("Não é possível dividir por 0");
+            }
+            catch(FormatException ex)
+            {
+                Console.WriteLine("Apenas números devem ser digitados.");
+            }
+            catch (OverflowException ex)
+            {
+                Console.WriteLine("Número informado inválido: Muito grande");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                //fecha conexão com o banco.. Fecha arquivo..
+            }
+            */
+
+            //escrita de arquivos
+            // 2 formas
+            //StreamWriter writer = new StreamWriter("E:\\Onedrive\\Ambiente de Trabalho\\atosUfn.txt");
+            //StreamWriter writer = new StreamWriter(@"D:\Desenvolvimento\.NET\academiaDotNet_Atos\Aulas\17-10-2022\atosUfn.txt");
+
+            /*
+            writer.WriteLine("Hoje é segunda-feira!");
+            writer.WriteLine("Aula Atos-UFN");
+            writer.WriteLine();
+            writer.WriteLine();
+            writer.WriteLine("17-10-2022");
+
+            writer.Close();
+            Console.WriteLine("Arquivo escrito");            
+            */
+
+            /*exercicio 1
+             *             
+            //Nome, idade, sexo, email, telefone, estado civil, casa propria ou não, valor aluguel
+            //Gerar um arquivo, utilizando o ; como caractere delimitador para cada uma 
+            dessas informações.
+            //Todas as informações, ficam na mesma linha - cada linha é uma pessoa
+            //apenas nome, idade e casa propria são campos obrigatórios
+            //EXEMPLO
+            //Fabrício;21;;;;;sim;0
+            */
+
+            /*
+            StreamWriter writer = new StreamWriter(@"D:\Desenvolvimento\.NET\academiaDotNet_Atos\Aulas\17-10-2022\atosUfn.txt",true);
+
+            string nome;
+            do
+            {
+                Console.Write("Informe o Nome: ");
+                nome = Console.ReadLine();
+
+            } while (string.IsNullOrWhiteSpace(nome));
+
+            int idade;
+            do
+            {
+                Console.Write("Informe a idade: ");
+                idade = int.Parse(Console.ReadLine());
+
+            } while (idade <= 0);
+
+            Console.Write("Informe seu sexo (m)asculino ou (f)eminino: ");
+            string sexo = Console.ReadLine();
+            if (sexo == "m" || sexo == "M") { sexo = "Masculino"; }
+            if (sexo == "f" || sexo == "F") { sexo = "Feminino"; }
+
+            Console.Write("Informe seu e-mail: ");
+            string email = Console.ReadLine();
+
+            Console.Write("Informe seu telefone: ");
+            string tel = Console.ReadLine();
+
+            string casa;
+            do
+            {
+                Console.Write("Possui casa própria (s)im ou (n)ão? ");
+                casa = Console.ReadLine();
+                if (casa == "s" || casa == "S") { casa = "sim"; }
+                if (casa == "n" || casa == "N") { casa = "não"; }
+
+            } while (casa != "sim" && casa != "não");
+
+            double aluguel=0;            
+            Console.Write("Informe o valor do aluguel: ");
+            try
+            {
+                aluguel = double.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Valor inválido. Informe 0 caso não pague aluguel\nValor do aluguel definido para 0");
+                aluguel = 0;
+            }        
+
+            writer.WriteLine($"{nome};{idade};{sexo};{email};{tel};{casa};{aluguel}");
+            writer.Close();
+            Console.WriteLine("Registro realizado com sucesso!");
+            */
+
+            /*
+            StreamReader reader = new StreamReader(@"D:\Desenvolvimento\.NET\academiaDotNet_Atos\Aulas\17-10-2022\atosUfn.txt");
+
+            string linha = "";
+            linha = reader.ReadLine();
+
+            while (linha != null)
+            {
+                Console.WriteLine(linha);
+
+                linha = reader.ReadLine();
+            }
+            reader.Close();
+            */
+
+            /*
+             * verificar se o arquivo existe
+             * ler o arquivo, caso exista, para criar um novo com os dados anteriores e os 
+             * novos inseridos
+             */
+
+            string nome;
+            do
+            {
+                Console.Write("Informe o Nome: ");
+                nome = Console.ReadLine();
+
+            } while (string.IsNullOrWhiteSpace(nome));
+
+            int idade;
+            do
+            {
+                Console.Write("Informe a idade: ");
+                idade = int.Parse(Console.ReadLine());
+
+            } while (idade <= 0);
+
+            Console.Write("Informe seu sexo (m)asculino ou (f)eminino: ");
+            string sexo = Console.ReadLine();
+            if (sexo == "m" || sexo == "M") { sexo = "Masculino"; }
+            if (sexo == "f" || sexo == "F") { sexo = "Feminino"; }
+
+            Console.Write("Informe seu e-mail: ");
+            string email = Console.ReadLine();
+
+            Console.Write("Informe seu telefone: ");
+            string tel = Console.ReadLine();
+
+            string casa;
+            do
+            {
+                Console.Write("Possui casa própria (s)im ou (n)ão? ");
+                casa = Console.ReadLine();
+                if (casa == "s" || casa == "S") { casa = "sim"; }
+                if (casa == "n" || casa == "N") { casa = "não"; }
+
+            } while (casa != "sim" && casa != "não");
+
+            double aluguel = 0;
+            Console.Write("Informe o valor do aluguel: ");
+            try
+            {
+                aluguel = double.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Valor inválido. Informe 0 caso não pague aluguel\nValor do aluguel definido para 0");
+                aluguel = 0;
+            }
+
+            string arq = @"D:\Desenvolvimento\.NET\academiaDotNet_Atos\Aulas\17-10-2022\atosUfn.txt";
+                        
+            List<string> linhas = new List<string>();
+
+            if (File.Exists(arq))
+            {
+                StreamReader reader = new StreamReader(arq);
+                linhas.Add(reader.ReadLine());
+                string linha = "";
+                while (linha != null)
+                {
+                    linha = reader.ReadLine();
+                    if (linha != null)
+                        linhas.Add(linha);
+                }
+                reader.Close();
+            }
+            linhas.Add(nome + ";" + idade + ";" + sexo + ";" + email + ";" + tel + ";" + casa + ";" + ";" + aluguel);
+            StreamWriter writer = new StreamWriter(arq);
+            
+            foreach (string l in linhas)
+            {
+                writer.WriteLine(l);
+            }
+            writer.Close();
 
         }
     }

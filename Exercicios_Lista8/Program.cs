@@ -1,4 +1,5 @@
 ﻿using Exercicios_Lista8.Exercicio6;
+using Exercicios_Lista8.Exercicio7;
 
 namespace Exercicios_Lista8
 {
@@ -461,12 +462,14 @@ namespace Exercicios_Lista8
                 switch (opc)
                 {
                     case 1:
+                        Console.Clear();
                         Console.Write("Informe o nome do livro: ");
                         string livro = Console.ReadLine();
-                        Console.Write($"Informe a quantidade de páginas do livro {livro}: ");
+                        Console.Write($"Informe a quantidade de páginas do livro '{livro}': ");
                         int paginas = int.Parse(Console.ReadLine());
 
                         livros.Add(livro, paginas);
+                        Console.WriteLine($"'{livro}' cadastrado com sucesso!\n");
                         break;
                     case 2:
                         Console.Clear();
@@ -480,6 +483,22 @@ namespace Exercicios_Lista8
                         Console.Clear();
                         Console.Write("Informe o título do livro a ser localizado: ");
                         string titulo = Console.ReadLine();
+                        int result;
+                        if (livros.ContainsKey(titulo))
+                        {
+                            livros.TryGetValue(titulo, out result);
+                            Console.WriteLine($"Titulo: {livros.Select(x => x.Key).First()}  |  Páginas: {result}");
+                        }
+                        else
+                        {
+                            Console.WriteLine("\nTítulo não encontrado. Verifique a ortografia e tente novamente.\nObs.: Maiúsculos e minúsculos são diferentes.\n");
+                        }
+                        break;
+                    case 4:
+                        break;
+                    default:
+                        Console.Clear();
+                        Console.WriteLine("Opção inválida!\n");
                         break;
                 }
             } while (opc != 4);
