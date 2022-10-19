@@ -1,5 +1,4 @@
 ﻿using Exercicios_Lista8.Exercicio6;
-using Exercicios_Lista8.Exercicio7;
 
 namespace Exercicios_Lista8
 {
@@ -377,15 +376,16 @@ namespace Exercicios_Lista8
              * chamada de Gerente e Operador.
              * Nos metodos de cada uma das classes Gerente e Operador deverá aparecer a
              * mensagem informando qual é a função desempenhada pelo funcionário
-             */
+             */            
 
-            /*
             List<Funcionario> func = new List<Funcionario>();
-            int opc;
+            Funcionario f = new Gerente(), fBusca = new Gerente();
+
+            int opc;            
 
             do
             {
-                Console.WriteLine(" === Bem-vindo ao sistema de funcionários === \n");
+                Console.WriteLine(" === Sistema de funcionários da Academia .NET 3 === \n");
                 Console.WriteLine("1 - Registrar um novo funcionário");
                 Console.WriteLine("2 - Exibir todos os funcionários");
                 Console.WriteLine("3 - Bonificar um funcionário");
@@ -399,45 +399,114 @@ namespace Exercicios_Lista8
                     case 1:
                         Console.Write("Informe o nome do funcionário: ");
                         string nome = Console.ReadLine();
+
                         Console.Write($"Informe o departamento do funcionário '{nome}': ");
                         string departamento = Console.ReadLine();
+
                         Console.Write($"Informe o salário do funcionário '{nome}': ");
                         double salario = double.Parse(Console.ReadLine());
+
                         Console.Write($"Informe a data de entrada do funcionário '{nome}' \n(01/01/2022) ou pressione Enter para a data de hoje: ");
                         string data = Console.ReadLine();
                         if (string.IsNullOrWhiteSpace(data))
                         {
                             data = DateTime.Now.ToShortDateString();
                         }
+
                         Console.Write($"Informe o RG do funcionário '{nome}': ");
                         string rg = Console.ReadLine();
 
-                        func.Add(new Funcionario(nome, departamento, salario, data, rg, true));
+                        int opcFunc;
+                        Console.Clear();
+                        Console.WriteLine("Qual categoria deseja cadastrar?");
+                        Console.WriteLine("1 - Gerente");
+                        Console.WriteLine("2 - Operador");
+                        opcFunc = int.Parse(Console.ReadLine());
+                        switch (opcFunc)
+                        {
+                            case 1:
+                                f = new Gerente(nome, departamento, salario, data, rg, true);
+                                break;
+                            case 2:
+                                f = new Operador(nome, departamento, salario, data, rg, true);
+                                break;
+                        }
+                        func.Add(f);
+                                                
                         Console.WriteLine($"\n'{nome}' cadastrado com sucesso!\n");
                         break;
                     case 2:
                         Console.Clear();
-                        foreach (var f in func)
+                        if (func.Count <= 0)
                         {
-                            Console.WriteLine($"Funcionário: {f.Nome}  |  Departamento: {f.Departamento}  |  Salário: {f.Salario:C}");
-                            Console.Write($"Contratado em: {f.DataEntrada}  |  RG: {f.Rg}  |  ");
-                            if (f.Ativo)
+                            Console.WriteLine("Nenhum funcionário cadastrado\n");
+                            break;
+                        }
+                        foreach (Funcionario fun in func)
+                        {
+                            fun.MostrarDados();
+                            fun.ExecutaTrabalho();
+                        }
+                        Console.WriteLine();
+                        break;
+                    case 3:
+                        if (func.Count > 0)
+                        {
+                            Console.Write("Informe o nome do funcionário que deseja bonificar: ");
+                            string fBonif = Console.ReadLine();
+
+                            fBusca = func.Find(delegate (Funcionario f) { return f.Nome == fBonif; });
+
+                            if (fBusca != null)
                             {
-                                Console.WriteLine($"Situação atual: 'Admitido'");
+                                Console.Write($"Qual valor da bonificação do(a) '{fBusca.Nome}'? ");
+                                double aumento = double.Parse(Console.ReadLine());
+                                fBusca.Bonifica(aumento);
+                                Console.WriteLine();
                             }
                             else
                             {
-                                Console.WriteLine($"Situação atual: 'Demitido'");
+                                Console.Clear();
+                                Console.WriteLine("Funcionário não encontrado!");
                             }
-                            Console.WriteLine();
+                        } else
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Nenhum funcionário cadastrado!\n");
                         }
                         break;
-                    case 3:
+                    case 4:
+                        if (func.Count > 0)
+                        {
+                            Console.Write("Informe o nome do funcionário que deseja demitir: ");
+                            string fDemite = Console.ReadLine();
 
+                            fBusca = func.Find(delegate (Funcionario f) { return f.Nome == fDemite; });
+
+                            if (fBusca != null)
+                            {
+                                fBusca.Demite();
+                            }
+                            else
+                            {
+                                Console.WriteLine("Funcionário não encontrado!");
+                            }
+                        } else
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Nenhum funcionário cadastrado!\n");
+                        }
+                        break;
+
+                    case 5: break;
+
+                    default:
+                        Console.Clear();
+                        Console.WriteLine("Opção inválida!\n");
                         break;
                 }
-            } while (opc != 5);
-            */
+            } while (opc != 5);            
+
 
             /*
              * 7) Crie um dicionário que faça o armazenamento de Livros. Os dados para serem
@@ -446,6 +515,7 @@ namespace Exercicios_Lista8
              * cadastrados ou pesquisar pelo nome do livro.
             */
 
+            /*
             Dictionary<string, int> livros = new Dictionary<string, int>();
             int opc;
 
@@ -473,6 +543,7 @@ namespace Exercicios_Lista8
                         break;
                     case 2:
                         Console.Clear();
+                        Console.WriteLine("*** Livros cadastrados ***");
                         foreach (var l in livros)
                         {
                             Console.WriteLine($"Titulo: {l.Key}  |  Páginas: {l.Value}");
@@ -483,11 +554,11 @@ namespace Exercicios_Lista8
                         Console.Clear();
                         Console.Write("Informe o título do livro a ser localizado: ");
                         string titulo = Console.ReadLine();
-                        int result;
-                        if (livros.ContainsKey(titulo))
-                        {
-                            livros.TryGetValue(titulo, out result);
-                            Console.WriteLine($"Titulo: {livros.Select(x => x.Key).First()}  |  Páginas: {result}");
+                        
+                        var contem = livros.FirstOrDefault((livros) => (livros.Key.Equals(titulo)));
+                        
+                        if (contem.Key != null) {                             
+                            Console.WriteLine($"Titulo: {contem.Key}   |   Páginas: {contem.Value}");
                         }
                         else
                         {
@@ -502,7 +573,7 @@ namespace Exercicios_Lista8
                         break;
                 }
             } while (opc != 4);
-
+            */
 
         }
     }

@@ -34,7 +34,7 @@
             DateTime agora = DateTime.Now;
             TimeSpan dif = agora.Subtract(c[index].Data);
 
-            int dias = (int)dif.TotalDays;
+            int dias = (int)dif.TotalDays;            
             int horas = (int)dif.TotalHours;
             int min = (int)dif.TotalMinutes;
             int seg = (int)dif.TotalSeconds;
