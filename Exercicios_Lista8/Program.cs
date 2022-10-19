@@ -378,6 +378,7 @@ namespace Exercicios_Lista8
              * mensagem informando qual é a função desempenhada pelo funcionário
              */            
 
+            /*
             List<Funcionario> func = new List<Funcionario>();
             Funcionario f = new Gerente(), fBusca = new Gerente();
 
@@ -506,7 +507,7 @@ namespace Exercicios_Lista8
                         break;
                 }
             } while (opc != 5);            
-
+            */
 
             /*
              * 7) Crie um dicionário que faça o armazenamento de Livros. Os dados para serem
@@ -515,7 +516,7 @@ namespace Exercicios_Lista8
              * cadastrados ou pesquisar pelo nome do livro.
             */
 
-            /*
+            
             Dictionary<string, int> livros = new Dictionary<string, int>();
             int opc;
 
@@ -573,7 +574,6 @@ namespace Exercicios_Lista8
                         break;
                 }
             } while (opc != 4);
-            */
 
         }
     }
