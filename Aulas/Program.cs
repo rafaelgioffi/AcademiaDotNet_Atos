@@ -761,6 +761,7 @@ namespace Aulas
              * novos inseridos
              */
 
+            /*
             string nome;
             do
             {
@@ -835,6 +836,8 @@ namespace Aulas
                 writer.WriteLine(l);
             }
             writer.Close();
+            */
+
 
         }
     }
