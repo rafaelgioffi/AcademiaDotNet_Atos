@@ -468,8 +468,7 @@
                         break;
                         default: break;
                 }
-            } while (opcao != 5);
-            
+            } while (opcao != 5);            
 
         }
     }
