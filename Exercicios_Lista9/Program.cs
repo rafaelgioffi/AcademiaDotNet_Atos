@@ -435,14 +435,157 @@
              * Para as figurinhas repetidas, deve haver uma lista e um arquivo .csv; o mesmo para 
              * as figurinhas faltantes.
              */
-            
+            const string caminho = @"D:\Desenvolvimento\.NET\academiaDotNet_Atos\Exercicios_Lista9\";
+            const string nomeArqRepetidas = "repetidas.csv";
+            const string nomeArqFaltantes = "faltantes.csv";
+            const string arqRepetidas = caminho + nomeArqRepetidas;
+            const string arqFaltantes = caminho + nomeArqFaltantes;
+
             List<Figurinha> listaRepetidas = new List<Figurinha>();
             List<Figurinha> listaFaltantes = new List<Figurinha>();
             int opcao;
 
             //conectar com a base de dados
-            //Util.popularArquivoNaListaFigurinha(listaRepetidas, "repetidas.csv");
-            //Util.popularArquivoNaListaFigurinha(listaFaltantes, "faltantes.csv");
+            Util.popularArquivoNaListaFigurinha(listaRepetidas, arqRepetidas);
+            Util.popularArquivoNaListaFigurinha(listaFaltantes, arqFaltantes);
+
+            bool cadastrarFigurinha(string tipo)
+            {
+                Figurinha figurinha;
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write("Qual código da figurinha? ");
+                Console.ResetColor();
+                string codigo = Console.ReadLine().ToUpper();
+
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                if (codigo.Length < 5)
+                {
+                    if (codigo == "00")
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        Console.WriteLine("\nCódigo válido!\n");
+                        Console.ResetColor();
+                        
+                        if (tipo == "repetida")
+                        {
+                            figurinha = new Figurinha(codigo, "NENHUMA", "ESPECIAL");
+                            if(Util.jaNaListaFigurinha(figurinha, listaRepetidas))
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
+                                Console.WriteLine($"\nFigurinha '{codigo}' já cadastrada!\n");
+                                Console.ResetColor();
+                            }
+                            else
+                            {
+                                listaRepetidas.Add(figurinha);
+                                Util.gravarFigurinhaArquivo(figurinha, arqRepetidas);
+                            }
+                        }
+                        if (tipo == "faltante")
+                        {
+                            figurinha = new Figurinha(codigo, "NENHUMA", "ESPECIAL");
+                            if(Util.jaNaListaFigurinha(figurinha, listaFaltantes))
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
+                                Console.WriteLine($"\nFigurinha '{codigo}' já cadastrada!\n");
+                                Console.ResetColor();
+                            }
+                            else
+                            {
+                                listaFaltantes.Add(figurinha);
+                                Util.gravarFigurinhaArquivo(figurinha, arqFaltantes);
+                            }
+                        }
+                        return true;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"\nCódigo '{codigo}' inválido!\nFavor cadastrar um código válido no formato 'AAA 1'\n");
+                        Console.ResetColor();
+                        return false;
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        if (i < 3)
+                        {
+                            if (!char.IsLetter(codigo[i]))
+                            {
+                                Console.WriteLine("\nCódigo inválido!\nOs 3 primeiros dígitos do código devem possuir apenas letras.\n");
+                                Console.ResetColor();
+                                return false;
+                            }
+                        }
+                        else if (i == 3)
+                        {
+                            if (!char.IsWhiteSpace(codigo[i]))
+                            {
+                                Console.WriteLine("\nCódigo inválido!\nÉ necessário um espaço após as 3 letras do código.\n");
+                                Console.ResetColor();
+                                return false;
+                            }
+                        }
+                        else if (i == 4)
+                        {
+                            if (!char.IsNumber(codigo[i]))
+                            {
+                                Console.WriteLine("\nCódigo inválido!\nÉ necessário o número do código após 3 letras e um espaço.\n");
+                                Console.ResetColor();
+                                return false;
+                            }
+                        }
+                    }
+                }
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write($"De qual seleção a figurinha '{codigo}' pertence? ");
+                Console.ResetColor();
+                string selecao = Console.ReadLine().ToUpper();
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write($"Qual nome do jogador da figurinha '{codigo}', seleção '{selecao}' pertence? ");
+                Console.ResetColor();
+                string nome = Console.ReadLine().ToUpper();
+
+                figurinha = new Figurinha(codigo, selecao, nome);
+
+                if (tipo == "repetida")
+                {
+                    if (Util.jaNaListaFigurinha(figurinha, listaRepetidas))
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine($"\nFigurinha '{codigo}' já cadastrada!\n");
+                        Console.ResetColor();
+                        return false;
+                    }
+                    else
+                    {
+                        listaRepetidas.Add(figurinha);
+                        Util.gravarFigurinhaArquivo(figurinha, arqRepetidas);
+                    }
+                }
+                if (tipo == "faltante")
+                {
+                    if (Util.jaNaListaFigurinha(figurinha, listaFaltantes))
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine($"\nFigurinha {tipo} '{codigo}' já cadastrada!\n");
+                        Console.ResetColor();
+                        return false;
+                    }
+                    else
+                    {
+                        listaFaltantes.Add(figurinha);
+                        Util.gravarFigurinhaArquivo(figurinha, arqFaltantes);
+                    }
+                }
+
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine($"Figurinha {tipo} '{codigo}' cadastrada com sucesso!");
+                Console.ResetColor();
+                return true;
+            }
 
             do
             {
@@ -454,19 +597,25 @@
                 Console.Write("\nOpção: ");
                 opcao = int.Parse(Console.ReadLine());
 
-                switch(opcao)
+                switch (opcao)
                 {
                     case 1:
+                        Console.Clear();
+                        cadastrarFigurinha("repetida");
                         break;
-                        case 2:
+                    case 2:
+                        Console.Clear();
+                        cadastrarFigurinha("faltante");
                         break;
-                        case 3:
+                    case 3:
+                        Util.mostrarListaFigurinha(listaRepetidas, "repetida");
                         break;
-                        case 4:
+                    case 4:
+                        Util.mostrarListaFigurinha(listaFaltantes, "faltante");
                         break;
-                        case 5:
+                    case 5:
                         break;
-                        default: break;
+                    default: break;
                 }
             } while (opcao != 5);
 

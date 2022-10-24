@@ -334,6 +334,20 @@ namespace Exercicios_Lista9
             Console.ResetColor();
             Console.WriteLine($"'{email.Email}' cadastrado com sucesso!\n");
         }
+        public static void gravarFigurinhaArquivo(Figurinha figurinha, string nomeArquivo)
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Gravando os dados, aguarde...");
+            StreamWriter escritor = new StreamWriter(nomeArquivo, append: true); //abre o arquivo para escrita
+            escritor.WriteLine($"{figurinha.CodigoFigurinha};{figurinha.Selecao};{figurinha.NomeJogador}");
+            escritor.Flush();
+            escritor.Close();
+            Console.Clear();
+            Console.WriteLine($"Dados gravados no arquivo '{nomeArquivo}'");
+            Console.ResetColor();
+            Console.WriteLine($"'{figurinha.NomeJogador}' cadastrado com sucesso!\n");
+        }
 
         //métodos para popular as listas
         public static void popularArquivoNaListaString(List<string> lista, string nomeArquivo)
@@ -450,7 +464,7 @@ namespace Exercicios_Lista9
                 Console.ResetColor();
             }
         }
-        public static void popularArquivoNaListaFigurinha(List<string> lista, string nomeArquivo)
+        public static void popularArquivoNaListaFigurinha(List<Figurinha> lista, string nomeArquivo)
         {
             try
             {
@@ -461,14 +475,47 @@ namespace Exercicios_Lista9
                 do
                 {
                     linha = leitor.ReadLine();
-                    lista.Add(leitor.ReadLine());
+                    dadosLinha = linha.Split(";");
+                    if (dadosLinha.Length < 3)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("Dados faltantes no arquivo. É necessário possuir o código da figurinha, nome da selação e nome do jogador.");
+                        Console.ResetColor();
+                        break;
+                    }
+                    else
+                    {
+                        figurinha = new Figurinha(dadosLinha[0], dadosLinha[1], dadosLinha[2]);
+                        lista.Add(figurinha);
+
+                    }
                 } while (!leitor.EndOfStream);
 
                 leitor.Close();
             }
+            catch (AccessViolationException)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine($"Acesso negado ao arquivo '{nomeArquivo}'. Verifique a permissão e tente novamente");
+                Console.ResetColor();
+            }
+            catch (FormatException)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine($"Arquivo '{nomeArquivo}' em formato inválido.\n");
+                Console.ResetColor();
+            }
+            catch (FileNotFoundException)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine($"Arquivo '{nomeArquivo}' não encontrado!\nDigite 3 para sair ou será criado um novo ao cadastrar\n");
+                Console.ResetColor();
+            }
             catch (Exception ex)
             {
-                Console.WriteLine("Deu problema no arquivo!");
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine($"Deu problema no arquivo '{nomeArquivo}'!\nCódigo: {ex.Message}\n");
+                Console.ResetColor();
             }
         }
 
@@ -521,12 +568,30 @@ namespace Exercicios_Lista9
                 Console.ResetColor();
             }
         }
-        public static void mostrarListaFigurinha(List<Figurinha> lista)
+        public static void mostrarListaFigurinha(List<Figurinha> lista, string tipo)
         {
-            foreach (var l in lista)
+            Console.Clear();
+            if (lista.Count > 0)
             {
-                Console.WriteLine($"Código: {l.CodigoFigurinha}. Seleção: {l.Selecao}. Jogador: {l.NomeJogador}");
-                Console.WriteLine("--------------------------");
+                Console.WriteLine($"Figurinhas {tipo} cadastradas\n");
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.WriteLine("------------------------------------------------------------------------");
+                foreach (var l in lista)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    Console.WriteLine($"Código: {l.CodigoFigurinha}  |  Seleção: {l.Selecao}  |  Nome do jogador: {l.NomeJogador}");
+                    Console.ResetColor();
+                }
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.WriteLine("-------------------------------------------------------------------------");
+                Console.WriteLine();
+                Console.ResetColor();
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine($"\nNenhuma figurinha {tipo} cadastrada ainda!\n");
+                Console.ResetColor();
             }
         }
 
@@ -565,7 +630,12 @@ namespace Exercicios_Lista9
                 }
             }
             return false;
-        }
+        }        
+        
     }
+<<<<<<< HEAD
 }
 >>>>>>> 7442f99 (Updating exercises lists)
+=======
+}
+>>>>>>> f1256a3 (All exercises lists done)
