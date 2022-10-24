@@ -579,7 +579,7 @@ namespace Exercicios_Lista9
                 foreach (var l in lista)
                 {
                     Console.ForegroundColor = ConsoleColor.DarkGreen;
-                    Console.WriteLine($"Código: {l.CodigoFigurinha}  |  Seleção: {l.Selecao}  |  Nome do jogador: {l.NomeJogador}");
+                    Console.WriteLine($"Código: {l.CodigoFigurinha}   Seleção: {l.Selecao}   Nome do jogador: {l.NomeJogador}");
                     Console.ResetColor();
                 }
                 Console.ForegroundColor = ConsoleColor.DarkGray;

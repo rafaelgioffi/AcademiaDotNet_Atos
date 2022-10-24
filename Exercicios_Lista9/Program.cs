@@ -462,41 +462,9 @@
                 {
                     if (codigo == "00")
                     {
-                        Console.ForegroundColor = ConsoleColor.DarkGreen;
-                        Console.WriteLine("\nCódigo válido!\n");
-                        Console.ResetColor();
-                        
-                        if (tipo == "repetida")
-                        {
-                            figurinha = new Figurinha(codigo, "NENHUMA", "ESPECIAL");
-                            if(Util.jaNaListaFigurinha(figurinha, listaRepetidas))
-                            {
-                                Console.ForegroundColor = ConsoleColor.DarkRed;
-                                Console.WriteLine($"\nFigurinha '{codigo}' já cadastrada!\n");
-                                Console.ResetColor();
-                            }
-                            else
-                            {
-                                listaRepetidas.Add(figurinha);
-                                Util.gravarFigurinhaArquivo(figurinha, arqRepetidas);
-                            }
-                        }
-                        if (tipo == "faltante")
-                        {
-                            figurinha = new Figurinha(codigo, "NENHUMA", "ESPECIAL");
-                            if(Util.jaNaListaFigurinha(figurinha, listaFaltantes))
-                            {
-                                Console.ForegroundColor = ConsoleColor.DarkRed;
-                                Console.WriteLine($"\nFigurinha '{codigo}' já cadastrada!\n");
-                                Console.ResetColor();
-                            }
-                            else
-                            {
-                                listaFaltantes.Add(figurinha);
-                                Util.gravarFigurinhaArquivo(figurinha, arqFaltantes);
-                            }
-                        }
-                        return true;
+                        //Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        //Console.WriteLine("\nCódigo válido!\n");
+                        Console.ResetColor();                        
                     }
                     else
                     {
@@ -538,18 +506,29 @@
                         }
                     }
                 }
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.Write($"De qual seleção a figurinha '{codigo}' pertence? ");
-                Console.ResetColor();
-                string selecao = Console.ReadLine().ToUpper();
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.Write($"Qual nome do jogador da figurinha '{codigo}', seleção '{selecao}' pertence? ");
-                Console.ResetColor();
-                string nome = Console.ReadLine().ToUpper();
+                string selecao;
+                string nome;
+
+                if (codigo == "00")
+                {
+                    selecao = "NENHUMA";
+                    nome = "FIGURINHA ESPECIAL";
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write($"De qual seleção a figurinha '{codigo}' pertence? ");
+                    Console.ResetColor();
+                    selecao = Console.ReadLine().ToUpper();
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write($"Qual nome do jogador da figurinha '{codigo}', seleção '{selecao}' pertence? ");
+                    Console.ResetColor();
+                    nome = Console.ReadLine().ToUpper();
+                }
 
                 figurinha = new Figurinha(codigo, selecao, nome);
 
-                if (tipo == "repetida")
+                if (tipo == "repetidas")
                 {
                     if (Util.jaNaListaFigurinha(figurinha, listaRepetidas))
                     {
@@ -564,7 +543,7 @@
                         Util.gravarFigurinhaArquivo(figurinha, arqRepetidas);
                     }
                 }
-                if (tipo == "faltante")
+                if (tipo == "faltantes")
                 {
                     if (Util.jaNaListaFigurinha(figurinha, listaFaltantes))
                     {
@@ -582,7 +561,7 @@
 
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.DarkGreen;
-                Console.WriteLine($"Figurinha {tipo} '{codigo}' cadastrada com sucesso!");
+                Console.WriteLine($"\nFigurinha {tipo} '{codigo}' cadastrada com sucesso!\n");
                 Console.ResetColor();
                 return true;
             }
@@ -601,17 +580,17 @@
                 {
                     case 1:
                         Console.Clear();
-                        cadastrarFigurinha("repetida");
+                        cadastrarFigurinha("repetidas");
                         break;
                     case 2:
                         Console.Clear();
-                        cadastrarFigurinha("faltante");
+                        cadastrarFigurinha("faltantes");
                         break;
                     case 3:
-                        Util.mostrarListaFigurinha(listaRepetidas, "repetida");
+                        Util.mostrarListaFigurinha(listaRepetidas, "repetidas");
                         break;
                     case 4:
-                        Util.mostrarListaFigurinha(listaFaltantes, "faltante");
+                        Util.mostrarListaFigurinha(listaFaltantes, "faltantes");
                         break;
                     case 5:
                         break;
