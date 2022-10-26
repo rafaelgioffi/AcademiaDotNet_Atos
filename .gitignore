@@ -88,4 +88,10 @@
 /Aulas_WindowsForms/bin/Debug/net6.0-windows
 /Aulas_WindowsForms/obj
 *.user
+<<<<<<< HEAD
 >>>>>>> 2370366 (Updating repositories)
+=======
+/Exercicios_Lista11/.vs/Exercicios_Lista11
+/Exercicios_Lista11/obj/Debug/net6.0-windows
+/Exercicios_Lista11/obj
+>>>>>>> 4f1e1c5 (Updating repositories)
