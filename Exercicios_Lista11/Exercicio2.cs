@@ -99,7 +99,8 @@ namespace Exercicios_Lista11
          * os domínios de emails cadastrados no programa. Para isso, usar dois componentes gráficos
          * equivalentes.
          */ 
-         
+        List<Emails> emails = new List<Emails>();
+        List<Emails> dominios = new List<Emails>();
         public frmEx2()
         {
             InitializeComponent();
@@ -116,22 +117,85 @@ namespace Exercicios_Lista11
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string nome = txtNome.Text;
-            string email = txtEmail.Text;
-            string[] validaEmail = email.Split("@");
+            CadastrarEmail();
+        }
 
-            if (nome.Length < 3)
+        private void CadastrarEmail()
+        {
+            string nome = txtNome.Text.ToUpper();
+            string emailCompleto = txtEmail.Text.ToUpper();
+            
+            try
             {
-                MessageBox.Show("Favor preencher um nome!");                
+                string[] validaEmail = emailCompleto.Split("@");
+                string dominio = validaEmail[1];
+                string[] validaDominio = dominio.Split(".");
+            
+                if (nome.Length < 3)
+                {
+                    MessageBox.Show("Favor preencher um nome!");
+                }
+
+                if (validaEmail.Length < 2 || validaDominio.Length < 2)
+                {
+                    MessageBox.Show("Favor preencher um e-mail válido!");
+                }
+                else
+                {
+                    if (ContemEmail(emailCompleto))
+                    {                        
+                        lstEmails.Items.Add(emailCompleto);
+                        emails.Add(new Emails(emailCompleto));
+                    }
+                    if (ContemDominio(dominio))
+                    {
+                        lstDominios.Items.Add(dominio);
+                    }
+                }
+                    
+            } catch (Exception ex)
+            {
+                MessageBox.Show("É necessário preencher os campos.");
             }
+        }
 
-            if (validaEmail.Length < 2)
+        private bool ContemEmail(string email)
+        {
+            foreach (var e in emails)
             {
-                MessageBox.Show("Favor preencher um e-mail válido!");                
+                if (e.Email == email)
+                {
+                    MessageBox.Show($"'{email}' já existe na lista.");
+                    return false;
+                }
             }
-            else
+            return true;
+        }
+        private bool ContemDominio(string dominio)
+        {
+            foreach (var d in dominios)
             {
+                if (d.Dominio == dominio)
+                {                    
+                    return false;
+                }
+            }
+            return true;
+        }
 
+        private void txtNome_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == (char)Keys.Enter)
+            {
+                CadastrarEmail();
+            }
+        }
+
+        private void txtEmail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == (char)Keys.Enter)
+            {
+                CadastrarEmail();
             }
         }
     }

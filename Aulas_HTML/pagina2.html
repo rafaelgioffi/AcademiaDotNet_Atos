@@ -4,21 +4,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página 2</title>
+    <title>Contato</title>
 </head>
 <body>
-    <nav>
-        <ul>
-          <li>
-            <a href="http://www.google.com.br">Google</a>
-          </li>
-          <li>
-            <a href="https://atos.net/pt-br/brasil-atos">Atos</a>
-          </li>
-          <li>
-            <a href="aula1.html">Página 1</a>
-          </li>
-        </ul>
-      </nav>
+  <p>Informações para contato com a empresa:</p>    
+      <form name="contato" action="realizado.html" method="get">
+        <h1 class="labelForm">Nome:</h1>
+        <input type="text" name="nome" />
+        <br>
+        <h1 class="labelForm">Sobrenome:</h1>        
+        <input type="text" name="sobrenome" />
+        <br>
+        <h1 class="labelForm">Celular:</h1>
+        <br>
+        <input type="tel" name="celular" />
+        <br>
+        <h1 class="labelForm">CPF:</h1>        
+        <input type="text" name="cpf" />
+        <br>
+        <h1 class="labelForm">Data de Nascimento:</h1>        
+        <input type="date" name="dataNasc" />
+        <br>
+        <h1 class="labelForm">Senha:</h1>        
+        <input type="password" name="senha" />
+        <br>
+        <h1 class="labelForm">Sexo:</h1>        
+        <br>
+        Masculino <input type="radio" name="sexo" value="masculino">
+        <br>
+        Feminino <input type="radio" name="sexo" value="feminino">
+        <br>
+        Neutro <input type="radio" name="sexo" value="neutro">
+        <br>
+        Prefiro não informar<input type="radio" name="sexo" value="ninf">
+        <br>
+
+        <h1 class="labelForm">Moro com:</h1>
+        Meus pais <input type="checkbox" name="pais">
+        Meus cachorros <input type="checkbox" name="dog">
+        Meus gatos <input type="checkbox" name="cats">
+        <br>
+        <input type="submit" value="Enviar mensagem">
+      </form>
 </body>
 </html>

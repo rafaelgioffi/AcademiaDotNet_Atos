@@ -2,15 +2,17 @@
 <html lang="pt-br">
   <head>
     <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="estilo.css" />
     <title>Aula 1 - HTML</title>
   </head>
+  <div style="background-color: #800064;">
   <body
     bgcolor="#159875"
-    text="yellow"
-    background="img/dollynho.jpg"
+    text="yellow"    
     link="orange"
     alink="white"
-    vlink="green">
+    vlink="green"
+  >
     <header>
       <h1>Cabeçalho</h1>
       <h2>Cabeçalho</h2>
@@ -28,6 +30,7 @@
           <li>
             <a href="pagina2.html">Página 2</a>
           </li>
+
         </ul>
       </nav>
     </header>
@@ -37,67 +40,93 @@
     <section id="posts">
       <article id="post1">
         <p align="justify">
-          Lorem <u>Ipsum is simply dummy</u> text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with
-          the release of Letraset sheets containing Lorem Ipsum passages, and
-          more recently with desktop publishing software like Aldus PageMaker
-          including versions of Lorem Ipsum.
+          Lorem <u>Ipsum is simply dummy</u> text of the printing and
+          typesetting industry. Lorem Ipsum has been the industry's standard
+          dummy text ever since the 1500s, when an unknown printer took a galley
+          of type and scrambled it to make a type specimen book. It has survived
+          not only five centuries, but also the leap into electronic
+          typesetting, remaining essentially unchanged. It was popularised in
+          the 1960s with the release of Letraset sheets containing Lorem Ipsum
+          passages, and more recently with desktop publishing software like
+          Aldus PageMaker including versions of Lorem Ipsum.
         </p>
       </article>
       <aside>
-        Conteúdo <b>publicitário</b> ou sem muita ligação com o conteúdo principal
+        Conteúdo <b>publicitário</b> ou sem muita ligação com o conteúdo
+        principal
       </aside>
       <article id="post2">
         <font face="Courier" size="5" color="lightgreen">
           <p align="right">
-            <sub>Contrary to popular</sub> belief, Lorem Ipsum is not simply random text.
-            It has roots in a piece of classical Latin literature from 45 BC,
-            making it over 2000 years old. Richard McClintock, a Latin professor
-            at Hampden-Sydney College in Virginia, looked up one of the more
-            obscure Latin words, consectetur, from a Lorem Ipsum passage, and
-            going through the cites of the word in classical literature,
-            discovered the undoubtable source. <sup>Lorem</sup> Ipsum comes from sections
-            1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes
-            of Good and Evil) by Cicero, written in 45 BC. This book is a
-            treatise on the theory of ethics, very popular during the
-            Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit
-            amet..", comes from a line in section 1.10.32.
+            <sub>Contrary to popular</sub> belief, Lorem Ipsum is not simply
+            random text. It has roots in a piece of classical Latin literature
+            from 45 BC, making it over 2000 years old. Richard McClintock, a
+            Latin professor at Hampden-Sydney College in Virginia, looked up one
+            of the more obscure Latin words, consectetur, from a Lorem Ipsum
+            passage, and going through the cites of the word in classical
+            literature, discovered the undoubtable source.
+            <sup>Lorem</sup> Ipsum comes from sections 1.10.32 and 1.10.33 of
+            "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by
+            Cicero, written in 45 BC. This book is a treatise on the theory of
+            ethics, very popular during the Renaissance. The first line of Lorem
+            Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section
+            1.10.32.
           </p>
         </font>
       </article>
     </section>
 
-    <section>
-        <img src="img/dollynho.jpg" alt="imagem do personagem Dollynho em um cenário de uma floresta pegando fogo" width="300px" height="300px">
+    <section id="section1">
+      <img
+        src="img/dollynho.jpg"
+        alt="imagem do personagem Dollynho em um cenário de uma floresta pegando fogo"
+        width="300px"
+        height="300px"
+      />
     </section>
-
+  </div>
+  
     <p>Lista ordenada</p>
     <ol>
-        <li>Item 1</li>
-        <li>Item 2</li>
-        <li>Item 3</li>
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
     </ol>
-  
+
     <p>Lista não-ordenada</p>
     <ul>
-        <li>Item 1</li>
-        <li>Item 2</li>
-        <li>Item 3</li>
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
     </ul>
-  
+
     <p>Lista de definição</p>
     <dl>
-        <dt>Item 1</dt>
-            <dd>Definição do item 1</dd>
-        <dt>Item 2</dt>
-            <dd>Definição do item 2</dd>
-        <dt>Item 3</dt>
-            <dd>Definição do item 3</dd>
+      <dt>Item 1</dt>
+      <dd>Definição do item 1</dd>
+      <dt>Item 2</dt>
+      <dd>Definição do item 2</dd>
+      <dt>Item 3</dt>
+      <dd>Definição do item 3</dd>
     </dl>
+
+    <div style="background-color: #993800">
+      <section>
+        <table border="10" id="tabela1" class="modelo1">
+          <tr>
+            <td>Linha 1, Coluna 1</td>
+            <td>Linha 1, Coluna 2</td>
+            <td>Linha 1, Coluna 3</td>
+          </tr>
+          <tr>
+            <td>Linha 2, Coluna 1</td>
+            <td>Linha 2, Coluna 2</td>
+            <td>Linha 2, Coluna 3</td>
+          </tr>
+        </table>
+      </section>
+    </div>
+
     <br />
     <a href="#">Link</a>
 
