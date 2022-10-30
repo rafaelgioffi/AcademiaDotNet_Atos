@@ -35,14 +35,12 @@ namespace Exercicios_Lista11
         private string _email { get; set; }
         private string _dominio { get; set; }
 
-        public Emails (string email) 
+        public Emails() { }
+        
+        public Emails(string email, string dominio)
         {
-            Email = email;
-        }
-
-        public Emails(string dominio)
-        {
-            Dominio = dominio;
+            _email = email;
+            _dominio = dominio;
         }
         
         public string Email { get => _email; set => _email = value; }

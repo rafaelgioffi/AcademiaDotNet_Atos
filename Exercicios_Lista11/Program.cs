@@ -29,7 +29,7 @@ namespace Exercicios_Lista11
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new frmEx2());
+            Application.Run(new frmIndex());
         }
     }
 >>>>>>> 21b3bfb (Updating eleventh list of exercises.)

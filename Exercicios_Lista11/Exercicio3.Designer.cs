@@ -1,6 +1,10 @@
 ﻿namespace Exercicios_Lista11
 {
+<<<<<<< HEAD
     partial class frmEx3
+=======
+    partial class Exercicio3
+>>>>>>> 2dbd5b5 (Pushing twelfth list of exercises)
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +32,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+<<<<<<< HEAD
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtValor = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -350,5 +355,14 @@
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;
+=======
+            this.components = new System.ComponentModel.Container();
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Text = "Exercicio3";
+        }
+
+        #endregion
+>>>>>>> 2dbd5b5 (Pushing twelfth list of exercises)
     }
 }

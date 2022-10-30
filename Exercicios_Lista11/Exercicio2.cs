@@ -99,8 +99,8 @@ namespace Exercicios_Lista11
          * os domínios de emails cadastrados no programa. Para isso, usar dois componentes gráficos
          * equivalentes.
          */ 
-        List<Emails> emails = new List<Emails>();
-        List<Emails> dominios = new List<Emails>();
+        List<string> emails = new List<string>();
+        List<string> dominios = new List<string>();
         public frmEx2()
         {
             InitializeComponent();
@@ -143,13 +143,17 @@ namespace Exercicios_Lista11
                 else
                 {
                     if (ContemEmail(emailCompleto))
-                    {                        
+                    {
+                        
                         lstEmails.Items.Add(emailCompleto);
-                        emails.Add(new Emails(emailCompleto));
+                        emails.Add(emailCompleto);
+                        txtNome.Clear();
                     }
                     if (ContemDominio(dominio))
                     {
                         lstDominios.Items.Add(dominio);
+                        dominios.Add(dominio);
+                        txtEmail.Clear();
                     }
                 }
                     
@@ -163,7 +167,7 @@ namespace Exercicios_Lista11
         {
             foreach (var e in emails)
             {
-                if (e.Email == email)
+                if (e == email)
                 {
                     MessageBox.Show($"'{email}' já existe na lista.");
                     return false;
@@ -175,7 +179,7 @@ namespace Exercicios_Lista11
         {
             foreach (var d in dominios)
             {
-                if (d.Dominio == dominio)
+                if (d == dominio)
                 {                    
                     return false;
                 }
