@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-widthform, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/exercicios.css">
+    <title>Exercício 3 - Lista 13</title>
+</head>
+<body>
+    <form name="ex1">
+        <h3>Escolha o tema</h3>
+        <label for="btnVermelho" class="btnVermelho">Vermelho</label>
+        <input type="radio" id="btnVermelho" name="cores" value="Vermelho" onclick="changeBackground('vm')">
+        <br>
+        <label for="btnVerde" class="btnVerde">Verde</label>
+        <input type="radio" id="btnVerde" name="cores" value="Verde" onclick="changeBackground('vd')">
+        <br>
+        <label for="btnAzul" class="btnAzul">Azul</label>
+        <input type="radio" id="btnAzul" name="cores" value="Vermelho" onclick="changeBackground('az')">
+        <br>
+        <label for="btnAmarelo" class="btnAmarelo">Amarelo</label>
+        <input type="radio" id="btnAmarelo" name="cores" value="Vermelho" onclick="changeBackground('am')">
+        <br>
+        <label for="btnReset" class="btnReset">Restaurar Padrões</label>
+        <input type="radio" id="btnReset" name="cores" value="Restaurar Padrões" onclick="changeBackground('pd')">
+        <br>
+        <br>
+        <select id="cores" onchange="changeBackground(this.value)">
+            <option value="pd"></option>
+            <option value="vm">Vermelho</option>
+            <option value="vd">Verde</option>
+            <option value="az">Azul</option>
+            <option value="am">Amarelo</option>
+        </select>
+    </form>
+    <script src="assets/js/exercicios.js"></script>
+</body>
+</html>

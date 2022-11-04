@@ -1,0 +1,180 @@
+.div1 {
+    background-color: blue;
+    border: 1px solid black;
+    margin-bottom: 5px;
+    padding: 5px;
+}
+.div2 {
+    background-color: red;
+    border: 1px solid black;
+    margin-bottom: 5px;
+    padding: 5px;
+}
+.div3 {
+    background-color: green;
+    border: 1px solid black;
+    margin-bottom: 5px;
+    padding: 5px;
+}
+.div4 {
+    background-color: purple;
+    border: 1px solid black;
+    margin-bottom: 5px;
+    padding: 5px;
+}
+
+.esqCima {
+    width: fit-content;
+    height: 40px;
+    vertical-align: middle;
+    display: table-cell;
+    background: blue; 
+    position: absolute;   
+    left: 2%;
+    top: 2%;
+}
+
+.dirCima {
+    width: fit-content;
+    height: 40px;    
+    vertical-align: middle;
+    display: table-cell;
+    background: purple;
+    position: absolute;
+    left: 87%;
+    top: 2%;
+}
+
+.esqBaixo {
+    width: fit-content;
+    height: 40px;
+    vertical-align: middle;
+    display: table-cell;
+    background: red;    
+    position: absolute;
+    left: 2%;
+    top: 90%;
+}
+.dirBaixo {
+    width: fit-content;
+    height: 40px;
+    vertical-align: middle;
+    display: table-cell;
+    background: green;    
+    position: absolute;
+    left: 88%;
+    top: 90%;
+}
+
+.esqCimaRedondo {    
+    height: 40px;
+    vertical-align: middle;
+    display: table-cell;
+    background: blue;
+    border-radius: 50%;
+    position: absolute;   
+    left: 2%;
+    top: 2%;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;    
+}
+
+.dirCimaRedondo {    
+    height: 40px;
+    vertical-align: middle;
+    display: table-cell;
+    background: purple;
+    border-radius: 50%;
+    position: absolute;   
+    left: 83%;
+    top: 2%;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;    
+}
+
+.esqBaixoRedondo {    
+    height: 40px;
+    vertical-align: middle;
+    display: table-cell;
+    background: red;
+    border-radius: 50%;
+    position: absolute;   
+    left: 2%;
+    top: 90%;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;    
+}
+
+.dirBaixoRedondo {    
+    height: 40px;
+    vertical-align: middle;
+    display: table-cell;
+    background: green;
+    border-radius: 50%;
+    position: absolute;   
+    left: 83%;
+    top: 90%;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;    
+}
+
+.menu {
+    border: 1px solid green;
+    width: fit-content;
+    padding: 2px;
+}
+
+.item {
+    border: 0px;
+    background: gray;
+    color: yellow;
+    width: 100px;    
+    margin: 3px;
+    padding-left: 15px;
+}
+
+.item:hover {
+    background-color: gray;
+    color: gray;
+}
+
+a{
+    text-decoration: none;
+    color: yellow;
+}
+
+a:hover {
+    background-color: yellow;
+    color: gray;
+}
+
+a:link {
+    color: yellow;
+}
+
+.imgBorder {
+    height: fit-content;
+    background-color: gray;
+    border: 3px solid gray;
+    color: white;
+    text-align: left;    
+    /* padding: 5px; */    
+    vertical-align: top;
+}
+
+#texto {    
+    vertical-align: top;    
+    padding-left: 15px;
+    margin-left: 15px;    
+    width: 450px;
+}
+
+img, p{
+    width: 300px;
+    display: inline-block;
+    /* float: left; */
+}

@@ -467,7 +467,6 @@
                         case 5:
                         break;
                         default: break;
-
                 }
             } while (opcao != 5);
             

@@ -1,0 +1,89 @@
+body {
+    margin-top: 100px;
+    margin-right: 40px;
+    margin-bottom: 10px;
+    margin-left: 70px;
+}
+
+h1 {
+    border-top-width: thick;
+    border-top-style: dotted;
+    border-top-color: red;
+    
+    border-bottom-width: thick;
+    border-bottom-style: dotted;
+    border-bottom-color: blue;
+    
+    border-right-width: thick;
+    border-right-style: outset;
+    border-right-color: green;
+    
+    border-left-width: thick;
+    border-left-style: dashed;
+    border-left-color: orange;
+
+    padding: 15px;
+}
+
+div.faixa1 {
+    background: blue;
+    height: 200px;    
+    width: 200px;
+    border: 1px solid black;
+}
+
+div.faixa2 {
+    height: 200px; 
+    width: 200px;
+    border: 1px solid black;
+    background: red;   
+}
+
+div.faixa3 {
+height: 200px;
+width: 200px;
+background: white;
+}
+
+#column1 {
+    float: left;
+    width: 33%;
+}
+#column2 {
+    float: left;
+    width: 33%;
+}
+#column2 {
+    float: left;
+    width: 33%;
+}
+
+
+#box1 {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    background-color: yellow;
+}
+#box2 {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    background-color: blue;
+}
+#box3 {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    background-color: red;
+}
+#box4 {
+    position: absolute;
+    top: 60px;
+    left: 60px;
+    background-color: green;
+}
+
+/* body {
+    margin: 100px 40px 10px 70px;
+} */
