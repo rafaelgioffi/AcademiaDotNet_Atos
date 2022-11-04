@@ -28,5 +28,14 @@ namespace Exercicios_Lista11
             frmEx2 ex2 = new frmEx2();
             ex2.Show();
         }
+
+        private void btnEx3_Click(object sender, EventArgs e)
+        {
+            frmIndex frmindex = new frmIndex();
+            frmEx3 ex3 = new frmEx3();
+            frmindex.Hide();
+            frmindex.Close();
+            ex3.Show();
+        }
     }
 }
