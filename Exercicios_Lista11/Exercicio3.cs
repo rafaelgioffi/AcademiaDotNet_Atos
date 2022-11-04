@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,11 +11,6 @@ using System.Windows.Forms;
 namespace Exercicios_Lista11
 {
     public partial class frmEx3 : Form
-=======
-﻿namespace Exercicios_Lista11
-{
-    public partial class Exercicio3 : Form
->>>>>>> 2dbd5b5 (Pushing twelfth list of exercises)
     {
         /*
          * 3. Fazer um programa em VS e com windows Forms.
@@ -26,7 +20,6 @@ namespace Exercicios_Lista11
          * - Button
          * - Panel
          * - Combo box
-<<<<<<< HEAD
          * - Menu 
          * - List 
          * - Classe específica
@@ -75,20 +68,5 @@ namespace Exercicios_Lista11
 
             lstCriptos.Items.Add(nome, sigla, preco.ToString());
         }
-=======
-         * - Menu
-         * - List 
-         * - Classe específica
-         * 
-         * O programa deve ter um Menu em que o usuário possa Inserir dados de uma cripto moeda
-         * (sigla, nome e valor unidade), Consultar por criptomoeda via sigla, remover cripto 
-         * moeda via sigla, listar cripto moedas.
-         */
-
-        public Exercicio3()
-        {
-            InitializeComponent();
-        }
->>>>>>> 2dbd5b5 (Pushing twelfth list of exercises)
     }
 }
