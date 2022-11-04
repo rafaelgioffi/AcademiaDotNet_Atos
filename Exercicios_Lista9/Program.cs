@@ -250,7 +250,7 @@
              * exibir a lista ordenada.
              */
 
-            /*
+            
             List<Pessoa> pessoas = new List<Pessoa>();
             int opc = 0;
             Pessoa p;
@@ -313,13 +313,13 @@
                         }
                         break;
                     case 2:
-                        Console.Clear();
+                        Console.Clear();                        
                         Util.mostrarListaPessoa(pessoas);
                         break;
                     case 3: break;
                 }
             } while (opc != 3);
-            */
+            
 
             /*
              * 2. Fazer um programa em VS, com uso de menu, com cadastrar emails, listar emails 
@@ -435,6 +435,8 @@
              * Para as figurinhas repetidas, deve haver uma lista e um arquivo .csv; o mesmo para 
              * as figurinhas faltantes.
              */
+
+            /*
             const string caminho = @"D:\Desenvolvimento\.NET\academiaDotNet_Atos\Exercicios_Lista9\";
             const string nomeArqRepetidas = "repetidas.csv";
             const string nomeArqFaltantes = "faltantes.csv";
@@ -461,9 +463,7 @@
                 if (codigo.Length < 5)
                 {
                     if (codigo == "00")
-                    {
-                        //Console.ForegroundColor = ConsoleColor.DarkGreen;
-                        //Console.WriteLine("\nCódigo válido!\n");
+                    {                     
                         Console.ResetColor();                        
                     }
                     else
@@ -571,7 +571,7 @@
                 Console.WriteLine("1 - Cadastrar figurinha Repetida");
                 Console.WriteLine("2 - Cadastrar figurinha Faltante");
                 Console.WriteLine("3 - Listar figurinha Repetida");
-                Console.WriteLine("4 - Listar figurinha Faltante");
+                Console.WriteLine("4 - Listar figurinha Faltante");               
                 Console.WriteLine("5 - Sair");
                 Console.Write("\nOpção: ");
                 opcao = int.Parse(Console.ReadLine());
@@ -597,6 +597,7 @@
                     default: break;
                 }
             } while (opcao != 5);
+            */
 
         }
     }

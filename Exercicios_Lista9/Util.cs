@@ -384,6 +384,7 @@ namespace Exercicios_Lista9
                 } while (!leitor.EndOfStream);
 
                 leitor.Close();
+                lista.Reverse();
             }
             catch (AccessViolationException)
             {
@@ -517,7 +518,7 @@ namespace Exercicios_Lista9
                 Console.WriteLine($"Deu problema no arquivo '{nomeArquivo}'!\nCódigo: {ex.Message}\n");
                 Console.ResetColor();
             }
-        }
+        }               
 
         //métodos para mostrar os dados
         public static void mostrarListaString(List<string> lista)
@@ -535,7 +536,7 @@ namespace Exercicios_Lista9
                 Console.WriteLine("Pessoas já cadastradas\n");
                 Console.ForegroundColor = ConsoleColor.DarkGreen;
                 foreach (var l in lista)
-                {
+                {                    
                     Console.WriteLine($"Nome: {l.Nome}");
                 }
                 Console.WriteLine();

@@ -79,5 +79,13 @@
 /Exercicios_Lista9/.vs
 /Exercicios_Lista9/bin/Debug/net6.0
 /Exercicios_Lista9/obj
+<<<<<<< HEAD
 /Desafio1
 /Exercicios_Lista11/.vs
+=======
+/Desafio1/
+/Aulas_WindowsForms/.vs
+/Aulas_WindowsForms/bin/Debug/net6.0-windows
+/Aulas_WindowsForms/obj
+*.user
+>>>>>>> 2370366 (Updating repositories)
