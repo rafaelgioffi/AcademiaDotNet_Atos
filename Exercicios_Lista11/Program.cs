@@ -11,7 +11,7 @@ namespace Exercicios_Lista11
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new frmIndex());
+            Application.Run(new frmEx3());
         }
     }
 }

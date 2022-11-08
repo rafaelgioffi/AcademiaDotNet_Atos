@@ -47,23 +47,17 @@
             this.menuCadastro = new System.Windows.Forms.ToolStripMenuItem();
             this.menuBusca = new System.Windows.Forms.ToolStripMenuItem();
             this.menuRemove = new System.Windows.Forms.ToolStripMenuItem();
-            this.lstSiglas = new System.Windows.Forms.ListView();
-            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
-            this.listView2 = new System.Windows.Forms.ListView();
-            this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader5 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader6 = new System.Windows.Forms.ColumnHeader();
+            this.stsInfo = new System.Windows.Forms.StatusStrip();
+            this.lblQuant = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblInfo = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.stsInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.listView2);
-            this.panel1.Controls.Add(this.lstSiglas);
             this.panel1.Controls.Add(this.txtValor);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.txtSigla);
@@ -75,7 +69,7 @@
             this.panel1.Controls.Add(this.menuStrip1);
             this.panel1.Location = new System.Drawing.Point(6, 6);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(426, 366);
+            this.panel1.Size = new System.Drawing.Size(426, 358);
             this.panel1.TabIndex = 0;
             // 
             // txtValor
@@ -97,6 +91,7 @@
             // txtSigla
             // 
             this.txtSigla.Location = new System.Drawing.Point(302, 27);
+            this.txtSigla.MaxLength = 3;
             this.txtSigla.Name = "txtSigla";
             this.txtSigla.Size = new System.Drawing.Size(118, 23);
             this.txtSigla.TabIndex = 6;
@@ -135,28 +130,29 @@
             this.lstCriptos.Font = new System.Drawing.Font("Roboto Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lstCriptos.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.lstCriptos.FullRowSelect = true;
-            this.lstCriptos.HoverSelection = true;
+            this.lstCriptos.GridLines = true;
             this.lstCriptos.LabelWrap = false;
-            this.lstCriptos.Location = new System.Drawing.Point(3, 127);
-            this.lstCriptos.MultiSelect = false;
+            this.lstCriptos.Location = new System.Drawing.Point(6, 127);
             this.lstCriptos.Name = "lstCriptos";
-            this.lstCriptos.Size = new System.Drawing.Size(176, 236);
+            this.lstCriptos.Size = new System.Drawing.Size(414, 218);
             this.lstCriptos.TabIndex = 2;
             this.lstCriptos.UseCompatibleStateImageBehavior = false;
-            this.lstCriptos.View = System.Windows.Forms.View.List;
+            this.lstCriptos.View = System.Windows.Forms.View.Details;
+            this.lstCriptos.SelectedIndexChanged += new System.EventHandler(this.lstCriptos_SelectedIndexChanged);
             // 
             // clnNome
             // 
-            this.clnNome.Text = "";
-            this.clnNome.Width = 200;
+            this.clnNome.Text = "Nome";
+            this.clnNome.Width = 175;
             // 
             // clnSigla
             // 
-            this.clnSigla.Text = "";
+            this.clnSigla.Text = "Sigla";
             // 
             // clnPreco
             // 
-            this.clnPreco.Text = "";
+            this.clnPreco.Text = "Preço";
+            this.clnPreco.Width = 170;
             // 
             // tableLayoutPanel1
             // 
@@ -203,6 +199,7 @@
             this.btnRemove.TabIndex = 2;
             this.btnRemove.Text = "Remover";
             this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // menuStrip1
             // 
@@ -221,6 +218,7 @@
             this.menuCadastro.Name = "menuCadastro";
             this.menuCadastro.Size = new System.Drawing.Size(142, 20);
             this.menuCadastro.Text = "Cadastrar Criptomoeda";
+            this.menuCadastro.Click += new System.EventHandler(this.menuCadastro_Click);
             // 
             // menuBusca
             // 
@@ -234,79 +232,43 @@
             this.menuRemove.Name = "menuRemove";
             this.menuRemove.Size = new System.Drawing.Size(139, 20);
             this.menuRemove.Text = "Remover Criptomoeda";
+            this.menuRemove.Click += new System.EventHandler(this.menuRemove_Click);
             // 
-            // lstSiglas
+            // stsInfo
             // 
-            this.lstSiglas.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3});
-            this.lstSiglas.Font = new System.Drawing.Font("Roboto Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lstSiglas.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lstSiglas.FullRowSelect = true;
-            this.lstSiglas.HoverSelection = true;
-            this.lstSiglas.LabelWrap = false;
-            this.lstSiglas.Location = new System.Drawing.Point(185, 127);
-            this.lstSiglas.MultiSelect = false;
-            this.lstSiglas.Name = "lstSiglas";
-            this.lstSiglas.Size = new System.Drawing.Size(151, 236);
-            this.lstSiglas.TabIndex = 9;
-            this.lstSiglas.UseCompatibleStateImageBehavior = false;
-            this.lstSiglas.View = System.Windows.Forms.View.List;
+            this.stsInfo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblQuant,
+            this.lblInfo});
+            this.stsInfo.Location = new System.Drawing.Point(0, 354);
+            this.stsInfo.Name = "stsInfo";
+            this.stsInfo.Size = new System.Drawing.Size(438, 22);
+            this.stsInfo.TabIndex = 1;
             // 
-            // columnHeader1
+            // lblQuant
             // 
-            this.columnHeader1.Text = "";
-            this.columnHeader1.Width = 200;
+            this.lblQuant.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.lblQuant.Name = "lblQuant";
+            this.lblQuant.Size = new System.Drawing.Size(161, 17);
+            this.lblQuant.Text = "Criptomoedas Cadastradas: 0";
             // 
-            // columnHeader2
+            // lblInfo
             // 
-            this.columnHeader2.Text = "";
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "";
-            // 
-            // listView2
-            // 
-            this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader4,
-            this.columnHeader5,
-            this.columnHeader6});
-            this.listView2.Font = new System.Drawing.Font("Roboto Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.listView2.ForeColor = System.Drawing.Color.DarkRed;
-            this.listView2.FullRowSelect = true;
-            this.listView2.HoverSelection = true;
-            this.listView2.LabelWrap = false;
-            this.listView2.Location = new System.Drawing.Point(342, 127);
-            this.listView2.MultiSelect = false;
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(81, 236);
-            this.listView2.TabIndex = 10;
-            this.listView2.UseCompatibleStateImageBehavior = false;
-            this.listView2.View = System.Windows.Forms.View.List;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "";
-            this.columnHeader4.Width = 200;
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "";
-            // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "";
+            this.lblInfo.ForeColor = System.Drawing.Color.Red;
+            this.lblInfo.Margin = new System.Windows.Forms.Padding(5, 3, 0, 2);
+            this.lblInfo.Name = "lblInfo";
+            this.lblInfo.Size = new System.Drawing.Size(0, 17);
+            this.lblInfo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // frmEx3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(438, 376);
+            this.Controls.Add(this.stsInfo);
             this.Controls.Add(this.panel1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmEx3";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Exercicio3";
             this.Activated += new System.EventHandler(this.frmEx3_Activated);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmEx3_FormClosed);
@@ -317,7 +279,10 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.stsInfo.ResumeLayout(false);
+            this.stsInfo.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -342,13 +307,8 @@
         private ColumnHeader clnNome;
         private ColumnHeader clnSigla;
         private ColumnHeader clnPreco;
-        private ListView listView2;
-        private ColumnHeader columnHeader4;
-        private ColumnHeader columnHeader5;
-        private ColumnHeader columnHeader6;
-        private ListView lstSiglas;
-        private ColumnHeader columnHeader1;
-        private ColumnHeader columnHeader2;
-        private ColumnHeader columnHeader3;
+        private StatusStrip stsInfo;
+        private ToolStripStatusLabel lblQuant;
+        private ToolStripStatusLabel lblInfo;
     }
 }
