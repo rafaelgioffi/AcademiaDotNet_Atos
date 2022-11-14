@@ -10,14 +10,14 @@ namespace Exercicios_Lista4
              * Escreva um algoritmo que leia os valores para um vetor de 10 elementos e então
              * mostre na tela a quantidade de números pares e ímpares.
              */
-
-            /*
+            
             int[] numeros = new int[10];
             int pares = 0, impares = 0;
 
             for (int i = 0; i < numeros.Length; i++)
             {
-                Console.Write("Informe o número da posição {0}: ", i);
+                Console.Write("Informe o número da posição {0}: ", i);               
+
                 numeros[i] = int.Parse(Console.ReadLine());
                 
                 if (numeros[i] % 2 == 0)
@@ -34,7 +34,7 @@ namespace Exercicios_Lista4
             
             Console.WriteLine("Números pares: {0}", pares);
             Console.WriteLine("Números ímpares: {0}", impares);                
-            */
+            
 
             /* Ex. 2
              * Escreva um algoritmo que leia valores para dois vetores de 20 elementos e então

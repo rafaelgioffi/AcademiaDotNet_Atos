@@ -138,9 +138,11 @@ namespace PrimeiraApp
 
             /* Exercício 1
              * Escreva um programa em C# e no Visual Studio
-            para calcular a média aritmética entre dois 
-            números quaisquer.
+             * para calcular a média aritmética entre dois 
+             * números quaisquer.
+            */
 
+            /*
             float nota1, nota2, resultado;
 
             Console.Write("Digite a Note 1: ");
@@ -533,7 +535,7 @@ namespace PrimeiraApp
              * pelo vendedor, calcule e mostre: o salário do empregado
              */            
            
-            
+            /*
             double precoCusto, salario, comissao = 15, salarioBase, comissaoPorVenda, salarioCalculado;
             int bikesVendidas;
 
@@ -551,7 +553,7 @@ namespace PrimeiraApp
             salarioCalculado = (salario * 2) + (precoCusto * (comissao / 100) * bikesVendidas);
                         
             Console.WriteLine("O vendedor receberá " + salarioCalculado.ToString("C") + " de salário esse mês");
-            
+            */
         }
     }
 }
