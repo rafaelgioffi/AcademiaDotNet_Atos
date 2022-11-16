@@ -59,6 +59,8 @@ namespace WF_Glicemia_BD
             SqlConnection conn = new SqlConnection(conexaoString);
             conn.Open();
 
+            //para solucionar o "max"..
+            //execute scalar
             string sqlSelMax = "SELECT Max(idPaciente) FROM Paciente";
             SqlCommand comand = new SqlCommand(sqlSelMax, conn);
                         
