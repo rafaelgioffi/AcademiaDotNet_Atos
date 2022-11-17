@@ -31,7 +31,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtDescProd = new System.Windows.Forms.RichTextBox();
             this.txtNomeProd = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grpCadProd = new System.Windows.Forms.GroupBox();
+            this.txtProdId = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btnCancelCadProd = new System.Windows.Forms.Button();
             this.txtQuantProd = new System.Windows.Forms.NumericUpDown();
             this.btnCancelProd = new System.Windows.Forms.Button();
             this.btnCadProd = new System.Windows.Forms.Button();
@@ -46,8 +49,10 @@
             this.dgvProd = new System.Windows.Forms.DataGridView();
             this.lblStatus = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
+            this.btnExcluiProd = new System.Windows.Forms.Button();
+            this.btnEditarProd = new System.Windows.Forms.Button();
+            this.btnCadastrarProd = new System.Windows.Forms.Button();
+            this.grpCadProd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuantProd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIdForn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProd)).BeginInit();
@@ -78,27 +83,61 @@
             this.txtNomeProd.Size = new System.Drawing.Size(467, 23);
             this.txtNomeProd.TabIndex = 2;
             // 
-            // groupBox1
+            // grpCadProd
             // 
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.txtQuantProd);
-            this.groupBox1.Controls.Add(this.btnCancelProd);
-            this.groupBox1.Controls.Add(this.btnCadProd);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.txtValProd);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.txtIdForn);
-            this.groupBox1.Controls.Add(this.txtNomeProd);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.txtDescProd);
-            this.groupBox1.Location = new System.Drawing.Point(3, 534);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(699, 193);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Cadastro de novo produto";
+            this.grpCadProd.Controls.Add(this.txtProdId);
+            this.grpCadProd.Controls.Add(this.label7);
+            this.grpCadProd.Controls.Add(this.btnCancelCadProd);
+            this.grpCadProd.Controls.Add(this.txtQuantProd);
+            this.grpCadProd.Controls.Add(this.btnCancelProd);
+            this.grpCadProd.Controls.Add(this.btnCadProd);
+            this.grpCadProd.Controls.Add(this.label5);
+            this.grpCadProd.Controls.Add(this.txtValProd);
+            this.grpCadProd.Controls.Add(this.label4);
+            this.grpCadProd.Controls.Add(this.label3);
+            this.grpCadProd.Controls.Add(this.label2);
+            this.grpCadProd.Controls.Add(this.txtIdForn);
+            this.grpCadProd.Controls.Add(this.txtNomeProd);
+            this.grpCadProd.Controls.Add(this.label1);
+            this.grpCadProd.Controls.Add(this.txtDescProd);
+            this.grpCadProd.Location = new System.Drawing.Point(3, 538);
+            this.grpCadProd.Name = "grpCadProd";
+            this.grpCadProd.Size = new System.Drawing.Size(699, 193);
+            this.grpCadProd.TabIndex = 4;
+            this.grpCadProd.TabStop = false;
+            this.grpCadProd.Text = "Cadastro de novo produto";
+            this.grpCadProd.Visible = false;
+            // 
+            // txtProdId
+            // 
+            this.txtProdId.Location = new System.Drawing.Point(620, 30);
+            this.txtProdId.MaxLength = 60;
+            this.txtProdId.Name = "txtProdId";
+            this.txtProdId.ReadOnly = true;
+            this.txtProdId.Size = new System.Drawing.Size(62, 23);
+            this.txtProdId.TabIndex = 15;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(593, 33);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(21, 15);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "ID:";
+            // 
+            // btnCancelCadProd
+            // 
+            this.btnCancelCadProd.AutoSize = true;
+            this.btnCancelCadProd.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnCancelCadProd.ForeColor = System.Drawing.Color.Red;
+            this.btnCancelCadProd.Location = new System.Drawing.Point(405, 154);
+            this.btnCancelCadProd.Name = "btnCancelCadProd";
+            this.btnCancelCadProd.Size = new System.Drawing.Size(124, 33);
+            this.btnCancelCadProd.TabIndex = 13;
+            this.btnCancelCadProd.Text = "Cancelar";
+            this.btnCancelCadProd.UseVisualStyleBackColor = true;
+            this.btnCancelCadProd.Click += new System.EventHandler(this.btnCancelCadProd_Click);
             // 
             // txtQuantProd
             // 
@@ -122,7 +161,7 @@
             this.btnCancelProd.AutoSize = true;
             this.btnCancelProd.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnCancelProd.ForeColor = System.Drawing.Color.Red;
-            this.btnCancelProd.Location = new System.Drawing.Point(298, 154);
+            this.btnCancelProd.Location = new System.Drawing.Point(266, 154);
             this.btnCancelProd.Name = "btnCancelProd";
             this.btnCancelProd.Size = new System.Drawing.Size(124, 33);
             this.btnCancelProd.TabIndex = 11;
@@ -133,9 +172,9 @@
             // btnCadProd
             // 
             this.btnCadProd.AutoSize = true;
-            this.btnCadProd.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnCadProd.Font = new System.Drawing.Font("Roboto Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCadProd.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.btnCadProd.Location = new System.Drawing.Point(160, 154);
+            this.btnCadProd.Location = new System.Drawing.Point(149, 153);
             this.btnCadProd.Name = "btnCadProd";
             this.btnCadProd.Size = new System.Drawing.Size(101, 33);
             this.btnCadProd.TabIndex = 10;
@@ -154,7 +193,7 @@
             // 
             // txtValProd
             // 
-            this.txtValProd.Location = new System.Drawing.Point(620, 75);
+            this.txtValProd.Location = new System.Drawing.Point(620, 92);
             this.txtValProd.MaxLength = 60;
             this.txtValProd.Name = "txtValProd";
             this.txtValProd.Size = new System.Drawing.Size(73, 23);
@@ -163,7 +202,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(578, 78);
+            this.label4.Location = new System.Drawing.Point(578, 95);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(36, 15);
             this.label4.TabIndex = 6;
@@ -181,7 +220,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(544, 30);
+            this.label2.Location = new System.Drawing.Point(544, 63);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(70, 15);
             this.label2.TabIndex = 4;
@@ -189,7 +228,7 @@
             // 
             // txtIdForn
             // 
-            this.txtIdForn.Location = new System.Drawing.Point(620, 27);
+            this.txtIdForn.Location = new System.Drawing.Point(620, 60);
             this.txtIdForn.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -216,7 +255,7 @@
             this.txtPesquisa.Name = "txtPesquisa";
             this.txtPesquisa.Size = new System.Drawing.Size(480, 23);
             this.txtPesquisa.TabIndex = 6;
-            this.txtPesquisa.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
+            this.txtPesquisa.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtPesquisa_KeyUp);
             // 
             // label6
             // 
@@ -245,14 +284,15 @@
             this.dgvProd.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvProd.RowTemplate.Height = 25;
             this.dgvProd.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProd.Size = new System.Drawing.Size(699, 477);
+            this.dgvProd.Size = new System.Drawing.Size(699, 443);
             this.dgvProd.TabIndex = 7;
+            this.dgvProd.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProd_CellClick);
             // 
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
             this.lblStatus.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lblStatus.Location = new System.Drawing.Point(566, 516);
+            this.lblStatus.Location = new System.Drawing.Point(572, 520);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(130, 15);
             this.lblStatus.TabIndex = 8;
@@ -269,36 +309,68 @@
             this.button1.TabIndex = 11;
             this.button1.Text = "Limpar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btnExcluiProd
             // 
-            this.button2.AutoSize = true;
-            this.button2.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.ForeColor = System.Drawing.Color.Red;
-            this.button2.Location = new System.Drawing.Point(453, 154);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(124, 33);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "Cancelar";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnExcluiProd.AutoSize = true;
+            this.btnExcluiProd.Enabled = false;
+            this.btnExcluiProd.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnExcluiProd.ForeColor = System.Drawing.Color.Red;
+            this.btnExcluiProd.Location = new System.Drawing.Point(472, 484);
+            this.btnExcluiProd.Name = "btnExcluiProd";
+            this.btnExcluiProd.Size = new System.Drawing.Size(230, 33);
+            this.btnExcluiProd.TabIndex = 14;
+            this.btnExcluiProd.Text = "Excluir produto";
+            this.btnExcluiProd.UseVisualStyleBackColor = true;
+            this.btnExcluiProd.Click += new System.EventHandler(this.btnExcluiProd_Click);
+            // 
+            // btnEditarProd
+            // 
+            this.btnEditarProd.AutoSize = true;
+            this.btnEditarProd.Enabled = false;
+            this.btnEditarProd.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnEditarProd.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.btnEditarProd.Location = new System.Drawing.Point(236, 484);
+            this.btnEditarProd.Name = "btnEditarProd";
+            this.btnEditarProd.Size = new System.Drawing.Size(230, 33);
+            this.btnEditarProd.TabIndex = 15;
+            this.btnEditarProd.Text = "Editar produto";
+            this.btnEditarProd.UseVisualStyleBackColor = true;
+            this.btnEditarProd.Click += new System.EventHandler(this.btnEditarProd_Click);
+            // 
+            // btnCadastrarProd
+            // 
+            this.btnCadastrarProd.AutoSize = true;
+            this.btnCadastrarProd.Font = new System.Drawing.Font("Roboto Medium", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnCadastrarProd.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.btnCadastrarProd.Location = new System.Drawing.Point(3, 484);
+            this.btnCadastrarProd.Name = "btnCadastrarProd";
+            this.btnCadastrarProd.Size = new System.Drawing.Size(230, 33);
+            this.btnCadastrarProd.TabIndex = 16;
+            this.btnCadastrarProd.Text = "Cadastrar produto";
+            this.btnCadastrarProd.UseVisualStyleBackColor = true;
+            this.btnCadastrarProd.Click += new System.EventHandler(this.btnCadastrarProd_Click);
             // 
             // frmProdutos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(704, 729);
+            this.Controls.Add(this.btnCadastrarProd);
+            this.Controls.Add(this.btnEditarProd);
+            this.Controls.Add(this.btnExcluiProd);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.dgvProd);
             this.Controls.Add(this.txtPesquisa);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.grpCadProd);
             this.Name = "frmProdutos";
             this.Text = "Produtos";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmProdutos_FormClosed);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.grpCadProd.ResumeLayout(false);
+            this.grpCadProd.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuantProd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIdForn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProd)).EndInit();
@@ -312,7 +384,7 @@
         private Label label1;
         private RichTextBox txtDescProd;
         private TextBox txtNomeProd;
-        private GroupBox groupBox1;
+        private GroupBox grpCadProd;
         private NumericUpDown txtQuantProd;
         private Button btnCancelProd;
         private Button btnCadProd;
@@ -327,6 +399,11 @@
         private DataGridView dgvProd;
         private Label lblStatus;
         private Button button1;
-        private Button button2;
+        private Button btnCancelCadProd;
+        private Button btnExcluiProd;
+        private Button btnEditarProd;
+        private Button btnCadastrarProd;
+        private TextBox txtProdId;
+        private Label label7;
     }
 }

@@ -19,5 +19,13 @@ namespace MiniERP
         {
             Application.Exit();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            frmFornecedores frmForn = new frmFornecedores();
+            frmMiniErp frmPrincipal = new frmMiniErp();
+            frmForn.Show();
+            this.Hide();
+        }
     }
 }
