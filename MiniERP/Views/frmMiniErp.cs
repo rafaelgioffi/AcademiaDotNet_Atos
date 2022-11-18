@@ -1,3 +1,5 @@
+using MiniERP.Views;
+
 namespace MiniERP
 {
     public partial class frmMiniErp : Form
@@ -22,9 +24,15 @@ namespace MiniERP
 
         private void button2_Click(object sender, EventArgs e)
         {
-            frmFornecedores frmForn = new frmFornecedores();
-            frmMiniErp frmPrincipal = new frmMiniErp();
+            frmFornecedores frmForn = new frmFornecedores();            
             frmForn.Show();
+            this.Hide();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            frmClientes frmUser = new frmClientes();
+            frmUser.Show();
             this.Hide();
         }
     }
