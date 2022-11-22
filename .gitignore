@@ -79,27 +79,19 @@
 /Exercicios_Lista9/.vs
 /Exercicios_Lista9/bin/Debug/net6.0
 /Exercicios_Lista9/obj
-<<<<<<< HEAD
 /Desafio1
+/MiniERP/
 /Exercicios_Lista11/.vs
-=======
 /Desafio1/
 /Aulas_WindowsForms/.vs
 /Aulas_WindowsForms/bin/Debug/net6.0-windows
 /Aulas_WindowsForms/obj
 *.user
-<<<<<<< HEAD
->>>>>>> 2370366 (Updating repositories)
-=======
 /Exercicios_Lista11/.vs/Exercicios_Lista11
 /Exercicios_Lista11/obj/Debug/net6.0-windows
 /Exercicios_Lista11/obj
-<<<<<<< HEAD
->>>>>>> 4f1e1c5 (Updating repositories)
-=======
 /Exercicios_Lista11/.vs/ProjectEvaluation
 /Exercicios_Lista11/bin/Debug/net6.0-windows
->>>>>>> 21b3bfb (Updating eleventh list of exercises.)
 /1 - materialApoio
 /2 - exerciciosDesafios
 /Aula_04-11-2022/.vs/Aula_04-11-2022
@@ -123,9 +115,14 @@
 /WF_Glicemia_BD/.vs
 /WF_Glicemia_BD/bin/Debug/net6.0-windows
 /WF_Glicemia_BD/obj
-/MiniERP/.vs/MiniERP/DesignTimeBuild
-/MiniERP/.vs/MiniERP/FileContentIndex
-/MiniERP/.vs/MiniERP/v17
-/MiniERP/.vs/ProjectEvaluation
-/MiniERP/bin/Debug/net6.0-windows
-/MiniERP/obj
+/ExemploNavega/.vs
+/ExemploNavega/obj
+/AtosEntityCodeFirst/.vs
+/AtosEntityCodeFirst/bin/Debug/net6.0
+/AtosEntityCodeFirst/obj
+/AtosEntityDatabaseFirst/.vs/AtosEntityDatabaseFirst
+/AtosEntityDatabaseFirst/bin/Debug/net6.0
+/AtosEntityDatabaseFirst/obj
+*.zip
+/CRUD_ADONet
+/WindowsFormsSerializacao
