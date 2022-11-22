@@ -1,0 +1,21 @@
+CREATE DATABASE AtosEntity2;
+USE AtosEntity2
+
+CREATE LOGIN AtosEntity2 WITH PASSWORD='AtosEntity2';
+CREATE USER AtosEntity2 FROM LOGIN AtosEntity2;
+EXEC sp_addrolemember 'DB_DATAREADER', 'AtosEntity2';
+EXEC sp_addrolemember 'DB_DATAWRITER', 'AtosEntity2';
+
+CREATE TABLE Pessoas
+(
+id INTEGER PRIMARY KEY IDENTITY,
+nome VARCHAR(100) NOT NULL
+)
+
+CREATE TABLE Emails
+(
+id INTEGER PRIMARY KEY IDENTITY,
+email VARCHAR(100) NOT NULL,
+fk_pessoa INTEGER,
+FOREIGN KEY (fk_pessoa) REFERENCES Pessoas(id)
+)
