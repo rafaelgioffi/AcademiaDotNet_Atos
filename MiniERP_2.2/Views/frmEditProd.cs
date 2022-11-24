@@ -57,7 +57,7 @@ namespace MiniERP
                     }
                     else
                     {
-                        Produto updProd = context.Produtos.Find(int.Parse(txtProdId.Text));
+                        Produtos updProd = context.Produtos.Find(int.Parse(txtProdId.Text));
                         updProd.ProdDesc = txtDescProd.Text;
                         updProd.ProdValUnit = decimal.Parse(txtValProd.Text);
                         updProd.ProdQuant = int.Parse(txtQuantProd.Value.ToString());

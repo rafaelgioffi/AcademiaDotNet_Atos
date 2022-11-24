@@ -13,13 +13,13 @@ public partial class AtosUfnContext : DbContext
     {
     }
 
-    public virtual DbSet<Cliente> Clientes { get; set; }
+    public virtual DbSet<Clientes> Clientes { get; set; }
 
-    public virtual DbSet<Fornecedore> Fornecedores { get; set; }
+    public virtual DbSet<Fornecedores> Fornecedores { get; set; }
 
-    public virtual DbSet<Nota> Notas { get; set; }
+    public virtual DbSet<Notas> Notas { get; set; }
 
-    public virtual DbSet<Produto> Produtos { get; set; }
+    public virtual DbSet<Produtos> Produtos { get; set; }
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -30,7 +30,7 @@ public partial class AtosUfnContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
 
-        modelBuilder.Entity<Cliente>(entity =>
+        modelBuilder.Entity<Clientes>(entity =>
         {
             entity.HasKey(e => e.CliId).HasName("PK__Clientes__FA1E289B38CCE98C");
 
@@ -42,7 +42,7 @@ public partial class AtosUfnContext : DbContext
                 .IsUnicode(false);
         });
 
-        modelBuilder.Entity<Fornecedore>(entity =>
+        modelBuilder.Entity<Fornecedores>(entity =>
         {
             entity.HasKey(e => e.FornId).HasName("PK__Forneced__FBC18D8462D550AD");
 
@@ -54,7 +54,7 @@ public partial class AtosUfnContext : DbContext
                 .IsUnicode(false);
         });
 
-        modelBuilder.Entity<Nota>(entity =>
+        modelBuilder.Entity<Notas>(entity =>
         {
             entity.HasKey(e => e.NotId).HasName("PK__Notas__4FB2008A50EA3751");
 
@@ -78,7 +78,7 @@ public partial class AtosUfnContext : DbContext
                 .HasConstraintName("FK__Notas__ProdId__74AE54BC");
         });
 
-        modelBuilder.Entity<Produto>(entity =>
+        modelBuilder.Entity<Produtos>(entity =>
         {
             entity.HasKey(e => e.ProdId).HasName("PK__Produtos__042785E5F939D70D");
 

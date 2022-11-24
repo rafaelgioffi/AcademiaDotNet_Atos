@@ -1,6 +1,6 @@
 ﻿namespace MiniERP_2_2.Classes;
 
-public partial class Cliente
+public partial class Clientes
 {
     public int CliId { get; set; }
 
@@ -8,5 +8,5 @@ public partial class Cliente
 
     public string? CliTel { get; set; }
 
-    public virtual ICollection<Nota> Nota { get; } = new List<Nota>();
+    public virtual ICollection<Notas> Nota { get; } = new List<Notas>();
 }

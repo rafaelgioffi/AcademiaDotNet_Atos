@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace MiniERP_2_2.Classes;
 
-public partial class Nota
+public partial class Notas
 {
     public string NotId { get; set; } = null!;
 
@@ -17,7 +17,7 @@ public partial class Nota
 
     public int? ProdId { get; set; }
 
-    public virtual Cliente? Cli { get; set; }
+    public virtual Clientes? Cli { get; set; }
 
-    public virtual Produto? Prod { get; set; }
+    public virtual Produtos? Prod { get; set; }
 }

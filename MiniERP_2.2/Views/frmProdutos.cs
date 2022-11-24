@@ -38,7 +38,7 @@ namespace MiniERP
             try
             {                
                 DataTable dt = new DataTable();
-                List<Produto> produto = (from Produto p in context.Produtos select p).ToList<Produto>();
+                List<Produtos> produto = (from Produtos p in context.Produtos select p).ToList<Produtos>();
                 
                 dgvProd.DataSource = produto;
 
@@ -86,7 +86,7 @@ namespace MiniERP
                 }
                 else
                 {
-                    Produto prod = new Produto();
+                    Produtos prod = new Produtos();
                     prod.FornId = int.Parse(txtIdForn.Value.ToString());
                     prod.ProdNome = txtNomeProd.Text;
                     prod.ProdDesc = txtDescProd.Text;
@@ -114,7 +114,7 @@ namespace MiniERP
         {
             if (MessageBox.Show($"Tem certeza que deseja excluir o produto '{dgvProd.SelectedRows[0].Cells[2].Value.ToString()}' do ID {dgvProd.SelectedRows[0].Cells[0].Value.ToString()}?", "Exclusão de produto", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                Produto prodId = context.Produtos.Find(
+                Produtos prodId = context.Produtos.Find(
                     dgvProd.SelectedRows[0].Cells[0].Value);
                 context.Produtos.Remove(prodId);
                 context.SaveChanges();
@@ -154,7 +154,7 @@ namespace MiniERP
             if (txtPesquisa.Text.Length > 3)
             {
                 DataTable dt = new DataTable();
-                List<Produto> produto = context.Produtos.Where(prod => prod.ProdNome.Contains(txtPesquisa.Text)).ToList<Produto>();
+                List<Produtos> produto = context.Produtos.Where(prod => prod.ProdNome.Contains(txtPesquisa.Text)).ToList<Produtos>();
 
                 dgvProd.DataSource = produto;
 

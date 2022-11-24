@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace MiniERP_2_2.Classes;
 
-public partial class Fornecedore
+public partial class Fornecedores
 {
     public int FornId { get; set; }
 

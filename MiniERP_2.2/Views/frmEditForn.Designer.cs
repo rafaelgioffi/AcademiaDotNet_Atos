@@ -87,6 +87,7 @@
             this.txtCnpjForn.Location = new System.Drawing.Point(67, 54);
             this.txtCnpjForn.MaxLength = 60;
             this.txtCnpjForn.Name = "txtCnpjForn";
+            this.txtCnpjForn.ReadOnly = true;
             this.txtCnpjForn.Size = new System.Drawing.Size(248, 23);
             this.txtCnpjForn.TabIndex = 38;
             // 

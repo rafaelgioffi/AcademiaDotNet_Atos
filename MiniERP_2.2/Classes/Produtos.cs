@@ -1,6 +1,6 @@
 ﻿namespace MiniERP_2_2.Classes;
 
-public partial class Produto
+public partial class Produtos
 {
     public int ProdId { get; set; }
 
@@ -14,9 +14,9 @@ public partial class Produto
 
     public int ProdQuant { get; set; }
 
-    public virtual Produto Forn { get; set; } = null!;
+    public virtual Produtos Forn { get; set; } = null!;
 
-    public virtual ICollection<Produto> InverseForn { get; } = new List<Produto>();
+    public virtual ICollection<Produtos> InverseForn { get; } = new List<Produtos>();
 
-    public virtual ICollection<Nota> Nota { get; } = new List<Nota>();
+    public virtual ICollection<Notas> Nota { get; } = new List<Notas>();
 }

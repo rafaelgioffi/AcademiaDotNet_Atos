@@ -34,10 +34,10 @@
             this.txtPesquisa = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.grpCadForn = new System.Windows.Forms.GroupBox();
+            this.txtCnpjForn = new System.Windows.Forms.MaskedTextBox();
             this.btnCancelForn = new System.Windows.Forms.Button();
             this.btnLimpaForn = new System.Windows.Forms.Button();
             this.btnCadForn = new System.Windows.Forms.Button();
-            this.txtCnpjForn = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtNomeForn = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -113,10 +113,10 @@
             // 
             // grpCadForn
             // 
+            this.grpCadForn.Controls.Add(this.txtCnpjForn);
             this.grpCadForn.Controls.Add(this.btnCancelForn);
             this.grpCadForn.Controls.Add(this.btnLimpaForn);
             this.grpCadForn.Controls.Add(this.btnCadForn);
-            this.grpCadForn.Controls.Add(this.txtCnpjForn);
             this.grpCadForn.Controls.Add(this.label2);
             this.grpCadForn.Controls.Add(this.txtNomeForn);
             this.grpCadForn.Controls.Add(this.label1);
@@ -127,6 +127,16 @@
             this.grpCadForn.TabStop = false;
             this.grpCadForn.Text = "Cadastro de novo fornecedor";
             this.grpCadForn.Visible = false;
+            // 
+            // txtCnpjForn
+            // 
+            this.txtCnpjForn.Culture = new System.Globalization.CultureInfo("en-US");
+            this.txtCnpjForn.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Insert;
+            this.txtCnpjForn.Location = new System.Drawing.Point(496, 27);
+            this.txtCnpjForn.Mask = "99.999.999/9999-99";
+            this.txtCnpjForn.Name = "txtCnpjForn";
+            this.txtCnpjForn.Size = new System.Drawing.Size(203, 23);
+            this.txtCnpjForn.TabIndex = 14;
             // 
             // btnCancelForn
             // 
@@ -139,7 +149,7 @@
             this.btnCancelForn.TabIndex = 13;
             this.btnCancelForn.Text = "Cancelar";
             this.btnCancelForn.UseVisualStyleBackColor = true;
-            this.btnCancelForn.Click += new System.EventHandler(this.button2_Click);
+            this.btnCancelForn.Click += new System.EventHandler(this.btnCancelForn_Click);
             // 
             // btnLimpaForn
             // 
@@ -165,14 +175,6 @@
             this.btnCadForn.Text = "Cadastrar";
             this.btnCadForn.UseVisualStyleBackColor = true;
             this.btnCadForn.Click += new System.EventHandler(this.btnCadForn_Click);
-            // 
-            // txtCnpjForn
-            // 
-            this.txtCnpjForn.Location = new System.Drawing.Point(496, 27);
-            this.txtCnpjForn.MaxLength = 60;
-            this.txtCnpjForn.Name = "txtCnpjForn";
-            this.txtCnpjForn.Size = new System.Drawing.Size(205, 23);
-            this.txtCnpjForn.TabIndex = 7;
             // 
             // label2
             // 
@@ -283,9 +285,9 @@
         private Label label2;
         private TextBox txtNomeForn;
         private Label label1;
-        private TextBox txtCnpjForn;
         private Button btnCadastrarForn;
         private Button btnEditarForn;
         private Button btnExcluiForn;
+        private MaskedTextBox txtCnpjForn;
     }
 }
