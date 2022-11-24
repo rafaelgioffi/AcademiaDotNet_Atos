@@ -69,13 +69,13 @@ public partial class AtosUfnContext : DbContext
                 .HasMaxLength(6)
                 .IsUnicode(false);
 
-            entity.HasOne(d => d.Cli).WithMany(p => p.Nota)
-                .HasForeignKey(d => d.CliId)
-                .HasConstraintName("FK__Notas__CliId__73BA3083");
+            //entity.HasOne(d => d.Cli).WithMany(p => p.Nota)
+                //.HasForeignKey(d => d.CliId)
+                //.HasConstraintName("FK__Notas__CliId__73BA3083");
 
-            entity.HasOne(d => d.Prod).WithMany(p => p.Nota)
-                .HasForeignKey(d => d.ProdId)
-                .HasConstraintName("FK__Notas__ProdId__74AE54BC");
+            //entity.HasOne(d => d.Prod).WithMany(p => p.Nota)
+            //    .HasForeignKey(d => d.ProdId)
+            //    .HasConstraintName("FK__Notas__ProdId__74AE54BC");
         });
 
         modelBuilder.Entity<Produtos>(entity =>

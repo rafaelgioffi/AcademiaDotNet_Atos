@@ -44,6 +44,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtNomeCli = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.CliId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CliNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CliTel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CliNotas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.grpCadCli.SuspendLayout();
             this.SuspendLayout();
@@ -121,6 +125,11 @@
             this.dgvClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvClientes.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CliId,
+            this.CliNome,
+            this.CliTel,
+            this.CliNotas});
             this.dgvClientes.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvClientes.Location = new System.Drawing.Point(6, 31);
             this.dgvClientes.MultiSelect = false;
@@ -242,6 +251,40 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Nome:";
             // 
+            // CliId
+            // 
+            this.CliId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CliId.DataPropertyName = "CliId";
+            this.CliId.HeaderText = "ID";
+            this.CliId.Name = "CliId";
+            this.CliId.ReadOnly = true;
+            this.CliId.Width = 60;
+            // 
+            // CliNome
+            // 
+            this.CliNome.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CliNome.DataPropertyName = "CliNome";
+            this.CliNome.HeaderText = "Nome";
+            this.CliNome.Name = "CliNome";
+            this.CliNome.ReadOnly = true;
+            this.CliNome.Width = 470;
+            // 
+            // CliTel
+            // 
+            this.CliTel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CliTel.DataPropertyName = "CliTel";
+            this.CliTel.HeaderText = "Telefone";
+            this.CliTel.Name = "CliTel";
+            this.CliTel.ReadOnly = true;
+            this.CliTel.Width = 155;
+            // 
+            // CliNotas
+            // 
+            this.CliNotas.HeaderText = "Notas";
+            this.CliNotas.Name = "CliNotas";
+            this.CliNotas.ReadOnly = true;
+            this.CliNotas.Visible = false;
+            // 
             // frmClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -288,5 +331,9 @@
         private Label label2;
         private TextBox txtNomeCli;
         private Label label1;
+        private DataGridViewTextBoxColumn CliId;
+        private DataGridViewTextBoxColumn CliNome;
+        private DataGridViewTextBoxColumn CliTel;
+        private DataGridViewTextBoxColumn CliNotas;
     }
 }

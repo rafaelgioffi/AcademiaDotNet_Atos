@@ -1,9 +1,11 @@
-﻿using System.Data;
+﻿using MiniERP_2_2.Classes;
+using System.Data;
 
 namespace MiniERP.Views
 {
     public partial class frmClientes : Form
     {
+        AtosUfnContext context = new AtosUfnContext();
         public frmClientes()
         {
             InitializeComponent();
@@ -18,10 +20,18 @@ namespace MiniERP.Views
 
         private void AtualizaClientes()
         {
-            
+            try
+            {
+                List<Clientes> cliente = (from Clientes c in context.Clientes select c).ToList<Clientes>();
+
+                dgvClientes.DataSource = cliente;
 
                 lblStatus.Text = $"{dgvClientes.RowCount} clientes cadastrados";
-            
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao recuperar os dados do banco de dados...\nFeche a janela e tente novamente...");
+            }                       
         }
 
         private void frmClientes_FormClosed(object sender, FormClosedEventArgs e)
@@ -60,9 +70,25 @@ namespace MiniERP.Views
             }
             else
             {
-                
+                try
+                {
+                    Clientes cli = new Clientes();
+                    cli.CliNome = txtNomeCli.Text;
+                    cli.CliTel = txtTelCli.Text;
 
-                
+                    context.Clientes.Add(cli);
+                    context.SaveChanges();
+
+                    MessageBox.Show($"'{txtNomeCli.Text}' cadastrado com sucesso!", "Sucesso");
+
+                    AtualizaClientes();
+
+                    grpCadCli.Visible = false;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Erro ao cadastrar o cliecedor '{txtNomeCli.Text}'... Verifique os dados e tente novamente", "Falha ao cadastrar");
+                }
             }
         }
 
@@ -79,13 +105,17 @@ namespace MiniERP.Views
 
         private void btnExcluiCli_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show($"Tem certeza que deseja excluir o cliente '{dgvClientes.SelectedRows[0].Cells[1].Value.ToString()}' do ID {dgvClientes.SelectedRows[0].Cells[0].Value.ToString()}?", "Exclusão de cliente", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {             
-                
+            string cliNomeEx = dgvClientes.SelectedRows[0].Cells[1].Value.ToString();
+            if (MessageBox.Show($"Tem certeza que deseja excluir o cliente '{cliNomeEx}' do ID {dgvClientes.SelectedRows[0].Cells[0].Value.ToString()}?", "Exclusão de cliente", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                Clientes cliId = context.Clientes.Find(dgvClientes.SelectedRows[0].Cells[0].Value);
 
-                
+                context.Clientes.Remove(cliId);
+                context.SaveChanges();
 
-                
+                AtualizaClientes();
+
+                MessageBox.Show($"Cliente '{cliNomeEx}' excluído com sucesso!", "Sucesso ao excluir");
             }
         }
 
@@ -98,11 +128,12 @@ namespace MiniERP.Views
         {
             if (txtPesquisa.Text.Length > 3)
             {
-                
-                DataTable dt = new DataTable();
-                //dt = bd.Consulta($"SELECT CliId 'ID', CliNome 'Nome', CliTel 'Telefone' FROM Clientes WHERE CliNome LIKE '%{txtPesquisa.Text}%'");
 
-                dgvClientes.DataSource = dt;
+                List<Clientes> cliente = context.Clientes.Where(cli => cli.CliNome.Contains(txtPesquisa.Text)).ToList<Clientes>();
+
+                dgvClientes.DataSource = cliente;
+
+                lblStatus.Text = $"{dgvClientes.RowCount} Clientes encontrados";
             }
             else
             {

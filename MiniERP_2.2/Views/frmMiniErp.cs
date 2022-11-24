@@ -14,10 +14,10 @@ namespace MiniERP
         {
             lblStatusBar.Text = $"Carregando {tela}, aguarde...";
             
-            button1.Enabled = false;
-            button2.Enabled = false;
-            button3.Enabled = false;
-            button4.Enabled = false;
+            btnProd.Enabled = false;
+            btnForn.Enabled = false;
+            btnCli.Enabled = false;
+            btnNot.Enabled = false;
         }
         private void button1_Click(object sender, EventArgs e)
         {

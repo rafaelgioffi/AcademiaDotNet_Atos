@@ -8,5 +8,5 @@ public partial class Clientes
 
     public string? CliTel { get; set; }
 
-    public virtual ICollection<Notas> Nota { get; } = new List<Notas>();
+    //public virtual ICollection<Notas> Nota { get; } = new List<Notas>();
 }
