@@ -35,6 +35,9 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.statusBar = new System.Windows.Forms.StatusStrip();
+            this.lblStatusBar = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -115,11 +118,29 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // statusBar
+            // 
+            this.statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblStatusBar});
+            this.statusBar.Location = new System.Drawing.Point(0, 94);
+            this.statusBar.Name = "statusBar";
+            this.statusBar.Size = new System.Drawing.Size(518, 22);
+            this.statusBar.TabIndex = 4;
+            this.statusBar.Text = "statusStrip1";
+            // 
+            // lblStatusBar
+            // 
+            this.lblStatusBar.AutoSize = false;
+            this.lblStatusBar.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.lblStatusBar.Name = "lblStatusBar";
+            this.lblStatusBar.Size = new System.Drawing.Size(500, 17);
+            // 
             // frmMiniErp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(518, 97);
+            this.ClientSize = new System.Drawing.Size(518, 116);
+            this.Controls.Add(this.statusBar);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -129,6 +150,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "..:: Mini ERP - Atos/UFN ::..";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMiniErp_FormClosed);
+            this.statusBar.ResumeLayout(false);
+            this.statusBar.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -141,5 +164,7 @@
         private Button button2;
         private Button button3;
         private Button button4;
+        private StatusStrip statusBar;
+        private ToolStripStatusLabel lblStatusBar;
     }
 }

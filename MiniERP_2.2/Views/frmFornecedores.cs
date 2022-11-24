@@ -14,10 +14,10 @@ namespace MiniERP
         {
             try
             {
-                Banco bd = new Banco();
+                
                 DataTable dt = new DataTable();
 
-                dt = bd.Consulta("SELECT FornId 'ID', FornNome 'Nome', FornCnpj 'CNPJ' FROM Fornecedores");
+                //dt = bd.Consulta("SELECT FornId 'ID', FornNome 'Nome', FornCnpj 'CNPJ' FROM Fornecedores");
 
                 dgvForn.DataSource = dt;
 
@@ -57,9 +57,9 @@ namespace MiniERP
         {
             if (txtPesquisa.Text.Length > 3)
             {
-                Banco bd = new Banco();
+                
                 DataTable dt = new DataTable();
-                dt = bd.Consulta($"SELECT FornId 'ID', FornNome 'Nome', FornCnpj 'CNPJ' FROM Fornecedores WHERE FornNome LIKE '%{txtPesquisa.Text}%'");
+                //dt = bd.Consulta($"SELECT FornId 'ID', FornNome 'Nome', FornCnpj 'CNPJ' FROM Fornecedores WHERE FornNome LIKE '%{txtPesquisa.Text}%'");
 
                 dgvForn.DataSource = dt;
             }
@@ -105,22 +105,7 @@ namespace MiniERP
             }
             else
             {
-                Fornecedores fornecedor = new Fornecedores();
-                fornecedor.FornNome = txtNomeForn.Text;
-                fornecedor.FornCnpj = txtCnpjForn.Text;
-
-                if (fornecedor.CadastraForn())
-                {
-                    MessageBox.Show("Fornecedor cadastrado com sucesso!");
-                    AtualizaForn();
-                    LimparCampos();
-                    grpCadForn.Visible = false;
-                }
-                else
-                {
-                    MessageBox.Show("Falha ao cadastrar o fornecedor. Tente novamente...");
-                    AtualizaForn();
-                }
+                
             }
         }
 
@@ -128,30 +113,10 @@ namespace MiniERP
         {
             if (MessageBox.Show($"Tem certeza que deseja excluir o fornecedor '{dgvForn.SelectedRows[0].Cells[1].Value.ToString()}' do ID {dgvForn.SelectedRows[0].Cells[0].Value.ToString()}?", "Exclusão de fornecedor", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                Fornecedores fornecedor = new Fornecedores();
-                fornecedor.FornId = int.Parse(dgvForn.SelectedRows[0].Cells[0].Value.ToString());
-                fornecedor.FornNome = dgvForn.SelectedRows[0].Cells[2].Value.ToString();
-
-                fornecedor.ConsultaForn(fornecedor.FornId);
-
-                if (fornecedor == null)
-                {
-                    MessageBox.Show($"Erro ao excluir o fornecedor '{fornecedor.FornNome}'.\nTente novamente");
-                    return;
-                }
-                bool retorno = fornecedor.ExcluiForn();
-
-                if (retorno)
-                {
-                    AtualizaForn();
-                    MessageBox.Show($"'{fornecedor.FornNome}' excluído com sucesso!", "fornecedor excluído");
-                }
-                else
-                {
-                    MessageBox.Show($"Erro ao excluir o fornecedor '{fornecedor.FornNome}'.\nTente novamente");
+                
                     AtualizaForn();
                 }
             }
         }
     }
-}
+

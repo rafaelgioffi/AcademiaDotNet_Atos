@@ -1,4 +1,4 @@
-use atosUfn
+use MiniErp2_2
 
 CREATE TABLE Fornecedores
 (

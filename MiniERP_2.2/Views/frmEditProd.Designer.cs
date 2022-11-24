@@ -153,6 +153,7 @@
             // 
             // txtIdForn
             // 
+            this.txtIdForn.Enabled = false;
             this.txtIdForn.Location = new System.Drawing.Point(628, 51);
             this.txtIdForn.Maximum = new decimal(new int[] {
             10000,
@@ -165,6 +166,7 @@
             0,
             0});
             this.txtIdForn.Name = "txtIdForn";
+            this.txtIdForn.ReadOnly = true;
             this.txtIdForn.Size = new System.Drawing.Size(58, 23);
             this.txtIdForn.TabIndex = 19;
             this.txtIdForn.Value = new decimal(new int[] {
@@ -178,6 +180,7 @@
             this.txtNomeProd.Location = new System.Drawing.Point(66, 12);
             this.txtNomeProd.MaxLength = 60;
             this.txtNomeProd.Name = "txtNomeProd";
+            this.txtNomeProd.ReadOnly = true;
             this.txtNomeProd.Size = new System.Drawing.Size(467, 23);
             this.txtNomeProd.TabIndex = 18;
             // 

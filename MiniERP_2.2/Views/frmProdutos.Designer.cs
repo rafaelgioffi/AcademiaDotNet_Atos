@@ -52,6 +52,15 @@
             this.btnExcluiProd = new System.Windows.Forms.Button();
             this.btnEditarProd = new System.Windows.Forms.Button();
             this.btnCadastrarProd = new System.Windows.Forms.Button();
+            this.ProdId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FornId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdValUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdQuant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpCadProd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuantProd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIdForn)).BeginInit();
@@ -275,6 +284,16 @@
             this.dgvProd.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProd.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgvProd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProd.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ProdId,
+            this.FornId,
+            this.ProdNome,
+            this.ProdDesc,
+            this.ProdValUnit,
+            this.ProdQuant,
+            this.Column1,
+            this.Column2,
+            this.Column3});
             this.dgvProd.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvProd.Location = new System.Drawing.Point(3, 35);
             this.dgvProd.MultiSelect = false;
@@ -352,6 +371,98 @@
             this.btnCadastrarProd.UseVisualStyleBackColor = true;
             this.btnCadastrarProd.Click += new System.EventHandler(this.btnCadastrarProd_Click);
             // 
+            // ProdId
+            // 
+            this.ProdId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ProdId.DataPropertyName = "ProdId";
+            this.ProdId.FillWeight = 152.2843F;
+            this.ProdId.HeaderText = "ID";
+            this.ProdId.MinimumWidth = 50;
+            this.ProdId.Name = "ProdId";
+            this.ProdId.ReadOnly = true;
+            this.ProdId.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.ProdId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.ProdId.Width = 50;
+            // 
+            // FornId
+            // 
+            this.FornId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.FornId.DataPropertyName = "FornId";
+            this.FornId.FillWeight = 152.2843F;
+            this.FornId.HeaderText = "Fornecedor";
+            this.FornId.Name = "FornId";
+            this.FornId.ReadOnly = true;
+            this.FornId.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.FornId.Width = 60;
+            // 
+            // ProdNome
+            // 
+            this.ProdNome.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ProdNome.DataPropertyName = "ProdNome";
+            this.ProdNome.FillWeight = 8.138462F;
+            this.ProdNome.HeaderText = "Nome";
+            this.ProdNome.Name = "ProdNome";
+            this.ProdNome.ReadOnly = true;
+            this.ProdNome.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.ProdNome.Width = 200;
+            // 
+            // ProdDesc
+            // 
+            this.ProdDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ProdDesc.DataPropertyName = "ProdDesc";
+            this.ProdDesc.FillWeight = 62.90539F;
+            this.ProdDesc.HeaderText = "Descrição";
+            this.ProdDesc.Name = "ProdDesc";
+            this.ProdDesc.ReadOnly = true;
+            this.ProdDesc.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.ProdDesc.Width = 250;
+            // 
+            // ProdValUnit
+            // 
+            this.ProdValUnit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ProdValUnit.DataPropertyName = "ProdValUnit";
+            this.ProdValUnit.FillWeight = 74.09325F;
+            this.ProdValUnit.HeaderText = "Valor";
+            this.ProdValUnit.Name = "ProdValUnit";
+            this.ProdValUnit.ReadOnly = true;
+            this.ProdValUnit.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.ProdValUnit.Width = 60;
+            // 
+            // ProdQuant
+            // 
+            this.ProdQuant.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ProdQuant.DataPropertyName = "ProdQuant";
+            this.ProdQuant.FillWeight = 150.2944F;
+            this.ProdQuant.HeaderText = "Quantidade";
+            this.ProdQuant.Name = "ProdQuant";
+            this.ProdQuant.ReadOnly = true;
+            this.ProdQuant.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.ProdQuant.Width = 75;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "Forn";
+            this.Column1.HeaderText = "Forn";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Visible = false;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "InverseForn";
+            this.Column2.HeaderText = "InverseForn";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Visible = false;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "Nota";
+            this.Column3.HeaderText = "Nota";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Visible = false;
+            // 
             // frmProdutos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -406,5 +517,14 @@
         private Button btnCadastrarProd;
         private TextBox txtProdId;
         private Label label7;
+        private DataGridViewTextBoxColumn ProdId;
+        private DataGridViewTextBoxColumn FornId;
+        private DataGridViewTextBoxColumn ProdNome;
+        private DataGridViewTextBoxColumn ProdDesc;
+        private DataGridViewTextBoxColumn ProdValUnit;
+        private DataGridViewTextBoxColumn ProdQuant;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
     }
 }

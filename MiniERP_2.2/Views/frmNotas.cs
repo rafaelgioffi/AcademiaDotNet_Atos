@@ -1,6 +1,5 @@
 ﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
-using MiniERP.Classes;
 using System.Data;
 
 namespace MiniERP.Views
@@ -16,10 +15,10 @@ namespace MiniERP.Views
         {
             try
             {
-                Banco bd = new Banco();
+                
                 DataTable dt = new DataTable();
 
-                dt = bd.Consulta("SELECT NotId 'ID', NotInfo 'Observações', NotDataHora 'Data e Hora', NotTipo 'Tipo', CliId 'ID do Cliente', ProdId 'ID do Produto' FROM Notas");
+                //dt = bd.Consulta("SELECT NotId 'ID', NotInfo 'Observações', NotDataHora 'Data e Hora', NotTipo 'Tipo', CliId 'ID do Cliente', ProdId 'ID do Produto' FROM Notas");
 
                 dgvNotas.DataSource = dt;
 
@@ -42,9 +41,9 @@ namespace MiniERP.Views
         {
             if (txtPesquisa.Text.Length > 3)
             {
-                Banco bd = new Banco();
+               
                 DataTable dt = new DataTable();
-                dt = bd.Consulta($"SELECT NotId 'ID', NotInfo 'Observações', NotDataHora 'Data e Hora', NotTipo 'Tipo', CliId 'ID do Cliente', ProdId 'ID do Produto' FROM Notas WHERE NotInfo LIKE '%{txtPesquisa.Text}%'");
+                //dt = bd.Consulta($"SELECT NotId 'ID', NotInfo 'Observações', NotDataHora 'Data e Hora', NotTipo 'Tipo', CliId 'ID do Cliente', ProdId 'ID do Produto' FROM Notas WHERE NotInfo LIKE '%{txtPesquisa.Text}%'");
 
                 dgvNotas.DataSource = dt;
             }
@@ -96,28 +95,7 @@ namespace MiniERP.Views
         {
             if (MessageBox.Show($"Tem certeza que deseja excluir a nota ID '{dgvNotas.SelectedRows[0].Cells[0].Value.ToString()}'?", "Exclusão de nota", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                Notas nota = new Notas();
-                nota.NotId = dgvNotas.SelectedRows[0].Cells[0].Value.ToString();
-
-                nota.ConsultaNot(nota.NotId);
-
-                if (nota == null)
-                {
-                    MessageBox.Show($"Erro ao excluir a nota '{nota.NotId}'.\nTente novamente");
-                    return;
-                }
-                bool retorno = nota.ExcluiNot();
-
-                if (retorno)
-                {
-                    AtualizaNotas();
-                    MessageBox.Show($"'{nota.NotId}' excluída com sucesso!", "Nota excluída");
-                }
-                else
-                {
-                    MessageBox.Show($"Erro ao excluir a nota '{nota.NotId}'.\nTente novamente");
-                    AtualizaNotas();
-                }
+               
             }
         }
 
@@ -165,27 +143,13 @@ namespace MiniERP.Views
                 {
                     compraVenda = rdVenda.Text;
                 }
-                Notas nota = new Notas();
-                nota.NotId = NotId;
-                nota.NotInfo = txtInfoNota.Text;
-                nota.NotDataHora = datahoraFormat;
-                nota.NotTipo = compraVenda;
-                nota.CliId = int.Parse(txtIdCli.Value.ToString());
-                nota.ProdId = int.Parse(txtIdProd.Value.ToString());
-
-                if (nota.CadastraNota())
-                {
+                
                     MessageBox.Show("Nota cadastrada com sucesso!");
                     AtualizaNotas();
                     LimparCampos();
                     grpCadNota.Visible = false;
                     btnCadastrarNota.Enabled = true;
-                }
-                else
-                {
-                    MessageBox.Show("Falha ao cadastrar a nota. Tente novamente...");
-                    AtualizaNotas();
-                }
+                
             }
         }
 

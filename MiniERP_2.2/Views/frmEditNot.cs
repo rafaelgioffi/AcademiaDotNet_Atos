@@ -1,4 +1,4 @@
-﻿using MiniERP.Classes;
+﻿
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,23 +33,9 @@ namespace MiniERP.Views
 
         private void btnEdtNot_Click(object sender, EventArgs e)
         {
-            Notas nota = new Notas();
-            nota.NotId = txtIdNot.Text;
-            nota.NotInfo = txtInfoNota.Text;            
-
-            bool atualizar = nota.EditaNot();
-
-            if (atualizar)
-            {
-                MessageBox.Show($"Nota '{txtIdNot.Text}' atualizada com sucesso!", "Sucesso");
-                frmNotas frmForn = new frmNotas();
-                frmForn.Show();
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show($"Falha ao atualizar a nota '{txtIdNot.Text}'... Tente novamente.", "Falha");
-            }
+           
+            
+            
         }
 
         private void btnCancelNot_Click(object sender, EventArgs e)

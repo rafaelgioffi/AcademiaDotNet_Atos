@@ -32,24 +32,7 @@ namespace MiniERP
 
         private void btnEdtForn_Click(object sender, EventArgs e)
         {
-            Fornecedores fornecedor = new Fornecedores();
-            fornecedor.FornId = int.Parse(txtFornId.Text);            
-            fornecedor.FornNome = txtNomeForn.Text;            
-            fornecedor.FornCnpj = txtCnpjForn.Text;            
-
-            bool atualizar = fornecedor.EditaForn();
-
-            if (atualizar)
-            {
-                MessageBox.Show($"'{txtNomeForn.Text}' atualizado com sucesso!", "Sucesso");
-                frmFornecedores frmForn = new frmFornecedores();
-                frmForn.Show();
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show($"Falha ao atualizar o fornecedor '{txtNomeForn.Text}'... Tente novamente.", "Falha");
-            }
+            
         }
     }
 }

@@ -1,9 +1,11 @@
-﻿using System.Data;
+﻿using MiniERP_2_2.Classes;
+using System.Data;
 
 namespace MiniERP
 {
     public partial class frmProdutos : Form
     {
+        AtosUfnContext context = new AtosUfnContext();
         public int selecionado;
         public frmProdutos()
         {
@@ -32,14 +34,13 @@ namespace MiniERP
         }
 
         private void AtualizaProd()
-        {
+        {            
             try
-            {
-                Banco bd = new Banco();
+            {                
                 DataTable dt = new DataTable();
-                dt = bd.Consulta("SELECT ProdId 'ID', FornId 'Fornecedor', ProdNome 'Nome', ProdDesc 'Descrição', ProdValUnit 'Valor', ProdQuant 'Quantidade' FROM Produtos");
-
-                dgvProd.DataSource = dt;
+                List<Produto> produto = (from Produto p in context.Produtos select p).ToList<Produto>();
+                
+                dgvProd.DataSource = produto;
 
                 lblStatus.Text = $"{dgvProd.RowCount} produtos cadastrados";
             }
@@ -68,35 +69,36 @@ namespace MiniERP
             }
             else
             {
-                float valor;
-                float.TryParse(txtValProd.Text, out valor);
+                decimal valor;
+                decimal quant;
+                decimal.TryParse(txtValProd.Text, out valor);
+                decimal.TryParse(txtQuantProd.Text, out quant);
 
                 if (valor <= 0)
                 {
                     MessageBox.Show("Favor inserir um valor válido");
                     txtValProd.Focus();
                 }
+                else if (quant < 0)
+                {
+                    MessageBox.Show("Não é possível definir valores negativos na quantidade");
+                    txtQuantProd.Focus();
+                }
                 else
                 {
-                    Produtos produto = new Produtos();
-                    produto.FornId = int.Parse(txtIdForn.Text);
-                    produto.ProdNome = txtNomeProd.Text;
-                    produto.ProdDesc = txtDescProd.Text;
-                    produto.ProdValUnit = float.Parse(txtValProd.Text);
-                    produto.ProdQuant = int.Parse(txtQuantProd.Text);
+                    Produto prod = new Produto();
+                    prod.FornId = int.Parse(txtIdForn.Value.ToString());
+                    prod.ProdNome = txtNomeProd.Text;
+                    prod.ProdDesc = txtDescProd.Text;
+                    prod.ProdValUnit = valor;
+                    prod.ProdQuant = int.Parse(txtQuantProd.Text);
 
-                    if (produto.CadastraProd())
-                    {
-                        MessageBox.Show("Produto cadastrado com sucesso!");
-                        AtualizaProd();
-                        CancelarRegProd();
-                        grpCadProd.Visible = false;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Falha ao cadastrar o produto. Tente novamente...");
-                        AtualizaProd();
-                    }
+                    context.Produtos.Add(prod);
+                    context.SaveChanges();
+
+                    MessageBox.Show("Produto cadastrado com sucesso!");
+
+                    AtualizaProd();
                 }
             }
         }
@@ -112,29 +114,14 @@ namespace MiniERP
         {
             if (MessageBox.Show($"Tem certeza que deseja excluir o produto '{dgvProd.SelectedRows[0].Cells[2].Value.ToString()}' do ID {dgvProd.SelectedRows[0].Cells[0].Value.ToString()}?", "Exclusão de produto", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                Produtos produto = new Produtos();
-                produto.ProdId = selecionado;
-                produto.ProdNome = dgvProd.SelectedRows[0].Cells[2].Value.ToString();
+                Produto prodId = context.Produtos.Find(
+                    dgvProd.SelectedRows[0].Cells[0].Value);
+                context.Produtos.Remove(prodId);
+                context.SaveChanges();
 
-                produto.ConsultaProd(produto.ProdId);
+                AtualizaProd();
 
-                if (produto == null)
-                {
-                    MessageBox.Show($"Erro ao excluir o produto '{produto.ProdNome}'.\nTente novamente");
-                    return;
-                }
-                bool retorno = produto.ExcluiProd();
-
-                if (retorno)
-                {
-                    AtualizaProd();
-                    MessageBox.Show($"'{produto.ProdNome}' excluído com sucesso!", "Produto excluído");
-                }
-                else
-                {
-                    MessageBox.Show($"Erro ao excluir o produto '{produto.ProdNome}'.\nTente novamente");
-                    AtualizaProd();
-                }
+                MessageBox.Show("Produto excluído com sucesso!");
             }
         }
 
@@ -166,12 +153,14 @@ namespace MiniERP
         {
             if (txtPesquisa.Text.Length > 3)
             {
-                Banco bd = new Banco();
                 DataTable dt = new DataTable();
-                dt = bd.Consulta("SELECT ProdId 'ID', FornId 'Fornecedor', ProdNome 'Nome', ProdDesc 'Descrição', ProdValUnit 'Valor', ProdQuant 'Quantidade' FROM Produtos WHERE ProdNome LIKE '%" + txtPesquisa.Text + "%'");
+                List<Produto> produto = context.Produtos.Where(prod => prod.ProdNome.Contains(txtPesquisa.Text)).ToList<Produto>();
 
-                dgvProd.DataSource = dt;
+                dgvProd.DataSource = produto;
+
+                lblStatus.Text = $"{dgvProd.RowCount} produtos encontrados";
             }
+        
             else
             {
                 AtualizaProd();
