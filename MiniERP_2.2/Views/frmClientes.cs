@@ -1,7 +1,8 @@
-﻿using MiniERP_2_2.Classes;
+﻿using Microsoft.IdentityModel.Tokens;
+using MiniERP_2_2.Classes;
 using System.Data;
 
-namespace MiniERP.Views
+namespace MiniERP
 {
     public partial class frmClientes : Form
     {
@@ -17,7 +18,6 @@ namespace MiniERP.Views
             txtNomeCli.Clear();
             txtTelCli.Clear();
         }
-
         private void AtualizaClientes()
         {
             try
@@ -51,7 +51,7 @@ namespace MiniERP.Views
         }
 
         private void dgvClientes_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
+        {            
             btnEditarCli.Enabled = true;
             btnExcluiCli.Enabled = true;
         }
@@ -63,10 +63,21 @@ namespace MiniERP.Views
 
         private void btnCadCli_Click(object sender, EventArgs e)
         {
+            string cel = txtTelCli.Text;
+            cel = cel.Replace(" ","");
+            cel = cel.Replace("(","");
+            cel = cel.Replace(")","");
+            cel = cel.Replace("-","");
+            
             if (string.IsNullOrWhiteSpace(txtNomeCli.Text))
             {
                 MessageBox.Show("O campo Nome é de preenchimento obrigatório");
                 txtNomeCli.Focus();
+            }
+            else if (cel.Length > 0 && cel.Length < 11)
+            {
+                MessageBox.Show("Favor preencha o número do telefone celular completo ou deixe vazio.");
+                txtTelCli.Focus();
             }
             else
             {
@@ -74,7 +85,13 @@ namespace MiniERP.Views
                 {
                     Clientes cli = new Clientes();
                     cli.CliNome = txtNomeCli.Text;
-                    cli.CliTel = txtTelCli.Text;
+                    if(cel.IsNullOrEmpty())
+                    {
+                        cli.CliTel = "";
+                    } else
+                    {
+                        cli.CliTel = txtTelCli.Text;
+                    }
 
                     context.Clientes.Add(cli);
                     context.SaveChanges();
@@ -87,22 +104,10 @@ namespace MiniERP.Views
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Erro ao cadastrar o cliecedor '{txtNomeCli.Text}'... Verifique os dados e tente novamente", "Falha ao cadastrar");
+                    MessageBox.Show($"Erro ao cadastrar o cliente '{txtNomeCli.Text}'... Verifique os dados e tente novamente", "Falha ao cadastrar");
                 }
             }
-        }
-
-        private void btnEditarCli_Click(object sender, EventArgs e)
-        {
-            frmEditCli cliente = new frmEditCli();
-            cliente.txtCliId.Text = dgvClientes.SelectedRows[0].Cells[0].Value.ToString();
-            cliente.txtNomeCli.Text = dgvClientes.SelectedRows[0].Cells[1].Value.ToString();
-            cliente.txtTelCli.Text = dgvClientes.SelectedRows[0].Cells[2].Value.ToString();
-
-            cliente.Show();
-            this.Hide();
-        }
-
+        }      
         private void btnExcluiCli_Click(object sender, EventArgs e)
         {
             string cliNomeEx = dgvClientes.SelectedRows[0].Cells[1].Value.ToString();
@@ -139,7 +144,17 @@ namespace MiniERP.Views
             {
                 AtualizaClientes();
             }
-        }
+        }       
 
+        private void btnEditarCli_Click(object sender, EventArgs e)
+        {
+            frmEditCli cli = new frmEditCli();
+            cli.txtCliId.Text = dgvClientes.SelectedRows[0].Cells[0].Value.ToString();
+            cli.txtNomeCli.Text = dgvClientes.SelectedRows[0].Cells[1].Value.ToString();            
+            cli.txtCliTel.Text = dgvClientes.SelectedRows[0].Cells[2].Value.ToString();
+
+            cli.Show();
+            this.Hide();
+        }
     }
 }

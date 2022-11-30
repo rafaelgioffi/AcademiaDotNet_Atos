@@ -32,7 +32,6 @@
 /anotacoesAlexandre/Exercicio1_lista3/obj
 /anotacoesAlexandre/Exercicio1_lista3/Exercicio1_lista3.csproj
 *.sln
-*.csproj
 /anotacoesAlexandre/Exercicio3_lista3/bin/Debug/net6.0
 /anotacoesAlexandre/Exercicio3_lista3/obj
 /anotacoesAlexandre/Exercicio7_lista3/obj
@@ -136,3 +135,13 @@
 /RestAPI Primeiro Exemplo/.vs
 /RestAPI Primeiro Exemplo/bin/Debug/net6.0
 /RestAPI Primeiro Exemplo/obj
+/RestApi Exercicio 2/.vs/RestApi Exercicio 2
+/RestApi Exercicio 2/obj
+/RestApi Exercicio 2/bin/Debug/net6.0
+/RestApi Exercicio 2/Properties
+/RestApi Exercicio 2/appsettings.Development.json
+/RestApi Exercicio 2/appsettings.json
+/anotacoesAlexandre/Exercicio3_lista3/Exercicio3_lista3.csproj
+/anotacoesAlexandre/Exercicio7_lista3/Exercicio7_lista3.csproj
+/anotacoesAlexandre/OO/ExemploOONativo1/ExemploOONativo1.csproj
+/Aulas_OO/Aulas_OO.csproj

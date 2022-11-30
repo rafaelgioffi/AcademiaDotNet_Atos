@@ -1,7 +1,7 @@
-﻿
+﻿using Microsoft.IdentityModel.Tokens;
 using MiniERP_2_2.Classes;
 
-namespace MiniERP.Views
+namespace MiniERP
 {
     public partial class frmEditCli : Form
     {
@@ -19,18 +19,36 @@ namespace MiniERP.Views
 
         private void btnEdtCli_Click(object sender, EventArgs e)
         {
+            string cel = txtCliTel.Text;
+            cel = cel.Replace(" ", "");
+            cel = cel.Replace("(", "");
+            cel = cel.Replace(")", "");
+            cel = cel.Replace("-", "");
+            
             if (string.IsNullOrWhiteSpace(txtNomeCli.Text))
             {
-                MessageBox.Show("O campo Nome é de preenchimento obrigatório", "Erro");
+                MessageBox.Show("O campo Nome é de preenchimento obrigatório");
                 txtNomeCli.Focus();
-            }                 
+            }
+            else if (cel.Length > 0 && cel.Length < 11)
+            {
+                MessageBox.Show("Favor preencha o número do telefone celular completo ou deixe vazio.");
+                txtCliTel.Focus();
+            }
             else
             {
                 try
                 {
                     Clientes updCli = context.Clientes.Find(int.Parse(txtCliId.Text));
                     updCli.CliNome = txtNomeCli.Text;
-                    updCli.CliTel = txtTelCli.Text;
+                    if (cel.Length == 0)
+                    {
+                        updCli.CliTel = "";
+                    }
+                    else
+                    {
+                        updCli.CliTel = txtCliTel.Text;
+                    }                    
 
                     context.Clientes.Update(updCli);
                     context.SaveChanges();

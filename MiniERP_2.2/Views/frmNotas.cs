@@ -1,11 +1,13 @@
 ﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
+using MiniERP_2_2.Classes;
 using System.Data;
 
 namespace MiniERP.Views
 {
     public partial class frmNotas : Form
     {
+        AtosUfnContext context = new AtosUfnContext();
         public frmNotas()
         {
             InitializeComponent();
@@ -15,12 +17,8 @@ namespace MiniERP.Views
         {
             try
             {
-                
-                DataTable dt = new DataTable();
-
-                //dt = bd.Consulta("SELECT NotId 'ID', NotInfo 'Observações', NotDataHora 'Data e Hora', NotTipo 'Tipo', CliId 'ID do Cliente', ProdId 'ID do Produto' FROM Notas");
-
-                dgvNotas.DataSource = dt;
+                List<Notas> notas = (from Notas n in context.Notas select n).ToList<Notas>();
+                dgvNotas.DataSource = notas;
 
                 lblStatus.Text = $"{dgvNotas.RowCount} notas cadastradas";
             }
@@ -143,12 +141,33 @@ namespace MiniERP.Views
                 {
                     compraVenda = rdVenda.Text;
                 }
-                
+
+                try
+                {
+                    Notas nota = new Notas();
+
+                    nota.NotId = NotId;
+                    nota.NotInfo = txtInfoNota.Text;
+                    nota.NotDataHora = datahora;
+                    nota.NotInfo = compraVenda;
+                    nota.CliId = cliId;
+                    nota.ProdId = prodId;
+
+                    context.Notas.Add(nota);
+                    context.SaveChanges();
+                    
                     MessageBox.Show("Nota cadastrada com sucesso!");
                     AtualizaNotas();
                     LimparCampos();
                     grpCadNota.Visible = false;
                     btnCadastrarNota.Enabled = true;
+
+                } catch (Exception ex)
+                {
+                    MessageBox.Show($"Falha ao cadastrar a nota '{NotId}'...","Erro");
+                }
+
+
                 
             }
         }
