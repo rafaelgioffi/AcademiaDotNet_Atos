@@ -15,7 +15,7 @@ namespace RestApi_Exercicio_2.Controllers
         {
             var aluno = await context.Aluno.AsNoTracking().ToListAsync();
 
-            return aluno == null ? NotFound("Nenhum(a) aluno(a) cadastrado(a)") : Ok(aluno);
+            return !aluno.Any() ? NotFound("Nenhum(a) aluno(a) cadastrado(a)") : Ok(aluno);
         }
 
         //retorna um aluno especifico...
