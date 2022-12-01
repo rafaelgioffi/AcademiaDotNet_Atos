@@ -3,7 +3,7 @@ using iTextSharp.text.pdf;
 using MiniERP_2_2.Classes;
 using System.Data;
 
-namespace MiniERP.Views
+namespace MiniERP
 {
     public partial class frmNotas : Form
     {
@@ -39,11 +39,12 @@ namespace MiniERP.Views
         {
             if (txtPesquisa.Text.Length > 3)
             {
-               
-                DataTable dt = new DataTable();
-                //dt = bd.Consulta($"SELECT NotId 'ID', NotInfo 'Observações', NotDataHora 'Data e Hora', NotTipo 'Tipo', CliId 'ID do Cliente', ProdId 'ID do Produto' FROM Notas WHERE NotInfo LIKE '%{txtPesquisa.Text}%'");
 
-                dgvNotas.DataSource = dt;
+                List<Notas> nota = context.Notas.Where(not => not.NotInfo.Contains(txtPesquisa.Text)).ToList<Notas>();
+
+                dgvNotas.DataSource = nota;
+
+                lblStatus.Text = $"{dgvNotas.RowCount} notas encontradas";
             }
             else
             {
@@ -58,7 +59,7 @@ namespace MiniERP.Views
         }
 
         private void dgvNotas_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
+        {            
             btnEditarNota.Enabled = true;
             btnExcluiNota.Enabled = true;
         }
@@ -72,18 +73,18 @@ namespace MiniERP.Views
         private void btnEditarNota_Click(object sender, EventArgs e)
         {
             frmEditNot nota = new frmEditNot();
-            nota.txtIdNot.Text = dgvNotas.SelectedRows[0].Cells[0].Value.ToString();
-            nota.txtInfoNota.Text = dgvNotas.SelectedRows[0].Cells[1].Value.ToString();
-            if (dgvNotas.SelectedRows[0].Cells[3].Value.ToString() == "Compra")
+            nota.txtIdNot.Text = dgvNotas.SelectedRows[0].Cells[2].Value.ToString();
+            nota.txtInfoNota.Text = dgvNotas.SelectedRows[0].Cells[3].Value.ToString();
+            if (dgvNotas.SelectedRows[0].Cells[5].Value.ToString() == "Compra")
             {
                 nota.rdCompra.Checked = true;
             }
-            else if (dgvNotas.SelectedRows[0].Cells[3].Value.ToString() == "Venda")
+            else if (dgvNotas.SelectedRows[0].Cells[5].Value.ToString() == "Venda")
             {
                 nota.rdVenda.Checked = true;
             }
-            nota.txtIdCli.Text = dgvNotas.SelectedRows[0].Cells[4].Value.ToString();
-            nota.txtIdProd.Text = dgvNotas.SelectedRows[0].Cells[5].Value.ToString();
+            nota.txtIdCli.Text = dgvNotas.SelectedRows[0].Cells[6].Value.ToString();
+            nota.txtIdProd.Text = dgvNotas.SelectedRows[0].Cells[7].Value.ToString();
 
             nota.Show();
             this.Hide();
@@ -91,13 +92,21 @@ namespace MiniERP.Views
 
         private void btnExcluiNota_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show($"Tem certeza que deseja excluir a nota ID '{dgvNotas.SelectedRows[0].Cells[0].Value.ToString()}'?", "Exclusão de nota", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            string notIdEx = dgvNotas.SelectedRows[0].Cells[2].Value.ToString();
+            if (MessageBox.Show($"Tem certeza que deseja excluir a nota com ID '{notIdEx}'?", "Exclusão de nota", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-               
+                Notas notId = context.Notas.Find(notIdEx);
+
+                context.Notas.Remove(notId);
+                context.SaveChanges();
+
+                AtualizaNotas();
+
+                MessageBox.Show($"Nota '{notIdEx}' excluída com sucesso!", "Sucesso ao excluir");
             }
         }
 
-        private void btnCadCli_Click(object sender, EventArgs e)
+        private void btnCadNota_Click(object sender, EventArgs e)
         {
             //tentar converter os id's do cliente e prooduto
             int cliId, prodId;
@@ -149,26 +158,24 @@ namespace MiniERP.Views
                     nota.NotId = NotId;
                     nota.NotInfo = txtInfoNota.Text;
                     nota.NotDataHora = datahora;
-                    nota.NotInfo = compraVenda;
+                    nota.NotTipo = compraVenda;
                     nota.CliId = cliId;
                     nota.ProdId = prodId;
 
                     context.Notas.Add(nota);
                     context.SaveChanges();
-                    
+
                     MessageBox.Show("Nota cadastrada com sucesso!");
                     AtualizaNotas();
                     LimparCampos();
                     grpCadNota.Visible = false;
                     btnCadastrarNota.Enabled = true;
 
-                } catch (Exception ex)
-                {
-                    MessageBox.Show($"Falha ao cadastrar a nota '{NotId}'...","Erro");
                 }
-
-
-                
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Falha ao cadastrar a nota '{NotId}'...", "Erro");
+                }
             }
         }
 
@@ -212,7 +219,7 @@ namespace MiniERP.Views
                 paragrafo.Font = new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 14);
                 paragrafo.Alignment = Element.ALIGN_LEFT;
                 paragrafo.Add($"Gerado {dgvNotas.Rows[i].Cells[2].Value}h\n");
-                
+
                 paragrafo.Font = new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 14);
                 paragrafo.Alignment = Element.ALIGN_LEFT;
                 paragrafo.Add($"Tipo de nota: {dgvNotas.Rows[i].Cells[3].Value}\n");
@@ -232,12 +239,12 @@ namespace MiniERP.Views
             doc.Close();
             MessageBox.Show($"Relatório gerado com sucesso em {arq}!");
             btnGerarPdf.Text = "Gerar PDF";
-            btnGerarPdf.Enabled = true;            
+            btnGerarPdf.Enabled = true;
         }
 
         private void rdCompra_CheckedChanged(object sender, EventArgs e)
         {
-            if(rdCompra.Checked)
+            if (rdCompra.Checked)
             {
                 txtInfoNota.Text = "Compra";
             }
@@ -245,10 +252,12 @@ namespace MiniERP.Views
 
         private void rdVenda_CheckedChanged(object sender, EventArgs e)
         {
-            if(rdVenda.Checked)
+            if (rdVenda.Checked)
             {
                 txtInfoNota.Text = "Venda";
             }
         }
+
+
     }
 }

@@ -1,4 +1,4 @@
-using MiniERP.Views;
+using MiniERP;
 using MiniERP_2_2.Classes;
 
 namespace MiniERP
@@ -13,6 +13,7 @@ namespace MiniERP
         public void CarregaTela(string tela)
         {
             lblStatusBar.Text = $"Carregando {tela}, aguarde...";
+            lblStatusBar.Visible = true;
             
             btnProd.Enabled = false;
             btnForn.Enabled = false;

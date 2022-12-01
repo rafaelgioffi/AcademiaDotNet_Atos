@@ -1,4 +1,4 @@
-using MiniERP.Views;
+using MiniERP;
 
 namespace MiniERP
 {

@@ -6,7 +6,7 @@ namespace MiniERP
     public partial class frmProdutos : Form
     {
         AtosUfnContext context = new AtosUfnContext();
-        public int selecionado;
+
         public frmProdutos()
         {
             InitializeComponent();
@@ -34,12 +34,12 @@ namespace MiniERP
         }
 
         private void AtualizaProd()
-        {            
+        {
             try
-            {                
+            {
                 DataTable dt = new DataTable();
                 List<Produtos> produto = (from Produtos p in context.Produtos select p).ToList<Produtos>();
-                
+
                 dgvProd.DataSource = produto;
 
                 lblStatus.Text = $"{dgvProd.RowCount} produtos cadastrados";
@@ -86,33 +86,42 @@ namespace MiniERP
                 }
                 else
                 {
-                    Produtos prod = new Produtos();
-                    prod.FornId = int.Parse(txtIdForn.Value.ToString());
-                    prod.ProdNome = txtNomeProd.Text;
-                    prod.ProdDesc = txtDescProd.Text;
-                    prod.ProdValUnit = valor;
-                    prod.ProdQuant = int.Parse(txtQuantProd.Text);
+                    try
+                    {
+                        Produtos prod = new Produtos();
+                        prod.FornId = int.Parse(txtIdForn.Value.ToString());
+                        prod.ProdNome = txtNomeProd.Text;
+                        prod.ProdDesc = txtDescProd.Text;
+                        prod.ProdValUnit = valor;
+                        prod.ProdQuant = int.Parse(txtQuantProd.Text);
 
-                    context.Produtos.Add(prod);
-                    context.SaveChanges();
+                        context.Produtos.Add(prod);
+                        context.SaveChanges();
 
-                    MessageBox.Show("Produto cadastrado com sucesso!");
+                        MessageBox.Show($"Produto '{txtNomeProd.Text}' cadastrado com sucesso!");
 
-                    AtualizaProd();
+                        AtualizaProd();
+
+                        grpCadProd.Visible = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Erro ao cadastrar o produto '{txtNomeProd.Text}'... Verifique os dados e tente novamente", "Falha ao cadastrar");
+                    }
                 }
             }
         }
 
         private void dgvProd_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            selecionado = int.Parse(dgvProd.SelectedRows[0].Cells[0].Value.ToString());
             btnExcluiProd.Enabled = true;
             btnEditarProd.Enabled = true;
         }
 
         private void btnExcluiProd_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show($"Tem certeza que deseja excluir o produto '{dgvProd.SelectedRows[0].Cells[2].Value.ToString()}' do ID {dgvProd.SelectedRows[0].Cells[0].Value.ToString()}?", "Exclusão de produto", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            string CliNomeEx = dgvProd.SelectedRows[0].Cells[2].Value.ToString();
+            if (MessageBox.Show($"Tem certeza que deseja excluir o produto '{CliNomeEx}' do ID {dgvProd.SelectedRows[0].Cells[0].Value.ToString()}?", "Exclusão de produto", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 Produtos prodId = context.Produtos.Find(
                     dgvProd.SelectedRows[0].Cells[0].Value);
@@ -121,7 +130,7 @@ namespace MiniERP
 
                 AtualizaProd();
 
-                MessageBox.Show("Produto excluído com sucesso!");
+                MessageBox.Show($"Produto '{CliNomeEx}' excluído com sucesso!");
             }
         }
 
@@ -160,14 +169,14 @@ namespace MiniERP
 
                 lblStatus.Text = $"{dgvProd.RowCount} produtos encontrados";
             }
-        
+
             else
             {
                 AtualizaProd();
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnLimpar_Click(object sender, EventArgs e)
         {
             txtPesquisa.Clear();
             AtualizaProd();

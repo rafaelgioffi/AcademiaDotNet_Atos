@@ -15,7 +15,7 @@ namespace RestApi_Exercicio_2.Controllers
         {
             var curso = await context.Curso.AsNoTracking().ToListAsync();
 
-            return curso == null ? NotFound($"Nenhum curso cadastrado.") : Ok(curso);
+            return !curso.Any() ? NotFound($"Nenhum curso cadastrado.") : Ok(curso);
         }
 
         //buscar curso específico...
