@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 x:Class="App2.CalculadoraSimples">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid Margin="5,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+            <Entry x:Name="txtValorA" Placeholder="1º valor" FontSize="Title" HorizontalTextAlignment="Center" TextColor="Blue" Grid.Row="0" Grid.Column="0"/>
+
+                <Entry x:Name="txtValorB" Placeholder="2º valor" FontSize="Title" HorizontalTextAlignment="Center" TextColor="Blue" Grid.Row="0" Grid.Column="1"/>                
+            </Grid>
+            <Grid Margin="5,0">
+				<Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>                    
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Text="+" Clicked="btnCalcular_Clicked" FontSize="Large" FontAttributes="Bold" TextColor="DarkBlue" BackgroundColor="LightBlue" Grid.Row="0" Grid.Column="0"/>
+                <Button Text="-" Clicked="btnCalcular_Clicked" FontSize="Large" FontAttributes="Bold" TextColor="DarkBlue" BackgroundColor="LightBlue" Grid.Row="0" Grid.Column="1"/>
+                <Button Text="x" Clicked="btnCalcular_Clicked" FontSize="Large" FontAttributes="Bold" TextColor="DarkBlue" BackgroundColor="LightBlue" Grid.Row="0" Grid.Column="2"/>
+                <Button Text="/" Clicked="btnCalcular_Clicked" FontSize="Large" FontAttributes="Bold" TextColor="DarkBlue" BackgroundColor="LightBlue" Grid.Row="0" Grid.Column="3" />
+            </Grid>
+            <Grid Margin="5">
+                <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label x:Name="lblCalculo" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" FontSize="Header" TextColor="Blue" />
+
+                <Label x:Name="lblstatus" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" FontSize="Title" TextColor="DarkRed" />
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
