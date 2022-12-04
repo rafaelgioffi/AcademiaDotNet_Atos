@@ -182,3 +182,16 @@
 /App2/App2.iOS/obj
 /App2/App2.UWP/bin/x64/Debug
 /App2/App2.UWP/obj
+/CalculadoraApp/.vs
+/CalculadoraApp/CalculadoraApp/bin
+/CalculadoraApp/CalculadoraApp/obj
+/CalculadoraApp/CalculadoraApp.Android/bin
+/CalculadoraApp/CalculadoraApp.Android/obj
+/CalculadoraApp/CalculadoraApp.iOS/bin/iPhoneSimulator/Release
+/CalculadoraApp/CalculadoraApp.iOS/obj
+/CalculadoraApp/CalculadoraApp.UWP/bin/x64
+/CalculadoraApp/CalculadoraApp.UWP/obj/x64/Debug/.winmd_cache/$Microsoft.Graphics.Canvas.winmd_636160715180000000.json
+/CalculadoraApp/CalculadoraApp.UWP/obj
+/Gerenciador de Pedidos/.vs
+/Gerenciador de Pedidos/bin/Debug/net6.0
+/Gerenciador de Pedidos/obj

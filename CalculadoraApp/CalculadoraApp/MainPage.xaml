@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CalculadoraApp.MainPage">
+
+    <ContentPage.Resources>        
+        <Style Class="teclasNum" TargetType="Button">
+            <Setter Property="FontSize" Value="Large" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="BackgroundColor" Value="#0D0D0D" />
+            <Setter Property="CornerRadius" Value="5" />
+        </Style>
+        <Style Class="teclasEsp" TargetType="Button">
+            <Setter Property="FontSize" Value="Large" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="TextColor" Value="White" />            
+            <Setter Property="BackgroundColor" Value="#0D0D0D" />
+            <Setter Property="CornerRadius" Value="5" />            
+        </Style>
+    </ContentPage.Resources>
+    <StackLayout BackgroundColor="Black">
+        <Frame BackgroundColor="black" Padding="18" CornerRadius="0">
+            <Label x:Name="lblResultado" HorizontalTextAlignment="Center" TextColor="White" FontFamily="Lucida Sans" FontSize="38"/>
+        </Frame>
+        
+        <!--<StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" HeightRequest="95">
+            <Button x:Name="btnAC" Text="AC" class="teclasEsp" Clicked="btnAC_Clicked"/>
+            <Button x:Name="btnDEL" Text="DEL" class="teclasEsp" Clicked="btnDEL_Clicked"/>
+            <Button x:Name="btnDiv" Text="/" class="teclasNum" Clicked="AddNumero_Clicked"/>
+            <Button x:Name="btnPorc" Text="%" class="teclasNum" Clicked="AddNumero_Clicked"/>
+        </StackLayout>-->
+        <Grid VerticalOptions="FillAndExpand" Margin="5,5,5,5">
+            <Button x:Name="btnAC" Text="AC" class="teclasEsp" Clicked="btnAC_Clicked" Grid.Row="0" Grid.Column="0"/>
+            <Button x:Name="btnDEL" Text="DEL" class="teclasEsp" Clicked="btnDEL_Clicked" Grid.Row="0" Grid.Column="1"/>
+            <Button x:Name="btnDiv" Text="/" class="teclasNum" Clicked="AddNumero_Clicked" Grid.Row="0" Grid.Column="2"/>
+            <Button x:Name="btnPorc" Text="%" class="teclasNum" Clicked="AddNumero_Clicked" Grid.Row="0" Grid.Column="3"/>
+
+            <Button Text="7" class="teclasNum" Clicked="AddNumero_Clicked" Grid.Row="1" Grid.Column="0"/>
+            <Button Text="8" class="teclasNum" Clicked="AddNumero_Clicked" Grid.Row="1" Grid.Column="1"/>
+            <Button Text="9" class="teclasNum" Clicked="AddNumero_Clicked" Grid.Row="1" Grid.Column="2"/>
+            <Button Text="x" class="teclasEsp" Clicked="AddNumero_Clicked" Grid.Row="1" Grid.Column="3"/>
+
+            <Button Text="4" class="teclasNum" Clicked="AddNumero_Clicked" Grid.Row="2" Grid.Column="0"/>
+            <Button Text="5" class="teclasNum" Clicked="AddNumero_Clicked" Grid.Row="2" Grid.Column="1"/>
+            <Button Text="6" class="teclasNum" Clicked="AddNumero_Clicked" Grid.Row="2" Grid.Column="2"/>
+            <Button Text="-" class="teclasEsp" Clicked="AddNumero_Clicked" Grid.Row="2" Grid.Column="3"/>
+
+            <Button Text="1" class="teclasNum" Clicked="AddNumero_Clicked" Grid.Row="3" Grid.Column="0"/>
+            <Button Text="2" class="teclasNum" Clicked="AddNumero_Clicked" Grid.Row="3" Grid.Column="1"/>
+            <Button Text="3" class="teclasNum" Clicked="AddNumero_Clicked" Grid.Row="3" Grid.Column="2"/>
+            <Button Text="+" class="teclasEsp" Clicked="AddNumero_Clicked" Grid.Row="3" Grid.Column="3" />
+        
+            <Button Text="0" class="teclasNum" Clicked="AddNumero_Clicked" Grid.Row="4" Grid.Column="0" />
+            <Button Text="," class="teclasEsp" Clicked="AddNumero_Clicked" Grid.Row="4" Grid.Column="1" />
+            <Button Text="" class="teclasEsp" Grid.Row="4" Grid.Column="2" />
+            <Button Text="=" class="teclasEsp" BackgroundColor="blue" WidthRequest="180" Clicked="Calcula_Clicked" Grid.Row="4" Grid.Column="3" />
+        </Grid>
+    </StackLayout>    
+</ContentPage>
